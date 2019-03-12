@@ -13,6 +13,7 @@ namespace TestApp1
             int number1 = 0;
             int number2 = 0;
             int result = 0;
+            // Reviewed in VS
 
             for (int i = 0; i < 2; i++)
             {
