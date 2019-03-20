@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oscar.ConsoleApp", "TestApp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oscar.UI", "Oscar.UI\Oscar.UI.csproj", "{93AC4877-CBED-4EFA-97F6-122B26C02E0E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oscar.BL", "Oscar.BL\Oscar.BL.csproj", "{ED731D42-ABD4-4C13-8BE4-7C02CF337597}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{93AC4877-CBED-4EFA-97F6-122B26C02E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93AC4877-CBED-4EFA-97F6-122B26C02E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93AC4877-CBED-4EFA-97F6-122B26C02E0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED731D42-ABD4-4C13-8BE4-7C02CF337597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED731D42-ABD4-4C13-8BE4-7C02CF337597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED731D42-ABD4-4C13-8BE4-7C02CF337597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED731D42-ABD4-4C13-8BE4-7C02CF337597}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

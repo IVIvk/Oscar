@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{93AC4877-CBED-4EFA-97F6-122B26C02E0E}</ProjectGuid>
+    <ProjectGuid>{ED731D42-ABD4-4C13-8BE4-7C02CF337597}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Oscar.UI</RootNamespace>
-    <AssemblyName>Oscar.UI</AssemblyName>
+    <RootNamespace>Oscar.BL</RootNamespace>
+    <AssemblyName>Oscar.BL</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,14 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsoleAppScreen.cs" />
+    <Compile Include="DataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Oscar.BL\Oscar.BL.csproj">
-      <Project>{ed731d42-abd4-4c13-8be4-7c02cf337597}</Project>
-      <Name>Oscar.BL</Name>
-    </ProjectReference>
+    <Compile Include="User.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
