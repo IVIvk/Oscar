@@ -50,5 +50,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Oscar.UI\Oscar.UI.csproj">
+      <Project>{93ac4877-cbed-4efa-97f6-122b26c02e0e}</Project>
+      <Name>Oscar.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
