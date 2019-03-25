@@ -23,7 +23,7 @@ namespace Oscar.UI
             }
             else
             {
-                string defaultText = @"Admin/AdminPassword!true";
+                string defaultText = @"Admin/AdminPassword/true";
                 StreamWriter file = new StreamWriter(File.Create(userFile));
                 file.Close();
 

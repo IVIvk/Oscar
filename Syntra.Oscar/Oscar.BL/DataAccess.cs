@@ -22,10 +22,13 @@ namespace Oscar.BL
             {
                 User user = new User();
 
-                user.userName = line.Substring(0, (line.IndexOf('/')));
-                user.passWord = line.Substring((line.IndexOf('/') + 1));
-                user.passWord = user.passWord.Substring(0, user.passWord.IndexOf('!'));
-                user.admin = Convert.ToBoolean(line.Substring(line.IndexOf('!') + 1));
+                string temporaryStorage = line;
+
+                user.userName = temporaryStorage.Substring(0, (temporaryStorage.IndexOf('/')));
+                temporaryStorage = temporaryStorage.Substring((temporaryStorage.IndexOf('/') + 1));
+                user.passWord = temporaryStorage.Substring(0, temporaryStorage.IndexOf('/'));
+                temporaryStorage = temporaryStorage.Substring((temporaryStorage.IndexOf('/') + 1));
+                user.admin = Convert.ToBoolean(temporaryStorage.Substring(temporaryStorage.IndexOf('/') + 1));
 
                 userList.Add(user);
             }
