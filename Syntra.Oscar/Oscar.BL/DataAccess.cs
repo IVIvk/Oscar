@@ -35,5 +35,10 @@ namespace Oscar.BL
 
             return userList;
         }
+
+        public void SaveUsers (List<User> userList, string userFile)
+        {
+
+        }
     }
 }

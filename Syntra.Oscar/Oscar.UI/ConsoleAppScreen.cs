@@ -10,11 +10,11 @@ namespace Oscar.UI
 {
     public class ConsoleAppScreen
     {
+        string userFile = @"c:\temp\usersOscar.txt";
         List<User> userList = new List<User>();
 
         public ConsoleAppScreen() // Checking if userfile exists. If not, creating one with admin-user in it.
         {
-            string userFile = @"c:\temp\usersOscar.txt";
             bool fileExist = File.Exists(userFile);
 
             if (fileExist)
@@ -104,6 +104,8 @@ namespace Oscar.UI
                 newUser.passWord = newPassword;
 
                 userList.Add(newUser);
+
+                new DataAccess().SaveUsers(userList,userFile);
             }
             
         }
