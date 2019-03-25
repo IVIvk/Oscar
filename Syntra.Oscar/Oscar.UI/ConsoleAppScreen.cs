@@ -19,7 +19,7 @@ namespace Oscar.UI
 
             if (fileExist)
             {
-                userList = new DataAccess().Load(userFile);
+                userList = new DataAccess().LoadUsers(userFile);
             }
             else
             {

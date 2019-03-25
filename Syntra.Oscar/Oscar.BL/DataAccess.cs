@@ -14,7 +14,7 @@ namespace Oscar.BL
 
         }
 
-        public List<User> Load(string userFile)
+        public List<User> LoadUsers(string userFile)
         {
             List<User> userList = new List<User>();
 
