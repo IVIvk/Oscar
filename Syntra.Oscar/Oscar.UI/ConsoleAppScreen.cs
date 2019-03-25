@@ -12,7 +12,7 @@ namespace Oscar.UI
     {
         List<User> userList = new List<User>();
 
-        public ConsoleAppScreen()
+        public ConsoleAppScreen() // Checking if userfile exists. If not, creating one with admin-user in it.
         {
             string userFile = @"c:\temp\usersOscar.txt";
             bool fileExist = File.Exists(userFile);
@@ -34,7 +34,7 @@ namespace Oscar.UI
             }
         }
 
-        public void LoginScreen()
+        public void LoginScreen() // The  screen for login into the app
         {
             string username;
             string password;
@@ -49,7 +49,7 @@ namespace Oscar.UI
                 registratedUser = true;
             }
 
-            if (registratedUser)
+            if (registratedUser) // Loginscreen for a registrated user
             {
                 Console.Write("Gebruikersnaam: ");
                 username = Console.ReadLine();
@@ -57,7 +57,7 @@ namespace Oscar.UI
                 Console.Write("Wachtwoord: ");
                 password = Console.ReadLine();
             }
-            else
+            else // Creating a new user
             {
                 User newUser = new User();
                 string newUsername;
@@ -65,7 +65,7 @@ namespace Oscar.UI
                 bool usernameExist = false;
                 bool passwordExist = false;
 
-                do 
+                do // Creating new username
                 {
                     Console.Clear();
                     usernameExist = false;
@@ -83,7 +83,7 @@ namespace Oscar.UI
                 }
                 while (usernameExist);
 
-                do
+                do // creating new password
 	            {
                     Console.Clear();
                     passwordExist = false;
