@@ -51,11 +51,34 @@ namespace Oscar.UI
 
             if (registratedUser) // Loginscreen for a registrated user
             {
-                Console.Write("Gebruikersnaam: ");
-                username = Console.ReadLine();
+                bool check = true;
 
-                Console.Write("Wachtwoord: ");
-                password = Console.ReadLine();
+                do
+                {
+                    Console.Clear();
+                    Console.Write("Gebruikersnaam: ");
+                    username = Console.ReadLine();
+
+                    Console.Write("Wachtwoord: ");
+                    password = Console.ReadLine();
+
+                    foreach (User user in userList)
+                    {
+                        if (username == user.userName)
+                        {
+                            if (password == user.passWord)
+                            {
+                                check = false;
+                            }
+                        }
+                    }
+
+                    if (check)
+                    {
+                        Console.WriteLine("De gebruikersnaam of het wachtwoord is verkeerd. Druk op enter om opnieuw te proberen");
+                        Console.ReadLine();
+                    }
+                } while (check);
             }
             else // Creating a new user
             {
@@ -78,6 +101,8 @@ namespace Oscar.UI
                         if (user.userName == newUsername)
                         {
                             usernameExist = true;
+                            Console.WriteLine("De gebruikersnaam bestaat reeds. Druk op enter om opnieuw te beginnen.");
+                            Console.ReadLine();
                         }
 	                }
                 }
