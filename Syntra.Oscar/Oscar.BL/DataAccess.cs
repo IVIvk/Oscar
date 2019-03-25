@@ -38,7 +38,18 @@ namespace Oscar.BL
 
         public void SaveUsers (List<User> userList, string userFile)
         {
+            File.Delete(userFile);
+            StreamWriter file = new StreamWriter(File.Create(userFile));
+            file.Close();
 
+            using (StreamWriter sw = new StreamWriter(userFile))
+            {
+                foreach (var user in userList)
+                {
+                    string userText = user.userName + "/" + user.passWord + "/" + user.admin;
+                    sw.WriteLine(userText);
+                }
+            }
         }
     }
 }
