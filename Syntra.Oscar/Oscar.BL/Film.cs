@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestApp1
+namespace Oscar.BL
 {
     internal class Film
     {
@@ -49,5 +49,6 @@ namespace TestApp1
             filmGenre = inputOfGenre;
         }
 
+        // 
     }
 }

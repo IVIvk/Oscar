@@ -1,0 +1,82 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Oscar.BL
+{
+    class Films
+    {
+        // Data members.
+        private string filmTitle = string.Empty;
+        private int filmLengthInMinutes = 0;
+        private Genres filmGenre;
+        private double filmRating = -1;
+        private int amountOfRatings = 0;
+
+        // Access to the data members.
+        public string FilmTitle
+        {
+            get { return filmTitle; }
+            set { filmTitle = value; }
+        }
+
+        public int FilmLengthInMinutes
+        {
+            get { return filmLengthInMinutes; }
+            set { filmLengthInMinutes = value; }
+        }
+
+        public Genres FilmGenre
+        {
+            get { return filmGenre; }
+            set { filmGenre = value; }
+        }
+
+        public double FilmRating
+        {
+            get { return filmRating; }
+            //set { filmRating = value; }
+        }
+
+        public int AmountOfRatings
+        {
+            get { return amountOfRatings; }
+            //set { amountOfRatings = value; }
+        }
+
+        /////////////////////////////////////////
+        // Functions.
+
+        // This function uses user input to fill in the properties of a new film.
+        public void AddNewFilm(string inputOfTitle, int inputOfLength, Genres inputOfGenre)
+        {
+            filmTitle = inputOfTitle;
+            filmLengthInMinutes = inputOfLength;
+            filmGenre = inputOfGenre;
+        }
+
+        // When a user rates a film, this function will be used to alter the overall rating.
+        // Also the total amount of ratings will be incremented by 1.
+        // The film-, user rating and the total amount of ratings will be used to calculate the new overall rating.
+        public void AlterRating(Films film, int usersVote)
+        {
+            // initialization of variables.
+            double newRating = 0;
+            double previousRating = film.FilmRating;
+            int previousAmountOfVotes = film.AmountOfRatings;
+            double previousTotal = 0;
+
+            // Calculations
+            previousTotal = previousRating * previousAmountOfVotes;
+            newRating = (previousTotal + usersVote) / (previousAmountOfVotes + 1);
+
+            // Adjust the total amount of ratings and the overall rating of the film.
+            film.amountOfRatings++;
+            film.filmRating = newRating;
+        }
+        /////////////////////////////////////////
+
+    }
+}
