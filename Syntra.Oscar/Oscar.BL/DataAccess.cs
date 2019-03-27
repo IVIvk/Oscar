@@ -25,9 +25,9 @@ namespace Oscar.BL
                 string temporaryStorage = line;
 
                 user.userName = temporaryStorage.Substring(0, (temporaryStorage.IndexOf('/')));
-                temporaryStorage = temporaryStorage.Substring((temporaryStorage.IndexOf('/') + 1));
+                temporaryStorage = temporaryStorage.Substring(1);
                 user.passWord = temporaryStorage.Substring(0, temporaryStorage.IndexOf('/'));
-                temporaryStorage = temporaryStorage.Substring((temporaryStorage.IndexOf('/') + 1));
+                temporaryStorage = temporaryStorage.Substring(1);
                 user.admin = Convert.ToBoolean(temporaryStorage.Substring(temporaryStorage.IndexOf('/') + 1));
 
                 userList.Add(user);
@@ -38,7 +38,18 @@ namespace Oscar.BL
 
         public void SaveUsers (List<User> userList, string userFile)
         {
+            File.Delete(userFile);
+            StreamWriter file = new StreamWriter(File.Create(userFile));
+            file.Close();
 
+            using (StreamWriter sw = new StreamWriter(userFile))
+            {
+                foreach (var user in userList)
+                {
+                    string userText = user.userName + "/" + user.passWord + "/" + user.admin;
+                    sw.WriteLine(userText);
+                }
+            }
         }
     }
 }
