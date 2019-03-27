@@ -20,19 +20,19 @@ namespace Oscar.BL
         public string FilmTitle
         {
             get { return filmTitle; }
-            set { filmTitle = value; }
+            //set { filmTitle = value; }
         }
 
         public int FilmLengthInMinutes
         {
             get { return filmLengthInMinutes; }
-            set { filmLengthInMinutes = value; }
+            //set { filmLengthInMinutes = value; }
         }
 
         public Genres FilmGenre
         {
             get { return filmGenre; }
-            set { filmGenre = value; }
+            //set { filmGenre = value; }
         }
 
         public double FilmRating
@@ -50,7 +50,7 @@ namespace Oscar.BL
         /////////////////////////////////////////
         // Functions.
 
-        // This function uses user input to fill in the properties of a new film.
+        // This function uses user input to fill in the properties of a new Films object.
         public void AddNewFilm(string inputOfTitle, int inputOfLength, Genres inputOfGenre)
         {
             filmTitle = inputOfTitle;
@@ -58,7 +58,7 @@ namespace Oscar.BL
             filmGenre = inputOfGenre;
         }
 
-        // When a user rates a film, this function will be used to alter the overall rating.
+        // When a user rates a film, this function will be used to alter the overall rating of a Films object.
         // Also the total amount of ratings will be incremented by 1.
         // The film-, user rating and the total amount of ratings will be used to calculate the new overall rating.
         public void AlterRating(Films film, int usersVote)
