@@ -68,9 +68,19 @@ namespace Oscar.BL
             int previousAmountOfVotes = film.AmountOfRatings;
             double previousTotal = 0;
 
-            // Calculations
-            previousTotal = previousRating * previousAmountOfVotes;
-            newRating = (previousTotal + usersVote) / (previousAmountOfVotes + 1);
+            // Check if there have been ratings before. 
+            // If this is the case, the users rating will become the new overall film rating. (if)
+            // If it is not the case, then the new overall rating will be calculated. (else)
+            if (previousRating == -1)
+            {
+                newRating = usersVote;
+            }
+            else
+            {
+                // Calculations
+                previousTotal = previousRating * previousAmountOfVotes;
+                newRating = (previousTotal + usersVote) / (previousAmountOfVotes + 1);               
+            }
 
             // Adjust the total amount of ratings and the overall rating of the film.
             film.amountOfRatings++;
