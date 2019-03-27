@@ -15,6 +15,7 @@ namespace Oscar.BL
         private double filmRating = -1;
         private int amountOfRatings = 0;
 
+        /////////////////////////////////////////
         // Access to the data members.
         public string FilmTitle
         {
