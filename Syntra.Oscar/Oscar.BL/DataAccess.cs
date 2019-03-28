@@ -14,6 +14,30 @@ namespace Oscar.BL
 
         }
 
+        public void CheckIfDatabaseExist()
+        {
+            string userFile = @"c:\temp\usersOscar.txt";
+            List<User> userList = new List<User>();
+
+            bool fileExist = File.Exists(userFile);
+
+            if (fileExist) // Checking if userfile exists. If not, creating one with admin-user in it.
+            {
+                userList = new DataAccess().LoadUsers(userFile);
+            }
+            else
+            {
+                string defaultText = @"Admin/AdminPassword/true";
+                StreamWriter file = new StreamWriter(File.Create(userFile));
+                file.Close();
+
+                using (StreamWriter sw = new StreamWriter(userFile))
+                {
+                    sw.WriteLine(defaultText);
+                }
+            }
+        }
+
         public List<User> LoadUsers(string userFile)
         {
             List<User> userList = new List<User>();

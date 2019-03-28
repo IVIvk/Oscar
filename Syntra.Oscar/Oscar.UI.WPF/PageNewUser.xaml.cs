@@ -1,6 +1,7 @@
 ﻿using Oscar.BL;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,13 +36,27 @@ namespace Oscar.UI.WPF
             string newUsername = txtUsername.Text;
             string newPassword = txtPassword.Text;
             string newPasswordConfirm = txtPasswordConfirm.Text;
+            bool validUser = true;
 
             foreach (User user in _userList)
             {
                 if (newUsername == user.userName)
                 {
-                    MessageBox.Show("Deze gebruikersnaam bestaat reeds. Gebruik een andere");
+                    MessageBox.Show("Deze gebruikersnaam bestaat reeds. Gebruik een andere.");
+                    validUser = false;
                 }
+
+                if (!(newPassword == newPasswordConfirm))
+                {
+                    MessageBox.Show("Het wachtwoord komt niet overeen.");
+                    validUser = false;
+                }
+            }
+
+            if (validUser)
+            {
+                _userList.Add(newUser);
+                new DataAccess().SaveUsers(_userList);
             }
         }
     }

@@ -22,7 +22,7 @@ namespace Oscar.UI.WPF
     /// </summary>
     public partial class Login : Page
     {
-        List<User> userList;
+        List<User> userList = new List<User>();
 
         public Login()
         {
@@ -58,26 +58,7 @@ namespace Oscar.UI.WPF
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            string userFile = @"c:\temp\usersOscar.txt";
-            userList = new List<User>();
-
-            bool fileExist = File.Exists(userFile);
-
-            if (fileExist) // Checking if userfile exists. If not, creating one with admin-user in it.
-            {
-                userList = new DataAccess().LoadUsers(userFile);
-            }
-            else
-            {
-                string defaultText = @"Admin/AdminPassword/true";
-                StreamWriter file = new StreamWriter(File.Create(userFile));
-                file.Close();
-
-                using (StreamWriter sw = new StreamWriter(userFile))
-                {
-                    sw.WriteLine(defaultText);
-                }
-            }
+            
         }
 
         private void btnNewUser_Click(object sender, RoutedEventArgs e)
