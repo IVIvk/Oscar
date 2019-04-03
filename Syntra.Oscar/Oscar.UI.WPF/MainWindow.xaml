@@ -1,12 +1,13 @@
-﻿<Window x:Class="Oscar.UI.WPF.MainWindow"
+﻿<Window x:Name="MainWindow1" x:Class="Oscar.UI.WPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Oscar.UI.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525" Loaded="MainWindow_Onloaded">
     <Grid>
-        
+        <Frame x:Name="FrmFrame" NavigationUIVisibility="Hidden" Content="Frame" HorizontalAlignment="Left" Height="301" Margin="10,10,0,0" VerticalAlignment="Top" Width="498"/>
+
     </Grid>
 </Window>

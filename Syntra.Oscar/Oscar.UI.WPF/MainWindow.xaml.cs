@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oscar.BL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace Oscar.UI.WPF
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void MainWindow_Onloaded(object sender, RoutedEventArgs e)
+        {
+            FrmFrame.NavigationService.Navigate(new Login());
         }
     }
 }
