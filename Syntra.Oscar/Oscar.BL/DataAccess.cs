@@ -9,6 +9,8 @@ namespace Oscar.BL
 {
     public class DataAccess
     {
+        string userFile = @"c:\temp\usersOscar.txt";
+
         public DataAccess()
         {
 
@@ -16,14 +18,10 @@ namespace Oscar.BL
 
         public void CheckIfDatabaseExist()
         {
-            string userFile = @"c:\temp\usersOscar.txt";
-            List<User> userList = new List<User>();
-
             bool fileExist = File.Exists(userFile);
 
             if (fileExist) // Checking if userfile exists. If not, creating one with admin-user in it.
             {
-                userList = new DataAccess().LoadUsers(userFile);
             }
             else
             {
@@ -38,8 +36,10 @@ namespace Oscar.BL
             }
         }
 
-        public List<User> LoadUsers(string userFile)
+        public List<User> LoadUsers()
         {
+            CheckIfDatabaseExist();
+
             List<User> userList = new List<User>();
 
             foreach (var line in File.ReadAllLines(userFile))
@@ -60,7 +60,7 @@ namespace Oscar.BL
             return userList;
         }
 
-        public void SaveUsers(List<User> userList, string userFile)
+        public void SaveUsers(List<User> userList)
         {
             File.Delete(userFile);
             StreamWriter file = new StreamWriter(File.Create(userFile));

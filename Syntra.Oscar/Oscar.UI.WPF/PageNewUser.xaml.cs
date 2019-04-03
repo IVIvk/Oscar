@@ -55,6 +55,9 @@ namespace Oscar.UI.WPF
 
             if (validUser)
             {
+                newUser.userName = newUsername;
+                newUser.passWord = newPassword;
+
                 _userList.Add(newUser);
                 new DataAccess().SaveUsers(_userList);
             }
