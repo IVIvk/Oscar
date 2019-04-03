@@ -15,7 +15,12 @@ namespace Oscar.BL
         public string GenreName
         {
             get { return genreName; }
-            set { genreName = value; }
+            //set { genreName = value; }
+        }
+
+        public void addNewGenre(string InputGenreName)
+        {
+            genreName = InputGenreName;
         }
     }
 }
