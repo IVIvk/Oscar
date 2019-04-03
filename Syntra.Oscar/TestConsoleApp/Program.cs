@@ -24,12 +24,13 @@ namespace TestConsoleApp
             string userInput = string.Empty;
 
             // Use AddNewGenre method to interact with the Genres class.
-            // Add a  GenreName.
+            // Add a  GenreName (hardcoded).
             genreName1.AddNewGenre("Horror");
 
             // Add this GenreName to the listOfGenres.
             listOfGenres.Add(genreName1.GenreName);
 
+            // Add a  GenreName (User interaction).
             Console.Write("Please enter a genre: ");
             userInput = Console.ReadLine();
 
