@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Oscar.BL
 {
-    class Films
+    public class Films
     {
         // Data members.
         private string filmTitle = string.Empty;

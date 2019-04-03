@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Oscar.BL
 {
-    class Genres
+    public class Genres
     {
         // Data members.
         private string genreName = string.Empty;
@@ -18,7 +18,7 @@ namespace Oscar.BL
             //set { genreName = value; }
         }
 
-        public void addNewGenre(string InputGenreName)
+        public void AddNewGenre(string InputGenreName)
         {
             genreName = InputGenreName;
         }
