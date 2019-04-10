@@ -63,7 +63,7 @@ namespace Oscar.UI.WPF
         {
             DataAccess dataAccess = new DataAccess();
 
-            dataAccess.CheckIfDatabaseExist();
+            dataAccess.CheckIfUserDatabaseExist();
             userList = dataAccess.LoadUsers();
         }
 

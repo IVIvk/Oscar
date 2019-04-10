@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oscar.ConsoleApp", "TestApp1\Oscar.ConsoleApp.csproj", "{A50280E1-4A15-41CE-B16E-6540C958B060}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oscar.BL", "Oscar.BL\Oscar.BL.csproj", "{ED731D42-ABD4-4C13-8BE4-7C02CF337597}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oscar.UI.WPF", "Oscar.UI.WPF\Oscar.UI.WPF.csproj", "{75BD0192-6AE6-4D74-B66A-0CB8BCB59C1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oscar.Dapper", "Oscar.Dapper\Oscar.Dapper.csproj", "{B7CF99A4-6AC3-4F4E-AFEF-FA918D031CA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{75BD0192-6AE6-4D74-B66A-0CB8BCB59C1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75BD0192-6AE6-4D74-B66A-0CB8BCB59C1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75BD0192-6AE6-4D74-B66A-0CB8BCB59C1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7CF99A4-6AC3-4F4E-AFEF-FA918D031CA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7CF99A4-6AC3-4F4E-AFEF-FA918D031CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7CF99A4-6AC3-4F4E-AFEF-FA918D031CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7CF99A4-6AC3-4F4E-AFEF-FA918D031CA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

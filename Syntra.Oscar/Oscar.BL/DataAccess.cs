@@ -16,7 +16,7 @@ namespace Oscar.BL
 
         }
 
-        public void CheckIfDatabaseExist()
+        public void CheckIfUserDatabaseExist()
         {
             bool fileExist = File.Exists(userFile);
 
@@ -38,7 +38,7 @@ namespace Oscar.BL
 
         public List<User> LoadUsers()
         {
-            CheckIfDatabaseExist();
+            CheckIfUserDatabaseExist();
 
             List<User> userList = new List<User>();
 
