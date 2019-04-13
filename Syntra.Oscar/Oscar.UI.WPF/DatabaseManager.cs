@@ -1,9 +1,11 @@
 ﻿using Oscar.Dapper;
+using Oscar.Dapper.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace Oscar.UI.WPF
 {
@@ -13,11 +15,11 @@ namespace Oscar.UI.WPF
 
         public static DatabaseManager Instance => _manager;
 
-        //public UserRepository UserRepository => new UserRepository();
+        public UserRepository UserRepository => new UserRepository();
 
         private DatabaseManager()
         {
-            Connection.Instance.SetConnection(@"server=localhost;Initial Catalog=Oscar;Integrated Security=True");
+            Connection.Instance.SetConnection(@"Data Source=DESKTOP-4UT8FK5\SQLEXPRESS;Initial Catalog=Oscar;Integrated Security=True");
         }
     }
 }

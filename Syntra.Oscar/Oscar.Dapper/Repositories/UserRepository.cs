@@ -9,18 +9,31 @@ namespace Oscar.Dapper.Repositories
 {
     public class UserRepository
     {
-        //Example of a query. User database need to be set up.
-        /*
         public IEnumerable<User> GetUsers()
         {
             using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
             {
                 return connection.Query<User>(@"
-                    SELECT Id, Name, Age
+                    SELECT UserId, UserPassword, UserAdmin
                     FROM Users
                 ");
             }
         }
-        */
+
+        public void InsertUser(User user)
+        {
+            using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute(@"
+                    INSERT INTO Users(UserId, UserPassword, UserAdmin)
+                    VALUES (@UserId, @UserPassword, @UserAdmin)
+                ", new
+                {
+                    UserId = user.userName,
+                    UserPassword = user.passWord,
+                    UserAdmin = user.admin
+                });
+            }
+        }
     }
 }

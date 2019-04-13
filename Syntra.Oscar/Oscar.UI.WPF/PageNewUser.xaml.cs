@@ -59,7 +59,7 @@ namespace Oscar.UI.WPF
                 newUser.passWord = newPassword;
 
                 _userList.Add(newUser);
-                new DataAccess().SaveUsers(_userList);
+                DatabaseManager.Instance.UserRepository.InsertUser(newUser);
             }
         }
     }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,12 +32,9 @@ namespace Oscar.UI.WPF
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess dataAccess = new DataAccess();
             string username = txtUsername.Text;
             string password = txtPassword.Text;
             bool check = true;
-
-            userList = dataAccess.LoadUsers();
 
             foreach (User user in userList)
             {
@@ -61,10 +59,7 @@ namespace Oscar.UI.WPF
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            DataAccess dataAccess = new DataAccess();
-
-            dataAccess.CheckIfUserDatabaseExist();
-            userList = dataAccess.LoadUsers();
+            userList = DatabaseManager.Instance.UserRepository.GetUsers().ToList();
         }
 
         private void btnNewUser_Click(object sender, RoutedEventArgs e)
