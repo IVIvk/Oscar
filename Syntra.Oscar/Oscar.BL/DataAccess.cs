@@ -16,7 +16,7 @@ namespace Oscar.BL
 
         }
 
-        public void CheckIfDatabaseExist()
+        public void CheckIfUserDatabaseExist()
         {
             bool fileExist = File.Exists(userFile);
 
@@ -38,7 +38,7 @@ namespace Oscar.BL
 
         public List<User> LoadUsers()
         {
-            CheckIfDatabaseExist();
+            CheckIfUserDatabaseExist();
 
             List<User> userList = new List<User>();
 
@@ -48,11 +48,11 @@ namespace Oscar.BL
 
                 string temporaryStorage = line;
 
-                user.userName = temporaryStorage.Substring(0, (temporaryStorage.IndexOf('/')));
+                user.userId = temporaryStorage.Substring(0, (temporaryStorage.IndexOf('/')));
                 temporaryStorage = temporaryStorage.Substring(temporaryStorage.IndexOf('/') + 1);
-                user.passWord = temporaryStorage.Substring(0, temporaryStorage.IndexOf('/'));
+                user.UserPassword = temporaryStorage.Substring(0, temporaryStorage.IndexOf('/'));
                 temporaryStorage = temporaryStorage.Substring(temporaryStorage.IndexOf('/') + 1);
-                user.admin = Convert.ToBoolean(temporaryStorage.Substring(temporaryStorage.IndexOf('/') + 1));
+                user.UserAdmin = Convert.ToBoolean(temporaryStorage.Substring(temporaryStorage.IndexOf('/') + 1));
 
                 userList.Add(user);
             }
@@ -70,7 +70,7 @@ namespace Oscar.BL
             {
                 foreach (var user in userList)
                 {
-                    string userText = user.userName + "/" + user.passWord + "/" + user.admin;
+                    string userText = user.userId + "/" + user.UserPassword + "/" + user.UserAdmin;
                     sw.WriteLine(userText);
                 }
             }

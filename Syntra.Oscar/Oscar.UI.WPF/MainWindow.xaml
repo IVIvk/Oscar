@@ -7,7 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" Loaded="MainWindow_Onloaded">
     <Grid>
-        <Frame x:Name="FrmFrame" NavigationUIVisibility="Hidden" Content="Frame" HorizontalAlignment="Left" Height="301" Margin="10,10,0,0" VerticalAlignment="Top" Width="498"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Frame x:Name="FrmFrame" Grid.Row="0" Grid.Column="0" NavigationUIVisibility="Hidden" Content="Frame" HorizontalAlignment="Left"  Margin="10,10,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

@@ -8,9 +8,11 @@ namespace Oscar.BL
 {
     public class User
     {
-        public string userName { get; set; }
-        public string passWord { get; set; }
-        public bool admin { get; set; } = false;
+        public string userId { get; set; }
+        public string UserPassword { get; set; }
+        public bool UserAdmin { get; set; }
+
+        public string UserAdminInput { get; set; }
 
         public User()
         {

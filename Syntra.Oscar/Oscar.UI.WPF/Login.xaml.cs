@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace Oscar.UI.WPF
     public partial class Login : Page
     {
         List<User> userList = new List<User>();
+        User mainUser = new User();
 
         public Login()
         {
@@ -31,20 +33,18 @@ namespace Oscar.UI.WPF
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess dataAccess = new DataAccess();
             string username = txtUsername.Text;
             string password = txtPassword.Text;
             bool check = true;
 
-            userList = dataAccess.LoadUsers();
-
             foreach (User user in userList)
             {
-                if (username == user.userName)
+                if (username == user.userId)
                 {
-                    if (password == user.passWord)
+                    if (password == user.UserPassword)
                     {
                         check = false;
+                        mainUser = user;
                     }
                 }
             }
@@ -55,16 +55,13 @@ namespace Oscar.UI.WPF
             }
             else
             {
-                //NavigationService.Navigate();
+                NavigationService.Navigate(new UserWindow(mainUser));
             }
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            DataAccess dataAccess = new DataAccess();
-
-            dataAccess.CheckIfDatabaseExist();
-            userList = dataAccess.LoadUsers();
+            userList = DatabaseManager.Instance.UserRepository.GetUsers().ToList();
         }
 
         private void btnNewUser_Click(object sender, RoutedEventArgs e)
