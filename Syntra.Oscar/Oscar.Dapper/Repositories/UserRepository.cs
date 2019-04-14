@@ -29,9 +29,9 @@ namespace Oscar.Dapper.Repositories
                     VALUES (@UserId, @UserPassword, @UserAdmin)
                 ", new
                 {
-                    UserId = user.userName,
-                    UserPassword = user.passWord,
-                    UserAdmin = user.admin
+                    UserId = user.userId,
+                    UserPassword = user.UserPassword,
+                    UserAdmin = user.UserAdmin
                 });
             }
         }

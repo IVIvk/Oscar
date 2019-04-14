@@ -38,9 +38,9 @@ namespace Oscar.UI.WPF
 
             foreach (User user in userList)
             {
-                if (username == user.userName)
+                if (username == user.userId)
                 {
-                    if (password == user.passWord)
+                    if (password == user.UserPassword)
                     {
                         check = false;
                     }

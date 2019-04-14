@@ -40,7 +40,7 @@ namespace Oscar.UI.WPF
 
             foreach (User user in _userList)
             {
-                if (newUsername == user.userName)
+                if (newUsername == user.userId)
                 {
                     MessageBox.Show("Deze gebruikersnaam bestaat reeds. Gebruik een andere.");
                     validUser = false;
@@ -55,8 +55,8 @@ namespace Oscar.UI.WPF
 
             if (validUser)
             {
-                newUser.userName = newUsername;
-                newUser.passWord = newPassword;
+                newUser.userId = newUsername;
+                newUser.UserPassword = newPassword;
 
                 _userList.Add(newUser);
                 DatabaseManager.Instance.UserRepository.InsertUser(newUser);
