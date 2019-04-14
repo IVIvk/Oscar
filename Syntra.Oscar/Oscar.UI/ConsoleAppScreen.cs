@@ -19,7 +19,7 @@ namespace Oscar.UI
 
             if (fileExist)
             {
-                userList = new DataAccess().LoadUsers(userFile);
+                userList = new DataAccess().LoadUsers();
             }
             else
             {
@@ -64,9 +64,9 @@ namespace Oscar.UI
 
                     foreach (User user in userList)
                     {
-                        if (username == user.userName)
+                        if (username == user.userId)
                         {
-                            if (password == user.passWord)
+                            if (password == user.UserPassword)
                             {
                                 check = false;
                             }
@@ -98,7 +98,7 @@ namespace Oscar.UI
 
                     foreach (User user in userList)
 	                {
-                        if (user.userName == newUsername)
+                        if (user.userId == newUsername)
                         {
                             usernameExist = true;
                             Console.WriteLine("De gebruikersnaam bestaat reeds. Druk op enter om opnieuw te beginnen.");
@@ -125,12 +125,12 @@ namespace Oscar.UI
 	                }
 	            } while (passwordExist);
 
-                newUser.userName = newUsername;
-                newUser.passWord = newPassword;
+                newUser.userId = newUsername;
+                newUser.UserPassword = newPassword;
 
                 userList.Add(newUser);
 
-                new DataAccess().SaveUsers(userList,userFile);
+                new DataAccess().SaveUsers(userList);
             }
             
         }
