@@ -25,7 +25,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Name ="btnAdmin" Content="Beheer" Click="BtnAdmin_Click"></Button>
+            <Button Name ="btnAdmin" Content="Beheer" Click="BtnAdmin_Click"/>
             <Button Name="btnLogout" Content="Uitloggen" Click="BtnLogout_Click"></Button>
         </StackPanel>
         

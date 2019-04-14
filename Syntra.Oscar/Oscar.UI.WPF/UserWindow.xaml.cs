@@ -26,14 +26,15 @@ namespace Oscar.UI.WPF
         {
             InitializeComponent();
             mainUser = user;
+
+            if (!mainUser.UserAdmin)
+            {
+                btnAdmin.Visibility = Visibility.Hidden;
+            }
         }
 
         private void BtnAdmin_Click(object sender, RoutedEventArgs e)
         {
-            if (!mainUser.UserAdmin)
-            {
-                MessageBox.Show("U heeft hierop geen rechten");
-            }
         }
 
         private void BtnLogout_Click(object sender, RoutedEventArgs e)
