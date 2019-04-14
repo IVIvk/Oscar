@@ -35,5 +35,10 @@ namespace Oscar.UI.WPF
                 MessageBox.Show("U heeft hierop geen rechten");
             }
         }
+
+        private void BtnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Login());
+        }
     }
 }

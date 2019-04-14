@@ -14,7 +14,7 @@
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
@@ -23,8 +23,13 @@
             <Button Content="Zoek films"></Button>
             <Button Content="Profiel"></Button>
         </StackPanel>
-        <Button Name ="btnAdmin" Content="Beheer" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Click="BtnAdmin_Click"></Button>
-        <Frame Name ="frmUserFrame" Grid.Row="1" NavigationUIVisibility="Hidden"></Frame>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Name ="btnAdmin" Content="Beheer" Click="BtnAdmin_Click"></Button>
+            <Button Name="btnLogout" Content="Uitloggen" Click="BtnLogout_Click"></Button>
+        </StackPanel>
+        
+        <Frame Name ="frmUserFrame" Grid.Row="1" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Width="600"></Frame>
 
     </Grid>
 </Page>
