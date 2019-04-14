@@ -57,6 +57,7 @@ namespace Oscar.UI.WPF
             {
                 newUser.userId = newUsername;
                 newUser.UserPassword = newPassword;
+                newUser.UserAdminInput = "false";
 
                 _userList.Add(newUser);
                 DatabaseManager.Instance.UserRepository.InsertUser(newUser);

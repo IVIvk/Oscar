@@ -12,9 +12,11 @@ namespace Oscar.BL
         public string UserPassword { get; set; }
         public bool UserAdmin { get; set; }
 
+        public string UserAdminInput { get; set; }
+
         public User()
         {
-            UserAdmin = false;
+            
         }
     }
 }

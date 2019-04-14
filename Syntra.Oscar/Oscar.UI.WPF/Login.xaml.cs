@@ -24,6 +24,7 @@ namespace Oscar.UI.WPF
     public partial class Login : Page
     {
         List<User> userList = new List<User>();
+        User mainUser = new User();
 
         public Login()
         {
@@ -43,6 +44,7 @@ namespace Oscar.UI.WPF
                     if (password == user.UserPassword)
                     {
                         check = false;
+                        mainUser = user;
                     }
                 }
             }
@@ -53,7 +55,7 @@ namespace Oscar.UI.WPF
             }
             else
             {
-                //NavigationService.Navigate();
+                NavigationService.Navigate(new UserWindow(mainUser));
             }
         }
 

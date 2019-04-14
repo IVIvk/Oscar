@@ -31,7 +31,7 @@ namespace Oscar.Dapper.Repositories
                 {
                     UserId = user.userId,
                     UserPassword = user.UserPassword,
-                    UserAdmin = user.UserAdmin
+                    UserAdmin = user.UserAdminInput
                 });
             }
         }
