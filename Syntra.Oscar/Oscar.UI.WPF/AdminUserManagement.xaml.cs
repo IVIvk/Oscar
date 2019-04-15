@@ -39,7 +39,11 @@ namespace Oscar.UI.WPF
 
         private void Update(object sender, EventArgs e)
         {
-            //https://stackoverflow.com/questions/37116407/updating-datagrid-row-to-save-to-sql
+            User user = new User();
+            user = (User)dgUsers.SelectedItem;
+            //Call an instance of DatabaseManager
+            //Make in the UserRepository a method to update users
+            //Update users
         }
     }
 }
