@@ -19,14 +19,14 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
-            <Button Content="Jouw reviews"></Button>
-            <Button Content="Zoek films"></Button>
-            <Button Content="Profiel"></Button>
+            <Button Content="Jouw reviews" Width="100"></Button>
+            <Button Content="Zoek films" Width="100"></Button>
+            <Button Content="Profiel" Width="100"></Button>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Name ="btnAdmin" Content="Beheer" Click="BtnAdmin_Click"></Button>
-            <Button Name="btnLogout" Content="Uitloggen" Click="BtnLogout_Click"></Button>
+            <Button Name ="btnAdmin" Content="Beheer" Width="100" Click="BtnAdmin_Click"/>
+            <Button Name="btnLogout" Content="Uitloggen" Width="100" Click="BtnLogout_Click"></Button>
         </StackPanel>
         
         <Frame Name ="frmUserFrame" Grid.Row="1" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Width="600"></Frame>
