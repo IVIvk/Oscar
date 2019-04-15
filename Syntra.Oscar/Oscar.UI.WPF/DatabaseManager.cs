@@ -19,7 +19,7 @@ namespace Oscar.UI.WPF
 
         private DatabaseManager()
         {
-            Connection.Instance.SetConnection(@"Data Source=DESKTOP-4UT8FK5\SQLEXPRESS;Initial Catalog=Oscar;Integrated Security=True");
+            Connection.Instance.SetConnection(@"Server=localhost\SQLExpress;Initial Catalog=Oscar;Integrated Security=True");
         }
     }
 }

@@ -61,6 +61,7 @@ namespace Oscar.UI.WPF
 
                 _userList.Add(newUser);
                 DatabaseManager.Instance.UserRepository.InsertUser(newUser);
+                NavigationService.Navigate(new Login());
             }
         }
     }

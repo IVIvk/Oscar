@@ -35,6 +35,7 @@ namespace Oscar.UI.WPF
 
         private void BtnAdmin_Click(object sender, RoutedEventArgs e)
         {
+            frmUserFrame.NavigationService.Navigate(new AdminUserManagement());
         }
 
         private void BtnLogout_Click(object sender, RoutedEventArgs e)
