@@ -9,6 +9,7 @@ namespace Oscar.BL
     public class Films
     {
         // Data members.
+        private Guid filmId;
         private string filmTitle = string.Empty;
         private int filmLengthInMinutes = 0;
         private Genres filmGenre;
@@ -17,6 +18,18 @@ namespace Oscar.BL
 
         /////////////////////////////////////////
         // Access to the data members.
+        public Guid FilmId
+        {
+            get { return filmId; }
+            set
+            {
+                if (filmId == null)
+                {
+                    filmId = value;
+                }
+            }
+        }       
+
         public string FilmTitle
         {
             get { return filmTitle; }
