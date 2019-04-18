@@ -9,6 +9,12 @@ namespace Oscar.Dapper.Repositories
 {
     public class FilmRepository
     {
+        /////////////////////////////////////////
+        // Functions.
+
+        // This function gets all the properties that belong to all the Films objects form the database.
+        // It places these properties in a Films object.
+        // It places these objects into an IEnumerable "list".
         public IEnumerable<Films> GetFilms()
         {
             using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
@@ -21,6 +27,8 @@ namespace Oscar.Dapper.Repositories
             }
         }
 
+        // This function inserts the properties of the parameter (Films object) 
+        // Into the database as a new entry in the Films table.
         public void InsertFilm(Films film)
         {
             using (var connection = new SqlConnection(Connection.Instance.ConnectionString))

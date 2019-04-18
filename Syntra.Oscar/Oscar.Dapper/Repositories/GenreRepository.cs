@@ -9,6 +9,12 @@ namespace Oscar.Dapper.Repositories
 {
     public class GenreRepository
     {
+        /////////////////////////////////////////
+        // Functions.
+
+        // This function gets all the properties that belong to all the Genres objects form the database.
+        // It places these properties in an Genres object.
+        // It places these objects into an IEnumerable "list".
         public IEnumerable<Genres> GetGenres()
         {
             using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
@@ -21,6 +27,8 @@ namespace Oscar.Dapper.Repositories
             }
         }
 
+        // This function inserts the properties of the parameter (Genres object) 
+        // Into the database as a new entry in the Genres table.
         public void InsertGenre(Genres genre)
         {
             using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))

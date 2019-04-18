@@ -12,6 +12,7 @@ namespace Oscar.BL
         private Guid genreId;
         private string genreName = string.Empty;
 
+        /////////////////////////////////////////
         // Access to the data members.
         public Guid GenreId
         {
@@ -24,6 +25,7 @@ namespace Oscar.BL
                 }
             }
         }
+
         public string GenreName
         {
             get { return genreName; }
