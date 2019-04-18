@@ -11,6 +11,7 @@ namespace Oscar.BL
         // Data members.
         private Guid filmId;
         private string filmTitle = string.Empty;
+        private int releaseYear = 0;
         private int filmLengthInMinutes = 0;
         private Genres filmGenre;
         private double filmRating = -1;
@@ -34,6 +35,12 @@ namespace Oscar.BL
         {
             get { return filmTitle; }
             //set { filmTitle = value; }
+        }
+
+        public int ReleaseYear
+        {
+            get { return releaseYear; }
+            set { releaseYear = value; }
         }
 
         public int FilmLengthInMinutes
