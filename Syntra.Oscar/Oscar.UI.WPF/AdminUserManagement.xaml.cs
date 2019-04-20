@@ -45,16 +45,21 @@ namespace Oscar.UI.WPF
 
         private void btnSaveUsers_Click(object sender, RoutedEventArgs e)
         {
-        }
-
-        private void Update(object sender, EventArgs e)
-        {
-            // Sounds good, doesn't work
-            /*
             User user = new User();
-            user = (User)dgUsers.SelectedItem;
+
+            user.userId = txtUserId.Text;
+            user.UserPassword = txtPasswordUser.Text;
+
+            if (cheUserAdmin.IsChecked == true)
+            {
+                user.UserAdminInput = "true";
+            }
+            else
+            {
+                user.UserAdminInput = "false";
+            }
+
             DatabaseManager.Instance.UserRepository.UpdateUser(user);
-            */
         }
 
         private void btnShowSelectedUser_Click(object sender, RoutedEventArgs e)
