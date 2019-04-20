@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Oscar.UI.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="800" Loaded="MainWindow_Onloaded">
+        Title="MainWindow" Height="350" Width="1000" Loaded="MainWindow_Onloaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
