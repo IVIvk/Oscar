@@ -21,10 +21,24 @@
 
         <StackPanel Grid.Column="2" Grid.Row="1">
             <Button Name="btnLoadUsers"  Content="Laad gebruikers" Height="25" Click="btnLoadUsers_Click"></Button>
+            <Button Name="btnShowSelectedUser" Content ="Toon gebruiker" Height="25" Click="btnShowSelectedUser_Click"></Button>
             <Button Name="btnSaveUsers" Content="Sla gebruikers op" Height="25" Click="btnSaveUsers_Click"></Button>
         </StackPanel>
 
         <ListBox Name="LstUsers" Grid.Column="0" Grid.Row="1"></ListBox>
+
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Gebruikersnaam"></Label>
+                <TextBox Name="txtUserId" Width="Auto" IsEnabled="False"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Wachtwoord"></Label>
+                <TextBox Name="txtPasswordUser"></TextBox>
+            </StackPanel>
+            <CheckBox Name="cheUserAdmin" Grid.Column="1" Grid.Row="1" Content="Admin Rights"></CheckBox>
+        </StackPanel>
+
         
     </Grid>
     

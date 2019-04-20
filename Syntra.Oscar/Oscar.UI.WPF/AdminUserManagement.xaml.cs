@@ -32,7 +32,7 @@ namespace Oscar.UI.WPF
             userlist = DatabaseManager.Instance.UserRepository.GetUsers().ToList();
             LstUsers.Items.Clear();
 
-            foreach (var user in userlist)
+            foreach (User user in userlist)
             {
                 ListViewItem item = new ListViewItem();
 
@@ -55,6 +55,32 @@ namespace Oscar.UI.WPF
             user = (User)dgUsers.SelectedItem;
             DatabaseManager.Instance.UserRepository.UpdateUser(user);
             */
+        }
+
+        private void btnShowSelectedUser_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ListViewItem item = ((ListViewItem)LstUsers.SelectedItem);
+                User user = (User)item.Tag;
+
+                txtUserId.Text = user.userId;
+                txtPasswordUser.Text = user.UserPassword;
+
+                if (user.UserAdmin)
+                {
+                    cheUserAdmin.IsChecked = true;
+                }
+                else
+                {
+                    cheUserAdmin.IsChecked = false;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Geen gebruiker geselecteerd");
+            }
+          
         }
     }
 }
