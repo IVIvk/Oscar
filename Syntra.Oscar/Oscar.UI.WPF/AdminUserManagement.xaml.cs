@@ -39,11 +39,10 @@ namespace Oscar.UI.WPF
 
         private void Update(object sender, EventArgs e)
         {
+            // Sounds good, doesn't work
             User user = new User();
             user = (User)dgUsers.SelectedItem;
-            //Call an instance of DatabaseManager
-            //Make in the UserRepository a method to update users
-            //Update users
+            DatabaseManager.Instance.UserRepository.UpdateUser(user);
         }
     }
 }
