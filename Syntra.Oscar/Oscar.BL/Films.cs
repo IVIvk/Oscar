@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Oscar.BL
 {
-    class Films
+    public class Films
     {
         // Data members.
+        private Guid filmId;
         private string filmTitle = string.Empty;
+        private int releaseYear = 0;
         private int filmLengthInMinutes = 0;
         private Genres filmGenre;
         private double filmRating = -1;
@@ -17,10 +19,28 @@ namespace Oscar.BL
 
         /////////////////////////////////////////
         // Access to the data members.
+        public Guid FilmId
+        {
+            get { return filmId; }
+            set
+            {
+                if (filmId == null)
+                {
+                    filmId = value;
+                }
+            }
+        }       
+
         public string FilmTitle
         {
             get { return filmTitle; }
             //set { filmTitle = value; }
+        }
+
+        public int ReleaseYear
+        {
+            get { return releaseYear; }
+            set { releaseYear = value; }
         }
 
         public int FilmLengthInMinutes

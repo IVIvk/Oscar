@@ -6,25 +6,38 @@ using System.Threading.Tasks;
 
 namespace Oscar.BL
 {
-    class Actors
+    public class Actors
     {
         // Data members.
+        private Guid actorId;
         private string actorFirstName = string.Empty;
         private string actorLastName = string.Empty;
         // List of films that the actor has appeared in. (To be added)
 
         /////////////////////////////////////////
         // Access to the data members.
+        public Guid ActorId
+        {
+            get { return actorId; }
+            set
+            {
+                if (actorId == null)
+                {
+                    actorId = value;
+                }                
+            }
+        }
+
         public string ActorFirstName
         {
             get { return actorFirstName; }
-            //set { actorFirstName = value; }
+            set { actorFirstName = value; }
         }
-
+      
         public string ActorLastName
         {
             get { return actorLastName; }
-            //set { actorLastName = value; }
+            set { actorLastName = value; }
         }
 
         /////////////////////////////////////////

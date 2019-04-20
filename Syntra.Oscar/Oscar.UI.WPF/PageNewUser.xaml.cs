@@ -37,7 +37,7 @@ namespace Oscar.UI.WPF
             string newPassword = txtPassword.Text;
             string newPasswordConfirm = txtPasswordConfirm.Text;
             bool validUser = true;
-
+            
             foreach (User user in _userList)
             {
                 if (newUsername == user.userId)

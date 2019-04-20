@@ -18,7 +18,7 @@ namespace Oscar.UI.WPF
         public UserRepository UserRepository => new UserRepository();
 
         private DatabaseManager()
-        {
+        {            
             Connection.Instance.SetConnection(@"Server=localhost\SQLExpress;Initial Catalog=Oscar;Integrated Security=True");
         }
     }
