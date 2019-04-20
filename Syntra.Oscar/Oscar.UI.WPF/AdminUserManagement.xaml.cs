@@ -30,7 +30,17 @@ namespace Oscar.UI.WPF
         private void btnLoadUsers_Click(object sender, RoutedEventArgs e)
         {
             userlist = DatabaseManager.Instance.UserRepository.GetUsers().ToList();
-            dgUsers.ItemsSource = userlist;
+            LstUsers.Items.Clear();
+
+            foreach (var user in userlist)
+            {
+                ListViewItem item = new ListViewItem();
+
+                item.Tag = user;
+                item.Content = user.userId;
+
+                LstUsers.Items.Add(item);
+            }
         }
 
         private void btnSaveUsers_Click(object sender, RoutedEventArgs e)
@@ -40,9 +50,11 @@ namespace Oscar.UI.WPF
         private void Update(object sender, EventArgs e)
         {
             // Sounds good, doesn't work
+            /*
             User user = new User();
             user = (User)dgUsers.SelectedItem;
             DatabaseManager.Instance.UserRepository.UpdateUser(user);
+            */
         }
     }
 }
