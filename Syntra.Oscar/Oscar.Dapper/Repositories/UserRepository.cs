@@ -35,5 +35,22 @@ namespace Oscar.Dapper.Repositories
                 });
             }
         }
+
+        public void UpdateUser (User user)
+        {
+            using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute(@"
+                    UPDATE Users
+                    SET UserAdmin = @UserAdmin, UserPassword = @UserPassword
+                    WHERE UserID = @UserId
+                    ", new
+                {
+                    UserAdmin = user.UserAdminInput,
+                    UserPassword = user.UserPassword,
+                    UserId = user.userId
+                });
+            }
+        }
     }
 }
