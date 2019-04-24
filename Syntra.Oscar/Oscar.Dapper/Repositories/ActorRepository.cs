@@ -39,8 +39,8 @@ namespace Oscar.Dapper.Repositories
                 ", new
                 {
                     ActorId = actor.ActorId,
-                    FirstName = actor.ActorFirstName,
-                    LastName = actor.ActorLastName
+                    FirstName = actor.FirstName,
+                    LastName = actor.LastName
                 });
             }
         }

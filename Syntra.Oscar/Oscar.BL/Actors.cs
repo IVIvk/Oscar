@@ -28,13 +28,13 @@ namespace Oscar.BL
             }
         }
 
-        public string ActorFirstName
+        public string FirstName
         {
             get { return actorFirstName; }
             set { actorFirstName = value; }
         }
       
-        public string ActorLastName
+        public string LastName
         {
             get { return actorLastName; }
             set { actorLastName = value; }

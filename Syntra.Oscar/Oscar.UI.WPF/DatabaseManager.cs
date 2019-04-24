@@ -16,6 +16,7 @@ namespace Oscar.UI.WPF
         public static DatabaseManager Instance => _manager;
 
         public UserRepository UserRepository => new UserRepository();
+        public ActorRepository ActorRepository => new ActorRepository();
 
         private DatabaseManager()
         {            
