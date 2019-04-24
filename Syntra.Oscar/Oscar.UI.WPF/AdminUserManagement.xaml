@@ -14,12 +14,13 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="100"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="2" Grid.Row="1">
+        <StackPanel Grid.Column="3" Grid.Row="1" Width="100">
             <Button Name="btnLoadUsers"  Content="Laad gebruikers" Height="25" Click="btnLoadUsers_Click"></Button>
             <Button Name="btnShowSelectedUser" Content ="Toon gebruiker" Height="25" Click="btnShowSelectedUser_Click"></Button>
             <Button Name="btnSaveUsers" Content="Sla gebruikers op" Height="25" Click="btnSaveUsers_Click"></Button>
@@ -30,13 +31,18 @@
         <StackPanel Grid.Column="1" Grid.Row="1">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Gebruikersnaam"></Label>
-                <TextBox Name="txtUserId" Width="Auto" IsEnabled="False"/>
+                
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Wachtwoord"></Label>
-                <TextBox Name="txtPasswordUser"></TextBox>
+                
             </StackPanel>
             <CheckBox Name="cheUserAdmin" Grid.Column="1" Grid.Row="1" Content="Admin Rights"></CheckBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="1">
+            <TextBox Name="txtUserId" Width="Auto" IsEnabled="False"/>
+            <TextBox Name="txtPasswordUser"></TextBox>
         </StackPanel>
 
         

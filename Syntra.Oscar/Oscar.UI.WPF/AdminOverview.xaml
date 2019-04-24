@@ -10,21 +10,21 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0" Grid.Row="1">
+        <StackPanel Grid.Column="0" Grid.Row="1" Width="100" HorizontalAlignment="Left">
             <Button Name="btnUsersOverview" Content="Gebruikers" Click="BtnUsersOverview_Click"></Button>
             <Button Name="btnFilmsOverview" Content="Films"></Button>
             <Button Name="btnActorsOverview" Content="Acteurs"></Button>
             <Button Name="btnGenresOverview" Content="Genres"></Button>
         </StackPanel>
 
-        <Frame Name ="frmOverviewFrame" Grid.Row="1" Grid.Column="1" NavigationUIVisibility="Hidden" Width="800"></Frame>
+        <Frame Name ="frmOverviewFrame" Grid.Row="1" Grid.Column="1" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Page>
