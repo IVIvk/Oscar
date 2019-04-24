@@ -22,11 +22,11 @@
 
         <StackPanel Grid.Column="3" Grid.Row="1" Width="100">
             <Button Name="btnLoadUsers"  Content="Laad gebruikers" Height="25" Click="btnLoadUsers_Click"></Button>
-            <Button Name="btnShowSelectedUser" Content ="Toon gebruiker" Height="25" Click="btnShowSelectedUser_Click"></Button>
             <Button Name="btnSaveUsers" Content="Sla gebruikers op" Height="25" Click="btnSaveUsers_Click"></Button>
         </StackPanel>
 
-        <ListBox Name="LstUsers" Grid.Column="0" Grid.Row="1"></ListBox>
+        <ListView Name="LstUsers" Grid.Column="0" Grid.Row="1" SelectionChanged="LoadUsers"></ListView>
+        
 
         <StackPanel Grid.Column="1" Grid.Row="1">
             <StackPanel Orientation="Horizontal">

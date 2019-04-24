@@ -20,7 +20,7 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <ListBox Name="LstActors" Grid.Column="0" Grid.Row="1"></ListBox>
+        <ListView Name="LstActors" Grid.Column="0" Grid.Row="1" SelectionChanged="LoadActors"></ListView>
 
         <StackPanel Grid.Column="1" Grid.Row="1">
             <Label Content="Actor Id"></Label>

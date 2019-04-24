@@ -42,5 +42,22 @@ namespace Oscar.UI.WPF
                 LstActors.Items.Add(item);
             }
         }
+
+        private void LoadActors(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                ListViewItem item = ((ListViewItem)LstActors.SelectedItem);
+                Actors actor = (Actors)item.Tag;
+
+                txtActorId.Text = Convert.ToString(actor.ActorId);
+                txtActorFirstName.Text = actor.FirstName;
+                txtActorLastName.Text = actor.LastName;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Geen acteur geselecteerd");
+            }
+        }
     }
 }
