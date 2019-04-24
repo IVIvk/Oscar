@@ -15,7 +15,8 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
@@ -24,12 +25,12 @@
             <Button Content="Profiel" Width="100"></Button>
         </StackPanel>
 
-        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+        <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Name ="btnAdmin" Content="Beheer" Width="100" Click="BtnAdmin_Click"/>
             <Button Name="btnLogout" Content="Uitloggen" Width="100" Click="BtnLogout_Click"></Button>
         </StackPanel>
         
-        <Frame Name ="frmUserFrame" Grid.Row="1" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden"></Frame>
+        <Frame Name ="frmUserFrame" Grid.Row="1" Grid.ColumnSpan="3" NavigationUIVisibility="Hidden"></Frame>
 
     </Grid>
 </Page>
