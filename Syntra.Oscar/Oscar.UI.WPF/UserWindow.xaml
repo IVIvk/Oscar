@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Oscar.UI.WPF"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="1000"
       Title="UserWindow" Height="Auto" Width="Auto">
 
     <Grid Margin="0,0,0,-0.4">
@@ -29,7 +29,7 @@
             <Button Name="btnLogout" Content="Uitloggen" Width="100" Click="BtnLogout_Click"></Button>
         </StackPanel>
         
-        <Frame Name ="frmUserFrame" Grid.Row="1" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Width="600"></Frame>
+        <Frame Name ="frmUserFrame" Grid.Row="1" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Width="1000"></Frame>
 
     </Grid>
 </Page>

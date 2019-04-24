@@ -30,16 +30,62 @@ namespace Oscar.UI.WPF
         private void btnLoadUsers_Click(object sender, RoutedEventArgs e)
         {
             userlist = DatabaseManager.Instance.UserRepository.GetUsers().ToList();
-            dgUsers.ItemsSource = userlist;
+            LstUsers.Items.Clear();
+
+            foreach (User user in userlist)
+            {
+                ListViewItem item = new ListViewItem();
+
+                item.Tag = user;
+                item.Content = user.userId;
+
+                LstUsers.Items.Add(item);
+            }
         }
 
         private void btnSaveUsers_Click(object sender, RoutedEventArgs e)
         {
+            User user = new User();
+
+            user.userId = txtUserId.Text;
+            user.UserPassword = txtPasswordUser.Text;
+
+            if (cheUserAdmin.IsChecked == true)
+            {
+                user.UserAdminInput = "true";
+            }
+            else
+            {
+                user.UserAdminInput = "false";
+            }
+
+            DatabaseManager.Instance.UserRepository.UpdateUser(user);
         }
 
-        private void Update(object sender, EventArgs e)
+        private void btnShowSelectedUser_Click(object sender, RoutedEventArgs e)
         {
-            //https://stackoverflow.com/questions/37116407/updating-datagrid-row-to-save-to-sql
+            try
+            {
+                ListViewItem item = ((ListViewItem)LstUsers.SelectedItem);
+                User user = (User)item.Tag;
+
+                txtUserId.Text = user.userId;
+                txtPasswordUser.Text = user.UserPassword;
+
+                if (user.UserAdmin)
+                {
+                    cheUserAdmin.IsChecked = true;
+                }
+                else
+                {
+                    cheUserAdmin.IsChecked = false;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Geen gebruiker geselecteerd");
+            }
+          
         }
     }
 }
