@@ -8,7 +8,27 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EditFilm">
 
-    <Grid>
-        
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <Label Content="Film title: "
+                   FontSize="12"
+                   Height="25"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="left">                
+            </Label>
+            <Label Content="Genre: "
+                   FontSize="12"
+                   Height="25"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="left">
+            </Label>
+
+        </StackPanel>
     </Grid>
 </Page>
