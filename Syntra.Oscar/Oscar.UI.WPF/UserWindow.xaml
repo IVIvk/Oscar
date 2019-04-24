@@ -29,7 +29,7 @@
             <Button Name="btnLogout" Content="Uitloggen" Width="100" Click="BtnLogout_Click"></Button>
         </StackPanel>
         
-        <Frame Name ="frmUserFrame" Grid.Row="1" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Width="1000"></Frame>
+        <Frame Name ="frmUserFrame" Grid.Row="1" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden"></Frame>
 
     </Grid>
 </Page>
