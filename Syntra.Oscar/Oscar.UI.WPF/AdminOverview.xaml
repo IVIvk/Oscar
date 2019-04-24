@@ -20,7 +20,7 @@
 
         <StackPanel Grid.Column="0" Grid.Row="1" Width="100" HorizontalAlignment="Left">
             <Button Name="btnUsersOverview" Content="Gebruikers" Click="BtnUsersOverview_Click"></Button>
-            <Button Name="btnFilmsOverview" Content="Films"></Button>
+            <Button Name="btnFilmsOverview" Content="Films" Click="BtnFilmsOverview_Click"></Button>
             <Button Name="btnActorsOverview" Content="Acteurs"></Button>
             <Button Name="btnGenresOverview" Content="Genres"></Button>
         </StackPanel>

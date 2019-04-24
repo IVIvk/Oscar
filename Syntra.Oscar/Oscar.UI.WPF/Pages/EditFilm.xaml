@@ -1,0 +1,110 @@
+﻿<Page x:Class="Oscar.UI.WPF.EditFilm"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Oscar.UI.WPF"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EditFilm">
+
+    <!-- Edit Film page. -->
+
+    <!-- Divide the page in 2 columns. -->
+    <!-- The first column will contain the labels and buttons. -->
+    <!-- The second column will contain the corresponding text boxes. -->
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="130"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!-- First Column. (Labels and button) -->
+        <StackPanel Grid.Column="0">
+            <!-- Label "Title". -->
+            <Label Content="Film title"
+                   FontSize="12"
+                   Height="25"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="left">
+            </Label>
+
+            <!-- Label "Release year". -->
+            <Label Content="Release year"
+                   FontSize="12"
+                   Height="25"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="left">
+            </Label>
+
+            <!-- Label "Genre". -->
+            <Label Content="Genre"
+                   FontSize="12"
+                   Height="25"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="left">
+            </Label>
+
+            <!-- Label "Duration". -->
+            <Label Content="Duration (in minutes)"
+                   FontSize="12"
+                   Height="25"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="left">
+            </Label>
+            <!-- Label "Plot". -->
+            <Label Content="Plot"
+                   FontSize="12"
+                   Height="25"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="left">
+            </Label>
+
+            <!-- Button "Add film"-->
+            <Button x:Name="btnAddFilm" 
+                    Content="Add film"
+                    FontSize="12"
+                    Height="25"
+                    Margin="0 50 5 0">                
+            </Button>
+
+        </StackPanel>
+
+        <!-- Second column. (Text boxes) -->
+        <StackPanel Grid.Column="1">
+            <!-- TextBox "Title". -->
+            <TextBox x:Name="txtFilmTitle"
+                     Height="24"
+                     Margin="0 0 0 1">
+            </TextBox>
+
+            <!-- TextBox "Release year". -->
+            <TextBox x:Name="txtReleaseYear"
+                     Height="24"
+                     Margin="0 0 0 1">
+            </TextBox>
+
+            <!-- TextBox "Genre". -->
+            <TextBox x:Name="txtGenre"
+                     Height="24"
+                     Margin="0 0 0 1">
+            </TextBox>
+
+            <!-- TextBox "Duration". -->
+            <TextBox x:Name="txtDuration"
+                     Height="24"
+                     Margin="0 0 0 1">
+            </TextBox>
+
+            <!-- TextBox "Plot". -->
+            <TextBox VerticalScrollBarVisibility="Visible"
+                     Height="300"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     AcceptsTab="True"
+                     SpellCheck.IsEnabled="True">
+            </TextBox>
+
+        </StackPanel>
+    </Grid>
+</Page>

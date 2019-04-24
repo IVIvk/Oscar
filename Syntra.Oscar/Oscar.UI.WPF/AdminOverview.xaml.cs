@@ -29,5 +29,10 @@ namespace Oscar.UI.WPF
         {
             frmOverviewFrame.NavigationService.Navigate(new AdminUserManagement());
         }
+
+        private void BtnFilmsOverview_Click(object sender, RoutedEventArgs e)
+        {
+            frmOverviewFrame.NavigationService.Navigate(new EditFilm());
+        }
     }
 }
