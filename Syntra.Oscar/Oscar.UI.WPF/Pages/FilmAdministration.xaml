@@ -1,0 +1,36 @@
+﻿<Page x:Class="Oscar.UI.WPF.Pages.FilmAdministration"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Oscar.UI.WPF.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="FilmAdministration">
+
+    <!-- Film management page. -->
+
+    <!-- Divide the page in 2 columns. -->
+    <!-- The first column will contain the labels and buttons. -->
+    <!-- The second column will contain the ListView. -->
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="105"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!-- First column (buttons and labels). -->
+        <StackPanel Grid.Column="0"
+                    Margin="0 0 5 0">
+            
+        </StackPanel>
+        
+        <!-- Second column (label and listview). -->
+        <StackPanel Grid.Column="1">
+            <Label Content="Lijst van films"
+                   Background="LightGray"></Label>
+            <ListView Height="370"></ListView>
+            
+        </StackPanel>
+    </Grid>
+</Page>
