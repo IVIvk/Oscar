@@ -17,11 +17,11 @@ using System.Windows.Shapes;
 namespace Oscar.UI.WPF
 {
     /// <summary>
-    /// Interaction logic for NewActor.xaml
+    /// Interaction logic for AddActor.xaml
     /// </summary>
-    public partial class NewActor : Page
+    public partial class AddActor : Page
     {
-        public NewActor()
+        public AddActor()
         {
             InitializeComponent();
         }

@@ -62,7 +62,7 @@ namespace Oscar.UI.WPF
 
         private void BtnNewActor_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new NewActor());
+            NavigationService.Navigate(new AddActor());
         }
     }
 }
