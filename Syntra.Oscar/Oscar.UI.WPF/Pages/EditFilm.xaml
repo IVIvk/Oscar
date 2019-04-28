@@ -62,10 +62,10 @@
 
             <!-- Button "Film toevoegen"-->
             <Button x:Name="btnAddFilm" 
-                    Content="Film toevoegen"
+                    Content="Toevoegen"
                     FontSize="12"
                     Height="25"
-                    Margin="0 50 5 0">                
+                    Margin="0 50 5 0">
             </Button>
 
         </StackPanel>
