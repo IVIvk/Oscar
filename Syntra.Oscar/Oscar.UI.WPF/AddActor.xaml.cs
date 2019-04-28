@@ -38,5 +38,10 @@ namespace Oscar.UI.WPF
 
             NavigationService.Navigate(new AdminActorsManagement());
         }
+
+        private void BtnCancelAddActor_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AdminActorsManagement());
+        }
     }
 }
