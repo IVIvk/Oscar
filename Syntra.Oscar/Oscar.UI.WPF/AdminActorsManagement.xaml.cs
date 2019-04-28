@@ -29,6 +29,11 @@ namespace Oscar.UI.WPF
 
         private void BtnLoadActors_Click(object sender, RoutedEventArgs e)
         {
+            ShowActors();
+        }
+
+        private void ShowActors()
+        {
             actorlist = DatabaseManager.Instance.ActorRepository.GetActors().ToList();
             LstActors.Items.Clear();
 
@@ -56,13 +61,56 @@ namespace Oscar.UI.WPF
             }
             catch (Exception)
             {
-                MessageBox.Show("Geen acteur geselecteerd");
+
             }
         }
 
         private void BtnNewActor_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddActor());
+        }
+
+        private void BtnDeleteActor_Click(object sender, RoutedEventArgs e)
+        {
+            List<ActorsInFilms> ActorsInFilms = new List<ActorsInFilms>();
+            Actors actor = new Actors();
+            bool checkIfActorIsInFilms = false;
+
+            ActorsInFilms = DatabaseManager.Instance.ActorRepository.GetActorsInFilms().ToList();
+
+            try
+            {
+                ListViewItem item = ((ListViewItem)LstActors.SelectedItem);
+
+                actor = (Actors)item.Tag;
+
+                foreach (var actorInFilm in ActorsInFilms)
+                {
+                    if (actorInFilm.ActorId == actor.ActorId)
+                    {
+                        checkIfActorIsInFilms = true;
+                    }
+                }
+
+                if (checkIfActorIsInFilms)
+                {
+                    MessageBox.Show("Deze acteur is nog gekoppeld aan films");
+                }
+                else
+                {
+                    DatabaseManager.Instance.ActorRepository.DeleteActor(actor);
+
+                    txtActorFirstName.Text = "";
+                    txtActorId.Text = "";
+                    txtActorLastName.Text = "";
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Geen acteur geselecteerd");
+            }
+            ShowActors();
         }
     }
 }

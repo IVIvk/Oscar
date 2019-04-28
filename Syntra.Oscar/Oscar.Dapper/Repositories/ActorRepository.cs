@@ -27,6 +27,18 @@ namespace Oscar.Dapper.Repositories
             }
         }
 
+        public IEnumerable<ActorsInFilms> GetActorsInFilms()
+        {
+            using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                return connection.Query<ActorsInFilms>
+                    (@"
+                        SELECT ActorId, FilmId
+                        FROM ActorsinFilms
+                    ");
+            }
+        }
+
         // This function inserts the properties of the parameter (Actors object) 
         // Into the database as a new entry in the Actors table.
         public void InsertActor(Actors actor)
@@ -41,6 +53,20 @@ namespace Oscar.Dapper.Repositories
                     ActorId = actor.ActorId,
                     FirstName = actor.FirstName,
                     LastName = actor.LastName
+                });
+            }
+        }
+
+        public void DeleteActor (Actors actor)
+        {
+            using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute(@"
+                    DELETE FROM Actors
+                    WHERE ActorId = @ActorId
+                ", new
+                {
+                    ActorId = actor.ActorId
                 });
             }
         }
