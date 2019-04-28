@@ -39,5 +39,10 @@ namespace Oscar.UI.WPF
         {
             frmOverviewFrame.NavigationService.Navigate(new AdminActorsManagement());
         }
+
+        private void BtnGenresOverview_Click(object sender, RoutedEventArgs e)
+        {
+            frmOverviewFrame.NavigationService.Navigate(new AdminGenreManagement());
+        }
     }
 }

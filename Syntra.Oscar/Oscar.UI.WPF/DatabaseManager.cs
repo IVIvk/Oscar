@@ -17,6 +17,7 @@ namespace Oscar.UI.WPF
 
         public UserRepository UserRepository => new UserRepository();
         public ActorRepository ActorRepository => new ActorRepository();
+        public GenreRepository GenreRepository => new GenreRepository();
 
         private DatabaseManager()
         {            

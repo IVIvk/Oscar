@@ -22,7 +22,7 @@
             <Button Name="btnUsersOverview" Content="Gebruikers" Click="BtnUsersOverview_Click"></Button>
             <Button Name="btnFilmsOverview" Content="Films" Click="BtnFilmsOverview_Click"></Button>
             <Button Name="btnActorsOverview" Content="Acteurs" Click="BtnActorsOverview_Click"></Button>
-            <Button Name="btnGenresOverview" Content="Genres"></Button>
+            <Button Name="btnGenresOverview" Content="Genres" Click="BtnGenresOverview_Click"></Button>
         </StackPanel>
 
         <Frame Name ="frmOverviewFrame" Grid.Row="1" Grid.Column="1" NavigationUIVisibility="Hidden"></Frame>

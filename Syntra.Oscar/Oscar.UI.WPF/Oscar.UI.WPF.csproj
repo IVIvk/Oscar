@@ -66,6 +66,9 @@
     <Compile Include="AdminActorsManagement.xaml.cs">
       <DependentUpon>AdminActorsManagement.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdminGenreManagement.xaml.cs">
+      <DependentUpon>AdminGenreManagement.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminOverview.xaml.cs">
       <DependentUpon>AdminOverview.xaml</DependentUpon>
     </Compile>
@@ -83,6 +86,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdminActorsManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminGenreManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
