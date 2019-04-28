@@ -23,19 +23,20 @@
         <ListView Name="LstActors" Grid.Column="0" Grid.Row="1" SelectionChanged="LoadActors"></ListView>
 
         <StackPanel Grid.Column="1" Grid.Row="1">
-            <Label Content="Actor Id"></Label>
-            <Label Content="Voornaam"></Label>
-            <Label Content="Achternaam"></Label>
+            <Label Content="Actor Id" Height="25"></Label>
+            <Label Content="Voornaam" Height="25"></Label>
+            <Label Content="Achternaam" Height="25"></Label>
         </StackPanel>
 
         <StackPanel Grid.Column="2" Grid.Row="1">
-            <TextBox Name="txtActorId" IsEnabled="False"></TextBox>
-            <TextBox Name="txtActorFirstName"></TextBox>
-            <TextBox Name="txtActorLastName"></TextBox>
+            <TextBox Name="txtActorId" IsEnabled="False" Height="25"></TextBox>
+            <TextBox Name="txtActorFirstName" Height="25"></TextBox>
+            <TextBox Name="txtActorLastName" Height="25"></TextBox>
         </StackPanel>
 
         <StackPanel Grid.Column="3" Grid.Row="1">
             <Button Name="btnLoadActors" Content="Laad acteurs" Click="BtnLoadActors_Click"></Button>
+            <Button Name="btnNewActor" Content="Nieuwe acteur" Click="BtnNewActor_Click"></Button>
         </StackPanel>
     </Grid>
 </Page>

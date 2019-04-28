@@ -59,5 +59,10 @@ namespace Oscar.UI.WPF
                 MessageBox.Show("Geen acteur geselecteerd");
             }
         }
+
+        private void BtnNewActor_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new NewActor());
+        }
     }
 }
