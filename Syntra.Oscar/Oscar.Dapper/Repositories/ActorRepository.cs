@@ -70,5 +70,22 @@ namespace Oscar.Dapper.Repositories
                 });
             }
         }
+
+        public void UpdateActor (Actors actor)
+        {
+            using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute(@"
+                    UPDATE Actors
+                    SET FirstName = @ActorFirstName, LastName = @ActorLastName 
+                    WHERE ActorId = @ActorId
+                ", new
+                {
+                    ActorFirstName = actor.FirstName,
+                    ActorLastName = actor.LastName,
+                    ActorId = actor.ActorId
+                });
+            }
+        }
     }
 }

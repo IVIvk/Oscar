@@ -112,5 +112,26 @@ namespace Oscar.UI.WPF
             }
             ShowActors();
         }
+
+        private void BtnUpdateActor_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ListViewItem item = ((ListViewItem)LstActors.SelectedItem);
+                Actors actor = (Actors)item.Tag;
+
+                actor.LastName = txtActorLastName.Text;
+                actor.FirstName = txtActorFirstName.Text;
+
+                DatabaseManager.Instance.ActorRepository.UpdateActor(actor);
+
+                ShowActors();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Geen acteur geselecteerd");
+            }
+        }
     }
 }
