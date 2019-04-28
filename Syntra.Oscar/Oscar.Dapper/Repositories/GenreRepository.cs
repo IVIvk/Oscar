@@ -44,5 +44,32 @@ namespace Oscar.Dapper.Repositories
                     });
             }
         }
+
+        public void DeleteGenre (Genres genre)
+        {
+            using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute
+                    (@"
+                        DELETE FROM Genres
+                        WHERE GenreId = @GenreId
+                        ", new
+                    {
+                        GenreId = genre.GenreId
+                    });
+            }
+        }
+
+        public IEnumerable<GenresInFilms> GetGenresInFilms()
+        {
+            using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                return connection.Query<GenresInFilms>
+                    (@"
+                        SELECT GenreId, FilmId
+                        FROM GenresInFilms
+                    ");
+            }
+        }
     }
 }
