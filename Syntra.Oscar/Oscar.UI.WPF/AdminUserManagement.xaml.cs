@@ -62,7 +62,9 @@ namespace Oscar.UI.WPF
             DatabaseManager.Instance.UserRepository.UpdateUser(user);
         }
 
-        private void btnShowSelectedUser_Click(object sender, RoutedEventArgs e)
+       
+
+        private void LoadUsers(object sender, SelectionChangedEventArgs e)
         {
             try
             {
@@ -85,7 +87,6 @@ namespace Oscar.UI.WPF
             {
                 MessageBox.Show("Geen gebruiker geselecteerd");
             }
-          
         }
     }
 }

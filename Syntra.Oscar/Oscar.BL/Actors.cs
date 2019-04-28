@@ -9,14 +9,14 @@ namespace Oscar.BL
     public class Actors
     {
         // Data members.
-        private Guid actorId;
+        private Nullable<Guid> actorId;
         private string actorFirstName = string.Empty;
         private string actorLastName = string.Empty;
         // List of films that the actor has appeared in. (To be added)
 
         /////////////////////////////////////////
         // Access to the data members.
-        public Guid ActorId
+        public Nullable<Guid> ActorId
         {
             get { return actorId; }
             set
@@ -28,13 +28,13 @@ namespace Oscar.BL
             }
         }
 
-        public string ActorFirstName
+        public string FirstName
         {
             get { return actorFirstName; }
             set { actorFirstName = value; }
         }
       
-        public string ActorLastName
+        public string LastName
         {
             get { return actorLastName; }
             set { actorLastName = value; }

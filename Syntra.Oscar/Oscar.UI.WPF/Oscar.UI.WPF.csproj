@@ -60,18 +60,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminActorsManagement.xaml.cs">
+      <DependentUpon>AdminActorsManagement.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminOverview.xaml.cs">
       <DependentUpon>AdminOverview.xaml</DependentUpon>
     </Compile>
     <Compile Include="AdminUserManagement.xaml.cs">
       <DependentUpon>AdminUserManagement.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\EditFilm.xaml.cs">
-      <DependentUpon>EditFilm.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="AdminActorsManagement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdminOverview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -104,6 +108,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NewActor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageNewUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
