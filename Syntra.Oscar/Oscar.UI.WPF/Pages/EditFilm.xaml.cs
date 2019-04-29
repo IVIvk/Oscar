@@ -24,5 +24,10 @@ namespace Oscar.UI.WPF
         {
             InitializeComponent();
         }
+
+        private void BtnAddFilm_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

@@ -65,7 +65,7 @@
                     Content="Toevoegen"
                     FontSize="12"
                     Height="25"
-                    Margin="0 50 5 0">
+                    Margin="0 50 5 0" Click="BtnAddFilm_Click">
             </Button>
 
         </StackPanel>

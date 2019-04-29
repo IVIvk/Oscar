@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Oscar.UI.WPF.Pages;
 
 namespace Oscar.UI.WPF
 {
@@ -32,7 +33,7 @@ namespace Oscar.UI.WPF
 
         private void BtnFilmsOverview_Click(object sender, RoutedEventArgs e)
         {
-            frmOverviewFrame.NavigationService.Navigate(new EditFilm());
+            frmOverviewFrame.NavigationService.Navigate(new AdminFilmsManagement());
         }
 
         private void BtnActorsOverview_Click(object sender, RoutedEventArgs e)

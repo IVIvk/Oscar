@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oscar.BL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,53 @@ namespace Oscar.UI.WPF.Pages
     /// </summary>
     public partial class AdminFilmsManagement : Page
     {
+        // List to hold all the Films objects.
+        List<Films> filmsList = new List<Films>();
+
         public AdminFilmsManagement()
         {
             InitializeComponent();
+        }
+
+        private void BtnLoadFilms_Click(object sender, RoutedEventArgs e)
+        {
+            ShowFilms();
+        }
+
+        private void ShowFilms()
+        {
+            filmsList = DatabaseManager.Instance.FilmRepository.GetFilms().ToList();
+            LstFilms.Items.Clear();
+
+            foreach (Films film in filmsList)
+            {
+                ListViewItem item = new ListViewItem();
+
+                item.Tag = film;
+                item.Content = film.FilmTitle;
+
+                LstFilms.Items.Add(item);
+            }
+        }
+
+        private void LoadFilms(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                ListViewItem item = ((ListViewItem)LstFilms.SelectedItem);
+                Films film = (Films)item.Tag;
+
+                txtFilmTitle.Text = Convert.ToString(film.FilmTitle);
+                txtFilmReleaseYear.Text = Convert.ToString(film.ReleaseYear);
+
+                //txtActorId.Text = Convert.ToString(actor.ActorId);
+                //txtActorFirstName.Text = actor.FirstName;
+                //txtActorLastName.Text = actor.LastName;
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }
