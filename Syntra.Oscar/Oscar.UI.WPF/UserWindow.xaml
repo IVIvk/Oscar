@@ -21,7 +21,7 @@
 
         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
             <Button Content="Jouw reviews" Width="100"></Button>
-            <Button Content="Zoek films" Width="100"></Button>
+            <Button Content="Zoek films" Width="100" Click="Button_Click"></Button>
             <Button Content="Profiel" Width="100"></Button>
         </StackPanel>
 

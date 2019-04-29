@@ -84,6 +84,9 @@
     <Compile Include="Pages\UlaInterface.xaml.cs">
       <DependentUpon>UlaInterface.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserPages\FilmOverview.xaml.cs">
+      <DependentUpon>FilmOverview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
@@ -140,6 +143,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\UlaInterface.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserPages\FilmOverview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
