@@ -38,7 +38,7 @@ namespace Oscar.UI.WPF.UserPages
                 ListViewItem item = new ListViewItem();
 
                 item.Tag = film;
-                item.Content = film.FilmTitle;
+                item.Content = film.FilmTitle + " (" + film.FilmRating + ")";
 
                 lstFilmOverview.Items.Add(item);
             }
@@ -48,7 +48,22 @@ namespace Oscar.UI.WPF.UserPages
         {
             ShowFilms();
         }
+
+        private void DoubleClickOnItem(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                ListViewItem item = ((ListViewItem)lstFilmOverview.SelectedItem);
+                Films film = (Films)item.Tag;
+
+                txtFilmTitle.Text = Convert.ToString(film.FilmTitle);
+                txtFilmReleaseYear.Text = Convert.ToString(film.ReleaseYear);
+                txtFilmDuration.Text = Convert.ToString(film.FilmLengthInMinutes);
+            }
+            catch (Exception)
+            {
+
+            }
+        }
     }
-
-
 }

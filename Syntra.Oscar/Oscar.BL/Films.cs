@@ -46,7 +46,7 @@ namespace Oscar.BL
         public int FilmLengthInMinutes
         {
             get { return filmLengthInMinutes; }
-            //set { filmLengthInMinutes = value; }
+            set { filmLengthInMinutes = value; }
         }
 
         public Genres FilmGenre

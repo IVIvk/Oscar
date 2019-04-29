@@ -21,7 +21,7 @@ namespace Oscar.Dapper.Repositories
             {
                 return connection.Query<Films>
                     (@"
-                        SELECT FilmId, FilmTitle, ReleaseYear, FilmLenghtInMinutes, FilmRating, AmountOfRatings 
+                        SELECT FilmId, FilmTitle, ReleaseYear, FilmLengthInMinutes, FilmRating, AmountOfRatings 
                         FROM Films
                     ");
             }
@@ -34,14 +34,14 @@ namespace Oscar.Dapper.Repositories
             using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
             {
                 connection.Execute(@"
-                    INSERT INTO Films (FilmId, FilmTitle, ReleaseYear, FilmLenghtInMinutes, FilmRating, AmountOfRatings)
+                    INSERT INTO Films (FilmId, FilmTitle, ReleaseYear, FilmLengthInMinutes, FilmRating, AmountOfRatings)
                     VALUES (@FilmId, @FilmTitle, @ReleaseYear, @FilmLenghtInMinutes, @FilmRating, @AmountOfRatings)
                 ", new
                 {
                     FilmId = film.FilmId,
                     FilmTitle = film.FilmTitle,
                     ReleaseYear = film.ReleaseYear,
-                    FilmLenghtInMinutes = film.FilmLengthInMinutes,
+                    FilmLengthInMinutes = film.FilmLengthInMinutes,
                     FilmRating = film.FilmRating,
                     AmountOfRatings = film.AmountOfRatings
                 });
