@@ -75,6 +75,9 @@
     <Compile Include="AdminUserManagement.xaml.cs">
       <DependentUpon>AdminUserManagement.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AdminFilmsManagement.xaml.cs">
+      <DependentUpon>AdminFilmsManagement.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\EditFilm.xaml.cs">
       <DependentUpon>EditFilm.xaml</DependentUpon>
     </Compile>
@@ -122,6 +125,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PageNewUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AdminFilmsManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
