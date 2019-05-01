@@ -25,5 +25,33 @@ namespace Oscar.Dapper.Repositories
                     });
             }
         }
+
+        public void SaveReview(Films film, User user, Review review)
+        {
+            using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute
+                    (@"
+                        INSERT INTO Reviews(ReviewId, ReviewContent, ReviewScore, UserId)
+                        VALUES (@ReviewId, @ReviewContent, @ReviewScore, @UserId)
+                    ", new
+                    {
+                        ReviewId = review.ReviewId,
+                        ReviewContent = review.ReviewContent,
+                        ReviewScore = review.ReviewScore,
+                        UserId = user.userId
+                    });
+
+                connection.Execute
+                    (@"
+                        INSERT INTO ReviewsForFilms(FilmId, ReviewId)
+                        VALUES (@FilmId, @ReviewId)
+                    ", new
+                    {
+                         FilmId = film.FilmId,
+                         ReviewId = review.ReviewId
+                    });
+            }
+        }
     }
 }
