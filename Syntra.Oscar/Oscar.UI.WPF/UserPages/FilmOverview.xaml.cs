@@ -65,5 +65,18 @@ namespace Oscar.UI.WPF.UserPages
 
             }
         }
+
+        private void BtnWriteReview_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ListViewItem item = ((ListViewItem)lstFilmOverview.SelectedItem);
+                Films film = (Films)item.Tag;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Selecteer eerst een film");
+            }
+        }
     }
 }
