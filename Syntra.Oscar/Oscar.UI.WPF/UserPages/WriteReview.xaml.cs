@@ -21,9 +21,13 @@ namespace Oscar.UI.WPF.UserPages
     /// </summary>
     public partial class WriteReview : Page
     {
+        List<Review> reviewList = new List<Review>();
+        Films selectedFilm = new Films();
         public WriteReview(Films film, User user)
         {
             InitializeComponent();
+            selectedFilm = film;
+            reviewList = DatabaseManager.Instance.ReviewRepository.GetReviewsPerUser(user).ToList();
         }
     }
 }

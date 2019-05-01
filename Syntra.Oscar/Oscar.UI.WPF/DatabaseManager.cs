@@ -19,6 +19,7 @@ namespace Oscar.UI.WPF
         public ActorRepository ActorRepository => new ActorRepository();
         public GenreRepository GenreRepository => new GenreRepository();
         public FilmRepository FilmRepository => new FilmRepository();
+        public ReviewRepository ReviewRepository => new ReviewRepository();
 
         private DatabaseManager()
         {            

@@ -10,7 +10,7 @@ namespace Oscar.Dapper.Repositories
     public class ReviewRepository
     {
         // SeLect Reviews per User
-        public IEnumerable<Review> GetActors(User user)
+        public IEnumerable<Review> GetReviewsPerUser(User user)
         {
             using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
             {
