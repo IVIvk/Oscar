@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oscar.BL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace Oscar.UI.WPF.UserPages
     /// </summary>
     public partial class WriteReview : Page
     {
-        public WriteReview()
+        public WriteReview(Films film, User user)
         {
             InitializeComponent();
         }

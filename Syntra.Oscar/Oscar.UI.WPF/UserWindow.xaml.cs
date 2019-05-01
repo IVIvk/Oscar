@@ -45,7 +45,7 @@ namespace Oscar.UI.WPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            frmUserFrame.NavigationService.Navigate(new UserPages.FilmOverview());
+            frmUserFrame.NavigationService.Navigate(new UserPages.FilmOverview(mainUser));
         }
     }
 }

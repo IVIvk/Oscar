@@ -22,10 +22,12 @@ namespace Oscar.UI.WPF.UserPages
     public partial class FilmOverview : Page
     {
         List<Films> filmsList = new List<Films>();
+        User user = new User();
 
-        public FilmOverview()
+        public FilmOverview(User currentUser)
         {
             InitializeComponent();
+            user = currentUser;
         }
 
         private void ShowFilms()
@@ -72,6 +74,8 @@ namespace Oscar.UI.WPF.UserPages
             {
                 ListViewItem item = ((ListViewItem)lstFilmOverview.SelectedItem);
                 Films film = (Films)item.Tag;
+
+                NavigationService.Navigate(new WriteReview(film, user));
             }
             catch (Exception)
             {
