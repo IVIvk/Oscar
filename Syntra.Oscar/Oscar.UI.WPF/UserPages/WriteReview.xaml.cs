@@ -66,6 +66,10 @@ namespace Oscar.UI.WPF.UserPages
                 userReview.ReviewId = Guid.NewGuid(); ;
                 DatabaseManager.Instance.ReviewRepository.SaveReview(selectedFilm, currentUser, userReview);
             }
+            else
+            {
+                DatabaseManager.Instance.ReviewRepository.UpdateReview(userReview);
+            }
         }
     }
 }
