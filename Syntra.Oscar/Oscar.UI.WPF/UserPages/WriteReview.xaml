@@ -37,7 +37,7 @@
             </ComboBox>
         </StackPanel>
 
-        <TextBox Name="txtReview" Grid.Column="0" Grid.Row="2"></TextBox>
+        <TextBox Name="txtReview" Grid.Column="0" Grid.Row="2" TextWrapping="Wrap" AcceptsReturn="True"></TextBox>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
             <Label Content="Titel" Height="25"></Label>
