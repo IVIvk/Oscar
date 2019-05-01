@@ -23,7 +23,9 @@ namespace Oscar.UI.WPF.UserPages
     {
         List<Review> reviewList = new List<Review>();
         Films selectedFilm = new Films();
-        string userReview;
+        string userReviewText;
+        bool newReview = true;
+        Review userReview = new Review();
 
         public WriteReview(Films film, User user)
         {
@@ -35,24 +37,28 @@ namespace Oscar.UI.WPF.UserPages
             {
                 if (review.UserId == user.userId)
                 {
-                    userReview = review.ReviewContent;
+                    userReview = review;
+                    newReview = false;
                 }
                 else
                 {
-                    userReview = "Je hebt nog geen review hiervoor geschreven";
+                    userReviewText = "Je hebt nog geen review hiervoor geschreven";
                 }
             }
 
             txtFilmTitle.Text = film.FilmTitle;
             txtFilmReleaseYear.Text = Convert.ToString(film.ReleaseYear);
             txtFilmDuration.Text = Convert.ToString(film.FilmLengthInMinutes);
-            txtReview.Text = userReview;
+            txtReview.Text = userReview.ReviewContent;
             
         }
 
         private void BtnSaveReview_Click(object sender, RoutedEventArgs e)
         {
+            if (!newReview)
+            {
 
+            }
         }
     }
 }
