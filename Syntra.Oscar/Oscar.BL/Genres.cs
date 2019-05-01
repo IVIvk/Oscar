@@ -9,12 +9,12 @@ namespace Oscar.BL
     public class Genres
     {
         // Data members.
-        private Guid genreId;
+        private Nullable<Guid> genreId;
         private string genreName = string.Empty;
 
         /////////////////////////////////////////
         // Access to the data members.
-        public Guid GenreId
+        public Nullable<Guid> GenreId
         {
             get { return genreId; }
             set
