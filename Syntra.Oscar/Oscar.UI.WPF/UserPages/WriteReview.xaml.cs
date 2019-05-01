@@ -49,5 +49,10 @@ namespace Oscar.UI.WPF.UserPages
             txtReview.Text = userReview;
             
         }
+
+        private void BtnSaveReview_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
