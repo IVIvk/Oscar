@@ -87,6 +87,9 @@
     <Compile Include="UserPages\FilmOverview.xaml.cs">
       <DependentUpon>FilmOverview.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserPages\WriteReview.xaml.cs">
+      <DependentUpon>WriteReview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
@@ -147,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserPages\FilmOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserPages\WriteReview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
