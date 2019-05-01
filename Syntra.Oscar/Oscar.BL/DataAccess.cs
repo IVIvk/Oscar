@@ -39,9 +39,9 @@ namespace Oscar.BL
         public List<User> LoadUsers()
         {
             CheckIfUserDatabaseExist();
-
+            
             List<User> userList = new List<User>();
-
+            /*
             foreach (var line in File.ReadAllLines(userFile))
             {
                 User user = new User();
@@ -56,8 +56,9 @@ namespace Oscar.BL
 
                 userList.Add(user);
             }
-
+            */
             return userList;
+            
         }
 
         public void SaveUsers(List<User> userList)

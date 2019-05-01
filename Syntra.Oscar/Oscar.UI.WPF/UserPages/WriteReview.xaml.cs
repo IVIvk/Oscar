@@ -23,11 +23,31 @@ namespace Oscar.UI.WPF.UserPages
     {
         List<Review> reviewList = new List<Review>();
         Films selectedFilm = new Films();
+        string userReview;
+
         public WriteReview(Films film, User user)
         {
             InitializeComponent();
             selectedFilm = film;
             reviewList = DatabaseManager.Instance.ReviewRepository.GetReviewsPerUser(user).ToList();
+
+            foreach (var review in reviewList)
+            {
+                if (review.UserId == user.userId)
+                {
+                    userReview = review.ReviewContent;
+                }
+                else
+                {
+                    userReview = "Je hebt nog geen review hiervoor geschreven";
+                }
+            }
+
+            txtFilmTitle.Text = film.FilmTitle;
+            txtFilmReleaseYear.Text = Convert.ToString(film.ReleaseYear);
+            txtFilmDuration.Text = Convert.ToString(film.FilmLengthInMinutes);
+            txtReview.Text = userReview;
+            
         }
     }
 }

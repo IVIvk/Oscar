@@ -11,7 +11,7 @@ namespace Oscar.BL
         private Nullable<Guid> reviewId;
         private string reviewContent;
         private int reviewScore;
-        private Nullable<Guid> userId;
+        private string userId;
 
         public Nullable<Guid> ReviewId
         {
@@ -37,7 +37,7 @@ namespace Oscar.BL
             set { reviewScore = value; }
         }
 
-        public Nullable<Guid> UserId
+        public string UserId
         {
             get { return userId; }
             set

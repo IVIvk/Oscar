@@ -47,7 +47,7 @@ namespace Oscar.UI.WPF
         {
             User user = new User();
 
-            user.userId = txtUserId.Text;
+            //user.userId = txtUserId.Text;
             user.UserPassword = txtPasswordUser.Text;
 
             if (cheUserAdmin.IsChecked == true)
@@ -71,7 +71,7 @@ namespace Oscar.UI.WPF
                 ListViewItem item = ((ListViewItem)LstUsers.SelectedItem);
                 User user = (User)item.Tag;
 
-                txtUserId.Text = user.userId;
+                txtUserId.Text = Convert.ToString(user.userId);
                 txtPasswordUser.Text = user.UserPassword;
 
                 if (user.UserAdmin)
