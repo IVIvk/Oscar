@@ -26,11 +26,13 @@ namespace Oscar.UI.WPF.UserPages
         string userReviewText;
         bool newReview = true;
         Review userReview = new Review();
+        User currentUser = new User();
 
         public WriteReview(Films film, User user)
         {
             InitializeComponent();
             selectedFilm = film;
+            currentUser = user;
             reviewList = DatabaseManager.Instance.ReviewRepository.GetReviewsPerUser(user).ToList();
 
             foreach (var review in reviewList)
@@ -55,9 +57,14 @@ namespace Oscar.UI.WPF.UserPages
 
         private void BtnSaveReview_Click(object sender, RoutedEventArgs e)
         {
+            userReview.ReviewContent = txtReview.Text;
+            userReview.ReviewScore = (int)cbbScore.SelectedItem;
+            userReview.UserId = currentUser.userId;
+
             if (!newReview)
             {
-
+                userReview.ReviewId = new Guid();
+                DatabaseManager.Instance.ReviewRepository.SaveReview(selectedFilm, currentUser, userReview);
             }
         }
     }
