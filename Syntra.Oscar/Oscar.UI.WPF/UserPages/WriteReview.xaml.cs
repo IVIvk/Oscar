@@ -23,7 +23,6 @@ namespace Oscar.UI.WPF.UserPages
     {
         List<Review> reviewList = new List<Review>();
         Films selectedFilm = new Films();
-        string userReviewText;
         bool newReview = true;
         Review userReview = new Review();
         User currentUser = new User();
@@ -44,7 +43,7 @@ namespace Oscar.UI.WPF.UserPages
                 }
                 else
                 {
-                    userReviewText = "Je hebt nog geen review hiervoor geschreven";
+                    userReview.ReviewContent = "Je hebt nog geen review hiervoor geschreven";
                 }
             }
 
@@ -52,18 +51,19 @@ namespace Oscar.UI.WPF.UserPages
             txtFilmReleaseYear.Text = Convert.ToString(film.ReleaseYear);
             txtFilmDuration.Text = Convert.ToString(film.FilmLengthInMinutes);
             txtReview.Text = userReview.ReviewContent;
+            cbbScore.Text = Convert.ToString(userReview.ReviewScore);
             
         }
 
         private void BtnSaveReview_Click(object sender, RoutedEventArgs e)
         {
             userReview.ReviewContent = txtReview.Text;
-            userReview.ReviewScore = (int)cbbScore.SelectedItem;
+            userReview.ReviewScore = Convert.ToInt32(((ComboBoxItem)cbbScore.SelectedItem).Content);
             userReview.UserId = currentUser.userId;
 
-            if (!newReview)
+            if (newReview)
             {
-                userReview.ReviewId = new Guid();
+                userReview.ReviewId = Guid.NewGuid(); ;
                 DatabaseManager.Instance.ReviewRepository.SaveReview(selectedFilm, currentUser, userReview);
             }
         }
