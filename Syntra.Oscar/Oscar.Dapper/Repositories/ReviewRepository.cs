@@ -53,5 +53,23 @@ namespace Oscar.Dapper.Repositories
                     });
             }
         }
+
+        public void UpdateReview(Review review)
+        {
+            using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute
+                    (@"
+                        UPDATE Reviews
+                        SET ReviewContent = @ReviewContent, ReviewScore = @ReviewScore
+                        WHERE ReviewId = @ReviewId
+                    ", new
+                    {
+                         ReviewId = review.ReviewId,
+                         ReviewContent = review.ReviewContent,
+                         ReviewScore = review.ReviewScore
+                    });
+            }
+        }
     }
 }
