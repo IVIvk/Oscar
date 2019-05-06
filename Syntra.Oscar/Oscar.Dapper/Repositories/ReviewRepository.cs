@@ -32,7 +32,7 @@ namespace Oscar.Dapper.Repositories
             {
                 return connection.Query<Review>
                     (@"
-                        SELECT ReviewId, ReviewContent, ReviewScore, Userid 
+                        SELECT Reviews.ReviewId, ReviewContent, ReviewScore, Userid 
                         FROM Reviews
                         INNER JOIN ReviewsForFilms
                         ON Reviews.ReviewId = ReviewsForFilms.ReviewId

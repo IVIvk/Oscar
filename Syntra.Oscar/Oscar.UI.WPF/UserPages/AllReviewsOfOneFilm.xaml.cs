@@ -21,9 +21,25 @@ namespace Oscar.UI.WPF.UserPages
     /// </summary>
     public partial class AllReviewsOfOneFilm : Page
     {
+        List<Review> listOfReviews = new List<Review>();
         public AllReviewsOfOneFilm(Films film)
         {
             InitializeComponent();
+            listOfReviews = DatabaseManager.Instance.ReviewRepository.GetReviewsPerFilm(film).ToList();
+            ShowReviews();
+        }
+
+        public void ShowReviews()
+        {
+            foreach (Review review in listOfReviews)
+            {
+                ListViewItem item = new ListViewItem();
+
+                item.Tag = review;
+                item.Content = review.ReviewContent;
+
+                lstReviews.Items.Add(item);
+            }
         }
     }
 }
