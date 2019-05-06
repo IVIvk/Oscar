@@ -33,7 +33,10 @@
             <Label Content="Plot" Height="25"></Label>
         </StackPanel>
 
-        <Button Name="btnWriteReview" Content="Schrijf review" Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="BtnWriteReview_Click"></Button>
+        <StackPanel Grid.Column="1" Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Button Name="btnWriteReview" Content="Schrijf review" Click="BtnWriteReview_Click"></Button>
+            <Button Name="btnShowAllReviews" Content="Toon alle reviews" Click="BtnShowAllReviews_Click"></Button>
+        </StackPanel>
 
         <StackPanel Grid.Column="2" Grid.Row="3">
             <TextBox Name="txtFilmTitle" Height="25"></TextBox>

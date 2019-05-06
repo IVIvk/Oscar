@@ -26,6 +26,24 @@ namespace Oscar.Dapper.Repositories
             }
         }
 
+        public IEnumerable<Review> GetReviewsPerFilm(Films film)
+        {
+            using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                return connection.Query<Review>
+                    (@"
+                        SELECT ReviewId, ReviewContent, ReviewScore, Userid 
+                        FROM Reviews
+                        INNER JOIN ReviewsForFilms
+                        ON Reviews.ReviewId = ReviewsForFilms.ReviewId
+                        WHERE ReviewsForFilms.FilmId = @FilmId
+                    ", new
+                    {
+                         FilmId = film.FilmId
+                    });
+            }
+        }
+
         public void SaveReview(Films film, User user, Review review)
         {
             using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))

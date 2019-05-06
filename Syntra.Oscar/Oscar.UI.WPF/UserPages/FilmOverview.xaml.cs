@@ -82,5 +82,20 @@ namespace Oscar.UI.WPF.UserPages
                 MessageBox.Show("Selecteer eerst een film");
             }
         }
+
+        private void BtnShowAllReviews_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ListViewItem item = ((ListViewItem)lstFilmOverview.SelectedItem);
+                Films film = (Films)item.Tag;
+
+                NavigationService.Navigate(new AllReviewsOfOneFilm(film));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Selecteer eerst een film");
+            }
+        }
     }
 }
