@@ -21,11 +21,15 @@ namespace Oscar.UI.WPF.UserPages
     /// </summary>
     public partial class AllReviewsOfOneFilm : Page
     {
-        List<Review> listOfReviews = new List<Review>();
+        private List<Review> listOfReviews = new List<Review>();
+        private List<User> listOfUsers = new List<User>();
         public AllReviewsOfOneFilm(Films film)
         {
             InitializeComponent();
+
             listOfReviews = DatabaseManager.Instance.ReviewRepository.GetReviewsPerFilm(film).ToList();
+            listOfUsers = DatabaseManager.Instance.UserRepository.GetUsers().ToList();
+
             ShowReviews();
         }
 
@@ -33,10 +37,19 @@ namespace Oscar.UI.WPF.UserPages
         {
             foreach (Review review in listOfReviews)
             {
+                string username = "";
                 ListViewItem item = new ListViewItem();
 
+                foreach (var user in listOfUsers)
+                {
+                    if(user.userId == review.UserId)
+                    {
+                        username = user.userId;
+                    }
+                }
+
                 item.Tag = review;
-                item.Content = review.ReviewContent;
+                item.Content = username + " (" + review.ReviewScore + "): " + review.ReviewContent;
 
                 lstReviews.Items.Add(item);
             }
