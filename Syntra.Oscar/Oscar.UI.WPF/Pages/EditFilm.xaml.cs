@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oscar.BL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,16 @@ namespace Oscar.UI.WPF
 
         private void BtnAddFilm_Click(object sender, RoutedEventArgs e)
         {
-            
+            Films film = new Films();
+            //Actors actor = new Actors();
+
+            //actor.ActorId = Guid.NewGuid();
+            //actor.FirstName = txtFirstNameActor.Text;
+            //actor.LastName = txtLastNameActor.Text;
+
+            //DatabaseManager.Instance.ActorRepository.InsertActor(actor);
+
+            //NavigationService.Navigate(new AdminActorsManagement());
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
