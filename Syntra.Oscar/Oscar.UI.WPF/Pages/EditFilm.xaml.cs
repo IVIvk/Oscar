@@ -28,16 +28,23 @@ namespace Oscar.UI.WPF
 
         private void BtnAddFilm_Click(object sender, RoutedEventArgs e)
         {
+            // Create new instance of Films.
             Films film = new Films();
-            //Actors actor = new Actors();
 
-            //actor.ActorId = Guid.NewGuid();
-            //actor.FirstName = txtFirstNameActor.Text;
-            //actor.LastName = txtLastNameActor.Text;
+            // Load all the text into this instance.
+            film.FilmId = Guid.NewGuid();
+            film.FilmTitle = txtFilmTitle.Text;
+            film.ReleaseYear = Convert.ToInt32(txtReleaseYear.Text);
+            film.FilmLengthInMinutes = Convert.ToInt32(txtDuration.Text);
+            film.FilmPlot = txtPlot.Text;
+            // Genre still needs some attention.
+            //film.FilmGenre = txtGenre.Text;
 
-            //DatabaseManager.Instance.ActorRepository.InsertActor(actor);
+            // Insert the new film into the database.
+            DatabaseManager.Instance.FilmRepository.InsertFilm(film);
 
-            //NavigationService.Navigate(new AdminActorsManagement());
+            // Navigate back to the AdminFilmsManagement page.
+            NavigationService.Navigate(new Pages.AdminFilmsManagement());            
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)

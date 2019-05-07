@@ -115,7 +115,8 @@
             </TextBox>
 
             <!-- TextBox "Plot". -->
-            <TextBox VerticalScrollBarVisibility="Visible"
+            <TextBox x:Name="txtPlot" 
+                     VerticalScrollBarVisibility="Visible"
                      Height="300"
                      TextWrapping="Wrap"
                      AcceptsReturn="True"

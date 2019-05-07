@@ -35,7 +35,7 @@ namespace Oscar.BL
         public string FilmTitle
         {
             get { return filmTitle; }
-            //set { filmTitle = value; }
+            set { filmTitle = value; }
         }
 
         public int ReleaseYear
@@ -53,25 +53,25 @@ namespace Oscar.BL
         public Genres FilmGenre
         {
             get { return filmGenre; }
-            //set { filmGenre = value; }
+            set { filmGenre = value; }
         }
 
         public double FilmRating
         {
             get { return filmRating; }
-            //set { filmRating = value; }
+            set { filmRating = value; }
         }
 
         public int AmountOfRatings
         {
             get { return amountOfRatings; }
-            //set { amountOfRatings = value; }
+            set { amountOfRatings = value; }
         }
 
         public string FilmPlot
         {
             get { return filmPlot; }
-            //set { filmPlot = value; }
+            set { filmPlot = value; }
         }
         /////////////////////////////////////////
         // Functions.
