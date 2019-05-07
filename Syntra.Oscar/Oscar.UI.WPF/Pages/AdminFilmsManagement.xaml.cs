@@ -85,7 +85,7 @@ namespace Oscar.UI.WPF.Pages
         }
 
         // "Nieuwe film" button.
-        private void btnNewFilm_Click(object sender, RoutedEventArgs e)
+        private void BtnNewFilm_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new EditFilm());
         }
@@ -95,8 +95,15 @@ namespace Oscar.UI.WPF.Pages
         {
 
         }
+
+        // "Verwijder film" button.
+        private void BtnDeleteFilm_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         /////////////////////////////////////////
         #endregion
+
 
     }
 }
