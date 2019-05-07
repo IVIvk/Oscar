@@ -28,8 +28,12 @@ namespace Oscar.UI.WPF.Pages
         {
             InitializeComponent();
         }
-       
 
+        #region Functions
+        /////////////////////////////////////////
+        // Functions
+
+        // This function Adds all the films inside the database into the ListView.
         private void ShowFilms()
         {
             filmsList = DatabaseManager.Instance.FilmRepository.GetFilms().ToList();
@@ -46,6 +50,7 @@ namespace Oscar.UI.WPF.Pages
             }
         }
 
+        // This function loads the properties of the selected film into the correct text boxes.
         private void LoadFilms(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -59,18 +64,19 @@ namespace Oscar.UI.WPF.Pages
                 // Genres requires some more SQL queries before it can be shown.
                 //txtFilmGenre.Text = Convert.ToString(film.FilmGenre);
                 txtFilmDuration.Text = Convert.ToString(film.FilmLengthInMinutes);
-                txtFilmPlot.Text = Convert.ToString(film.FilmPlot);              
-                                
+                txtFilmPlot.Text = Convert.ToString(film.FilmPlot);
+
             }
             catch (Exception)
             {
 
             }
         }
-
+        #endregion
+        
         #region Buttons
         /////////////////////////////////////////
-        // Buttons (Click)
+        // Buttons (Click functions)
 
         // "Laad films" button.
         private void BtnLoadFilms_Click(object sender, RoutedEventArgs e)
