@@ -35,7 +35,7 @@ namespace Oscar.Dapper.Repositories
             {
                 connection.Execute(@"
                     INSERT INTO Films (FilmId, FilmTitle, ReleaseYear, FilmLengthInMinutes, FilmRating, AmountOfRatings)
-                    VALUES (@FilmId, @FilmTitle, @ReleaseYear, @FilmLenghtInMinutes, @FilmRating, @AmountOfRatings)
+                    VALUES (@FilmId, @FilmTitle, @ReleaseYear, @FilmLengthInMinutes, @FilmRating, @AmountOfRatings)
                 ", new
                 {
                     FilmId = film.FilmId,
