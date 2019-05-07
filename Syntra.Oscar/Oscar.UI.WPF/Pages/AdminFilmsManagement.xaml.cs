@@ -99,7 +99,28 @@ namespace Oscar.UI.WPF.Pages
         // "Verwijder film" button.
         private void BtnDeleteFilm_Click(object sender, RoutedEventArgs e)
         {
+            // Create new Films object.
+            Films film = new Films();
 
+            // Get the selected item in the list.
+            ListViewItem item = ((ListViewItem)LstFilms.SelectedItem);
+
+            // Place this item into the object.
+            film = (Films)item.Tag;
+
+            // Initiate delete in database of the selected item.
+            DatabaseManager.Instance.FilmRepository.DeleteFilm(film);
+
+            // Clear out the text boxes.
+            txtFilmId.Text = string.Empty;
+            txtFilmTitle.Text = string.Empty;
+            txtFilmReleaseYear.Text = string.Empty;
+            txtFilmGenre.Text = string.Empty;
+            txtFilmDuration.Text = string.Empty;
+            txtFilmPlot.Text = string.Empty;
+            
+            // Refresh the list of films.
+            ShowFilms();
         }
         /////////////////////////////////////////
         #endregion

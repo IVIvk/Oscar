@@ -48,5 +48,33 @@ namespace Oscar.Dapper.Repositories
                 });
             }
         }
+
+        // This function deletes a film from the database.
+        public void DeleteFilm(Films film)
+        {
+            using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute(@"
+                    DELETE FROM Films 
+                    WHERE FilmId = @FilmId
+                ", new
+                {
+                    FilmId = film.FilmId
+                });
+            }
+        }
+        //public void DeleteActor(Actors actor)
+        //{
+        //    using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
+        //    {
+        //        connection.Execute(@"
+        //            DELETE FROM Actors
+        //            WHERE ActorId = @ActorId
+        //        ", new
+        //        {
+        //            ActorId = actor.ActorId
+        //        });
+        //    }
+        //}
     }
 }
