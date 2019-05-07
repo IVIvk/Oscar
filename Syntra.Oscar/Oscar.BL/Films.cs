@@ -16,6 +16,7 @@ namespace Oscar.BL
         private Genres filmGenre;
         private double filmRating = -1;
         private int amountOfRatings = 0;
+        private string filmPlot = string.Empty;
 
         /////////////////////////////////////////
         // Access to the data members.
@@ -67,6 +68,11 @@ namespace Oscar.BL
             //set { amountOfRatings = value; }
         }
 
+        public string FilmPlot
+        {
+            get { return filmPlot; }
+            //set { filmPlot = value; }
+        }
         /////////////////////////////////////////
         // Functions.
 

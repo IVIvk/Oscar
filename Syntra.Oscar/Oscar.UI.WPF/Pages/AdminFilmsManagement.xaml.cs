@@ -57,12 +57,14 @@ namespace Oscar.UI.WPF.Pages
                 ListViewItem item = ((ListViewItem)LstFilms.SelectedItem);
                 Films film = (Films)item.Tag;
 
+                txtFilmId.Text = Convert.ToString(film.FilmId);
                 txtFilmTitle.Text = Convert.ToString(film.FilmTitle);
                 txtFilmReleaseYear.Text = Convert.ToString(film.ReleaseYear);
-
-                //txtActorId.Text = Convert.ToString(actor.ActorId);
-                //txtActorFirstName.Text = actor.FirstName;
-                //txtActorLastName.Text = actor.LastName;
+                // Genres requires some more SQL queries before it can be shown.
+                //txtFilmGenre.Text = Convert.ToString(film.FilmGenre);
+                txtFilmDuration.Text = Convert.ToString(film.FilmLengthInMinutes);
+                txtFilmPlot.Text = Convert.ToString(film.FilmPlot);              
+                                
             }
             catch (Exception)
             {
