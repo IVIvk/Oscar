@@ -29,5 +29,10 @@ namespace Oscar.UI.WPF
         {
             
         }
+
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.AdminFilmsManagement());
+        }
     }
 }

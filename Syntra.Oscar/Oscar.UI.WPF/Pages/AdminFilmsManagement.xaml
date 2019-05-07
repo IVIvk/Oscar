@@ -48,9 +48,9 @@
         </StackPanel>
 
         <StackPanel Grid.Column="3" Grid.Row="1">
-            <Button x:Name="btnLoadFilms" Content="Laad film" Click="BtnLoadFilms_Click"></Button>
+            <Button x:Name="btnLoadFilms" Content="Laad films" Click="BtnLoadFilms_Click"></Button>
             <Button x:Name="btnNewFilm" Content="Nieuwe film" Click="btnNewFilm_Click"></Button>
-            <Button x:Name="btnEditFilm" Content="Verander film" Click="BtnLoadFilms_Click"></Button>
+            <Button x:Name="btnEditFilm" Content="Verander film" Click="BtnEditFilm_Click"></Button>
         </StackPanel>
     </Grid>
 </Page>

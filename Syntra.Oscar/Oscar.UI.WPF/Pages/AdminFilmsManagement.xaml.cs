@@ -28,11 +28,7 @@ namespace Oscar.UI.WPF.Pages
         {
             InitializeComponent();
         }
-
-        private void BtnLoadFilms_Click(object sender, RoutedEventArgs e)
-        {
-            ShowFilms();
-        }
+       
 
         private void ShowFilms()
         {
@@ -71,5 +67,30 @@ namespace Oscar.UI.WPF.Pages
 
             }
         }
+
+        #region Buttons
+        /////////////////////////////////////////
+        // Buttons (Click)
+
+        // "Laad films" button.
+        private void BtnLoadFilms_Click(object sender, RoutedEventArgs e)
+        {
+            ShowFilms();
+        }
+
+        // "Nieuwe film" button.
+        private void btnNewFilm_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EditFilm());
+        }
+
+        // "Verander film" button.
+        private void BtnEditFilm_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        /////////////////////////////////////////
+        #endregion
+
     }
 }
