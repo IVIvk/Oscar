@@ -81,14 +81,20 @@ namespace Oscar.UI.WPF
         {
             if (SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmTitle != string.Empty)
             {
-                // disable the add button
+                // Disable the add button and enable the Edit button.
                 btnAddFilm.IsEnabled = false;
+                btnEditFilm.IsEnabled = true;
 
                 // Fill the text boxes with the properties inside the singleton object.
                 FillTextBoxes();                
             }
             else
             {
+                // Enable the add button and disable the Edit button.
+                btnAddFilm.IsEnabled = true;
+                btnEditFilm.IsEnabled = false;
+
+                // Clear the text boxes.
                 ClearTextBoxes();
             }
         }
