@@ -33,6 +33,17 @@ namespace Oscar.UI.WPF.Pages
         /////////////////////////////////////////
         // Functions
 
+        // This function clears all the text boxes on this page.
+        private void ClearTextBoxes()
+        {
+            txtFilmId.Text = string.Empty;
+            txtFilmTitle.Text = string.Empty;
+            txtFilmReleaseYear.Text = string.Empty;
+            txtFilmGenre.Text = string.Empty;
+            txtFilmDuration.Text = string.Empty;
+            txtFilmPlot.Text = string.Empty;
+        }
+
         // This function Adds all the films inside the database into the ListView.
         private void ShowFilms()
         {
@@ -48,6 +59,7 @@ namespace Oscar.UI.WPF.Pages
 
                 LstFilms.Items.Add(item);
             }
+            ClearTextBoxes();
         }
 
         // This function loads the properties of the selected film into the correct text boxes.
@@ -112,17 +124,20 @@ namespace Oscar.UI.WPF.Pages
             DatabaseManager.Instance.FilmRepository.DeleteFilm(film);
 
             // Clear out the text boxes.
-            txtFilmId.Text = string.Empty;
-            txtFilmTitle.Text = string.Empty;
-            txtFilmReleaseYear.Text = string.Empty;
-            txtFilmGenre.Text = string.Empty;
-            txtFilmDuration.Text = string.Empty;
-            txtFilmPlot.Text = string.Empty;
+            ClearTextBoxes();
             
             // Refresh the list of films.
             ShowFilms();
-        }
+        }        
+        #endregion
+
         /////////////////////////////////////////
+        // Loaded event
+        #region LoadedEvent
+        private void AdminFilmsManagementLoaded(object sender, RoutedEventArgs e)
+        {
+            ShowFilms();            
+        }
         #endregion
 
 

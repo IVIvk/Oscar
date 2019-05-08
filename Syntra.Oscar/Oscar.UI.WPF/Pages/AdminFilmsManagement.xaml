@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:Oscar.UI.WPF.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AdminFilmsManagement">
+      Title="AdminFilmsManagement"
+      Loaded="AdminFilmsManagementLoaded">
 
     <!-- The page is divided into 4 columns and 2 rows -->
     <!-- Column0: list view -->
