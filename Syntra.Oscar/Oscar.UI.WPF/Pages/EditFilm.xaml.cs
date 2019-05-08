@@ -92,5 +92,10 @@ namespace Oscar.UI.WPF
                 ClearTextBoxes();
             }
         }
+
+        private void BtnEditFilm_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
