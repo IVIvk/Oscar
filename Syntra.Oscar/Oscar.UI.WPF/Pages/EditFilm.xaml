@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:Oscar.UI.WPF"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="EditFilm">
+      Title="EditFilm"
+      Loaded="LoadedEditFilm">
 
     <!-- Edit Film page. -->
 

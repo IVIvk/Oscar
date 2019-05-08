@@ -84,13 +84,36 @@ namespace Oscar.UI.WPF.Pages
 
             }
         }
+
+        // This function loads the selected films properties into the singleton class.
+        private void LoadFilmIntoSingleton()
+        {
+            try
+            {
+                ListViewItem item = ((ListViewItem)LstFilms.SelectedItem);
+                Films film = (Films)item.Tag;
+
+                SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId = Guid.Parse(txtFilmId.Text);
+                SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmTitle = txtFilmTitle.Text;
+                SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.ReleaseYear = Convert.ToInt32(txtFilmReleaseYear.Text);
+                SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmLengthInMinutes = Convert.ToInt32(txtFilmDuration.Text);
+                SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmPlot = txtFilmPlot.Text;                
+
+            }
+            catch (Exception)
+            {
+
+            }
+
+            
+        }
         #endregion
         
         #region Buttons
         /////////////////////////////////////////
         // Buttons (Click functions)
 
-        // "Laad films" button.
+        // "Ververs lijst" button.
         private void BtnLoadFilms_Click(object sender, RoutedEventArgs e)
         {
             ShowFilms();
@@ -105,7 +128,8 @@ namespace Oscar.UI.WPF.Pages
         // "Verander film" button.
         private void BtnEditFilm_Click(object sender, RoutedEventArgs e)
         {
-
+            LoadFilmIntoSingleton();
+            NavigationService.Navigate(new EditFilm());
         }
 
         // "Verwijder film" button.

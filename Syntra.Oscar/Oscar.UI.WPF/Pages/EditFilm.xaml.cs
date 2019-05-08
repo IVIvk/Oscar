@@ -51,5 +51,46 @@ namespace Oscar.UI.WPF
         {
             NavigationService.Navigate(new Pages.AdminFilmsManagement());
         }
+
+        //////////////////////////////////
+        // Functions.
+
+        // This function clears out all the text boxes.
+        private void ClearTextBoxes()
+        {
+            txtFilmTitle.Text = string.Empty;
+            txtReleaseYear.Text = string.Empty;
+            txtDuration.Text = string.Empty;
+            txtPlot.Text = string.Empty;
+            txtGenre.Text = string.Empty;
+        }
+
+        // This function fills in the text boxes with the properties inside the singleton object.
+        private void FillTextBoxes()
+        {
+            txtFilmTitle.Text = SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmTitle;
+            txtReleaseYear.Text = Convert.ToString(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.ReleaseYear);
+            txtDuration.Text = Convert.ToString(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmLengthInMinutes);
+            txtPlot.Text = SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmPlot;
+            txtGenre.Text = Convert.ToString(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmGenre);
+        }        
+
+        //////////////////////////////////
+        // Loaded event.
+        private void LoadedEditFilm(object sender, RoutedEventArgs e)
+        {
+            if (SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmTitle != string.Empty)
+            {
+                // disable the add button
+                btnAddFilm.IsEnabled = false;
+
+                // Fill the text boxes with the properties inside the singleton object.
+                FillTextBoxes();                
+            }
+            else
+            {
+                ClearTextBoxes();
+            }
+        }
     }
 }
