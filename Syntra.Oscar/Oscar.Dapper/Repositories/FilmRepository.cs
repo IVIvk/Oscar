@@ -63,18 +63,20 @@ namespace Oscar.Dapper.Repositories
                 });
             }
         }
-        //public void DeleteActor(Actors actor)
-        //{
-        //    using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
-        //    {
-        //        connection.Execute(@"
-        //            DELETE FROM Actors
-        //            WHERE ActorId = @ActorId
-        //        ", new
-        //        {
-        //            ActorId = actor.ActorId
-        //        });
-        //    }
-        //}
+
+        public void UpdateFilm (Films film)
+        {
+            using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute(@"
+                    UPDATE Films
+                    SET FilmTitle = @FilmTitle
+                    WHERE FilmId = @FilmId
+                    ", new
+                {
+                 FilmTitle = film.FilmTitle
+                });
+            }
+        }        
     }
 }
