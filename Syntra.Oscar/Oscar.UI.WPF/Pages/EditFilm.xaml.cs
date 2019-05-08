@@ -54,7 +54,23 @@ namespace Oscar.UI.WPF
         // Button "Veranderen".
         private void BtnEditFilm_Click(object sender, RoutedEventArgs e)
         {
+            // Create new instance of Films.
+            Films film = new Films();
 
+            // Load all the text into this instance.
+            film.FilmId = Guid.NewGuid();
+            film.FilmTitle = txtFilmTitle.Text;
+            film.ReleaseYear = Convert.ToInt32(txtReleaseYear.Text);
+            film.FilmLengthInMinutes = Convert.ToInt32(txtDuration.Text);
+            film.FilmPlot = txtPlot.Text;
+            // Genre still needs some attention.
+            //film.FilmGenre = txtGenre.Text;
+
+            // Insert the new film into the database.
+            DatabaseManager.Instance.FilmRepository.UpdateFilm(film);
+
+            // Navigate back to the AdminFilmsManagement page.
+            NavigationService.Navigate(new Pages.AdminFilmsManagement());
         }
 
         // Button "Annuleren".

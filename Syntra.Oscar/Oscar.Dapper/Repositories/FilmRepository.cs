@@ -74,7 +74,8 @@ namespace Oscar.Dapper.Repositories
                     WHERE FilmId = @FilmId
                     ", new
                 {
-                 FilmTitle = film.FilmTitle
+                 FilmTitle = film.FilmTitle,
+                 FilmId = film.FilmId
                 });
             }
         }        
