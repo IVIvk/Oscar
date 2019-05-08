@@ -26,6 +26,10 @@ namespace Oscar.UI.WPF
             InitializeComponent();
         }
 
+        //////////////////////////////////
+        // Butons.
+
+        // Button "Toevoegen".
         private void BtnAddFilm_Click(object sender, RoutedEventArgs e)
         {
             // Create new instance of Films.
@@ -47,6 +51,13 @@ namespace Oscar.UI.WPF
             NavigationService.Navigate(new Pages.AdminFilmsManagement());            
         }
 
+        // Button "Veranderen".
+        private void BtnEditFilm_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        // Button "Annuleren".
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Pages.AdminFilmsManagement());
@@ -77,6 +88,12 @@ namespace Oscar.UI.WPF
 
         //////////////////////////////////
         // Loaded event.
+        //
+        // Depending on how the user navigates to this page, some different stuff happens.
+        // EDIT) If the user chose edit film, the films properties will be loaded inside the text boxes.
+        //       The Add button will be disabled.
+        // ADD) If the user chose Add film, the text boxes will be emptied.
+        //      The Edit button will be greyed out.
         private void LoadedEditFilm(object sender, RoutedEventArgs e)
         {
             if (SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmTitle != string.Empty)
@@ -99,9 +116,6 @@ namespace Oscar.UI.WPF
             }
         }
 
-        private void BtnEditFilm_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }
