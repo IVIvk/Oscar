@@ -64,20 +64,21 @@ namespace Oscar.Dapper.Repositories
             }
         }
 
-        public void UpdateFilm (Films film)
+        public void UpdateFilm(Films film)
         {
             using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
             {
                 connection.Execute(@"
                     UPDATE Films
-                    SET FilmTitle = @FilmTitle
+                    SET FilmTitle = @FilmTitle, FilmPlot = @FilmPlot
                     WHERE FilmId = @FilmId
                     ", new
                 {
-                 FilmTitle = film.FilmTitle,
-                 FilmId = film.FilmId
+                    FilmTitle = film.FilmTitle,
+                    FilmPlot = film.FilmPlot,
+                    FilmId = film.FilmId
                 });
             }
-        }        
+        }
     }
 }
