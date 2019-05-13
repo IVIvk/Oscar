@@ -34,7 +34,7 @@
                 <ColumnDefinition Width="60*"/>
                 <ColumnDefinition Width="601*"/>
             </Grid.ColumnDefinitions>
-            <Label Name="PageTitle" Content="The worlds films library" FontSize="20" FontStyle="Oblique" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Margin="154.833,0,214.334,0"></Label>
+            <Label Name="PageTitle" Content="The world's films library" FontSize="20" FontStyle="Oblique" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Margin="154.833,0,214.334,0"></Label>
         </Grid>
         <Grid Grid.Column="0" Grid.Row="1">
             <TextBox Name="FilmTitle" Text="Film title" BorderBrush="Gray" BorderThickness="0.5" Padding="5" ></TextBox>
