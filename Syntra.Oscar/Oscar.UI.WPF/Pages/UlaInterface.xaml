@@ -37,7 +37,11 @@
             <Label Name="PageTitle" Content="The world's films library" FontSize="20" FontStyle="Oblique" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Margin="154.833,0,214.334,0"></Label>
         </Grid>
         <Grid Grid.Column="0" Grid.Row="1">
-            <TextBox Name="FilmTitle" Text="Film title" BorderBrush="Gray" BorderThickness="0.5" Padding="5" ></TextBox>
+            <TextBox Name="FilmTitle" 
+                     Text="Film title" 
+                     BorderBrush="Gray" 
+                     BorderThickness="0.5" 
+                     Padding="5" GotFocus="TitleFocus" ></TextBox>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="1">
             <TextBox Name="MyRating" Text="My rating" BorderBrush="Gray" BorderThickness="0.5" Padding="5"></TextBox>
@@ -64,19 +68,30 @@
             <TextBox Name="Land" Text="Waar gemaakt" BorderBrush="Gray" BorderThickness="0.5" Padding="5"></TextBox>
         </Grid>
         <Grid Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2">
-            <TextBox Name="Omschrijving" Text="Film omschrijving" BorderBrush="Gray" BorderThickness="0.5" Padding="5"></TextBox>
+            <TextBox Name="Omschrijving" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap"
+                     AcceptsReturn="True" Text="Film omschrijving" BorderBrush="Gray" BorderThickness="0.5" Padding="5"></TextBox>
         </Grid>
         <Grid Grid.Column="5" Grid.Row="2">
             <MediaElement Name="Trailer" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="132"/>
         </Grid>
         <Grid Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="5">
-            <TextBox Name="Review" Text="My review" BorderBrush="Gray" BorderThickness="0.5" Padding="5"></TextBox>
+            <TextBox Name="Review" Text="My review" BorderBrush="Gray" BorderThickness="0.5" Padding="5" GotFocus="Review_GotFocus"></TextBox>
+            
         </Grid>
         <Grid Grid.Column="5" Grid.Row="3">
-            <Button Name="Toevoegen" Content="Voeg toe" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75"/>
+            <StackPanel>
+                <Button Name="Toevoegen" Content="Update" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Click="Toevoegen_Click"/>
+                <Button x:Name="Zoek" Content="Zoek" Width="75" Margin="5" Click="Zoek_Click"></Button>
+                <Button x:Name="ReviewToevoegen" Content="Voeg review toe" Click="ReviewToevoegen_Click"></Button>
+            </StackPanel>
+
         </Grid>
         <Grid Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="6">
-            <ListBox Name="FilmList" HorizontalAlignment="Left" Height="auto" VerticalAlignment="Bottom" Width="auto" BorderBrush="Gray" BorderThickness="0.5"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="9*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox Name="FilmList" SelectionChanged="LoadFilms" HorizontalAlignment="Left" Height="auto" VerticalAlignment="Bottom" Width="auto" BorderBrush="Gray" BorderThickness="0.5" Margin="0,0,0,0.333"/>
         </Grid>
 
     </Grid>

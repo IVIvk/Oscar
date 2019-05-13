@@ -23,6 +23,7 @@
             <Button Content="Jouw reviews" Width="100"></Button>
             <Button Content="Zoek films" Width="100" Click="Button_Click"></Button>
             <Button Content="Profiel" Width="100"></Button>
+            <Button Content="Gebruiker pagina" Click="Button_Click_1"></Button>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
