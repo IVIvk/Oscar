@@ -58,7 +58,7 @@ namespace Oscar.UI.WPF
             Films film = new Films();
 
             // Load all the text into this instance.
-            film.FilmId = Guid.NewGuid();
+            film.FilmId = SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId;
             film.FilmTitle = txtFilmTitle.Text;
             film.ReleaseYear = Convert.ToInt32(txtReleaseYear.Text);
             film.FilmLengthInMinutes = Convert.ToInt32(txtDuration.Text);
