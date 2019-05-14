@@ -70,13 +70,15 @@ namespace Oscar.Dapper.Repositories
             {
                 connection.Execute(@"
                     UPDATE Films
-                    SET FilmTitle = @FilmTitle, FilmPlot = @FilmPlot
+                    SET FilmTitle = @FilmTitle, FilmPlot = @FilmPlot, ReleaseYear = @ReleaseYear, FilmLengthInMinutes = @FilmLengthInMinutes
                     WHERE FilmId = @FilmId
                     ", new
                 {
                     FilmTitle = film.FilmTitle,
                     FilmPlot = film.FilmPlot,
-                    FilmId = film.FilmId
+                    FilmId = film.FilmId,
+                    ReleaseYear = film.ReleaseYear,
+                    FilmLengthInMinutes = film.FilmLengthInMinutes
                 });
             }
         }
