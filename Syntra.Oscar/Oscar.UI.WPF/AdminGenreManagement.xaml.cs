@@ -95,6 +95,7 @@ namespace Oscar.UI.WPF
         }
 
         // "Verwijder genre" button.
+        // Genres linked to a film are taken into account when deleting.
         private void BtnDeleteGenre_Click(object sender, RoutedEventArgs e)
         {
             List<GenresInFilms> genresInFilmsList = new List<GenresInFilms>();
@@ -129,7 +130,6 @@ namespace Oscar.UI.WPF
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Geen genre geselecteerd");
             }
             ShowGenres();
