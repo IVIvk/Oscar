@@ -25,52 +25,66 @@ namespace Oscar.UI.WPF
         {
             InitializeComponent();
         }
+        // Variable.
+        bool allTextBoxesFilled = false;
 
         //////////////////////////////////
         // Butons.
 
         // Button "Toevoegen".
         private void BtnAddFilm_Click(object sender, RoutedEventArgs e)
-        {
-            // Create new instance of Films.
-            Films film = new Films();
+        {                       
+            // Make sure that the text boxes are filled in.
+            allTextBoxesFilled = CheckNoEmptyTextBoxes();
 
-            // Load all the text into this instance.
-            film.FilmId = Guid.NewGuid();
-            film.FilmTitle = txtFilmTitle.Text;
-            film.ReleaseYear = Convert.ToInt32(txtReleaseYear.Text);
-            film.FilmLengthInMinutes = Convert.ToInt32(txtDuration.Text);
-            film.FilmPlot = txtPlot.Text;
-            // Genre still needs some attention.
-            //film.FilmGenre = txtGenre.Text;
+            if (allTextBoxesFilled != false)
+            {
+                // Create new instance of Films.
+                Films film = new Films();
 
-            // Insert the new film into the database.
-            DatabaseManager.Instance.FilmRepository.InsertFilm(film);
+                // Load all the text into this instance.
+                film.FilmId = Guid.NewGuid();
+                film.FilmTitle = txtFilmTitle.Text;
+                film.ReleaseYear = Convert.ToInt32(txtReleaseYear.Text);
+                film.FilmLengthInMinutes = Convert.ToInt32(txtDuration.Text);
+                film.FilmPlot = txtPlot.Text;
+                // Genre still needs some attention.
+                //film.FilmGenre = txtGenre.Text;
 
-            // Navigate back to the AdminFilmsManagement page.
-            NavigationService.Navigate(new Pages.AdminFilmsManagement());            
+                // Insert the new film into the database.
+                DatabaseManager.Instance.FilmRepository.InsertFilm(film);
+
+                // Navigate back to the AdminFilmsManagement page.
+                NavigationService.Navigate(new Pages.AdminFilmsManagement());
+            }                       
         }
 
         // Button "Veranderen".
         private void BtnEditFilm_Click(object sender, RoutedEventArgs e)
         {
-            // Create new instance of Films.
-            Films film = new Films();
+            // Make sure that the text boxes are filled in.
+            allTextBoxesFilled = CheckNoEmptyTextBoxes();
 
-            // Load all the text into this instance.
-            film.FilmId = SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId;
-            film.FilmTitle = txtFilmTitle.Text;
-            film.ReleaseYear = Convert.ToInt32(txtReleaseYear.Text);
-            film.FilmLengthInMinutes = Convert.ToInt32(txtDuration.Text);
-            film.FilmPlot = txtPlot.Text;
-            // Genre still needs some attention.
-            //film.FilmGenre = txtGenre.Text;
+            if (allTextBoxesFilled != false)
+            {
+                // Create new instance of Films.
+                Films film = new Films();
 
-            // Insert the new film into the database.
-            DatabaseManager.Instance.FilmRepository.UpdateFilm(film);
+                // Load all the text into this instance.
+                film.FilmId = SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId;
+                film.FilmTitle = txtFilmTitle.Text;
+                film.ReleaseYear = Convert.ToInt32(txtReleaseYear.Text);
+                film.FilmLengthInMinutes = Convert.ToInt32(txtDuration.Text);
+                film.FilmPlot = txtPlot.Text;
+                // Genre still needs some attention.
+                //film.FilmGenre = txtGenre.Text;
 
-            // Navigate back to the AdminFilmsManagement page.
-            NavigationService.Navigate(new Pages.AdminFilmsManagement());
+                // Edit the film data in the database.
+                DatabaseManager.Instance.FilmRepository.UpdateFilm(film);
+
+                // Navigate back to the AdminFilmsManagement page.
+                NavigationService.Navigate(new Pages.AdminFilmsManagement());
+            }                
         }
 
         // Button "Annuleren".
@@ -100,7 +114,49 @@ namespace Oscar.UI.WPF
             txtDuration.Text = Convert.ToString(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmLengthInMinutes);
             txtPlot.Text = SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmPlot;
             txtGenre.Text = Convert.ToString(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmGenre);
-        }        
+        } 
+        
+        // This function checks that all text boxes are filled in.
+        private bool CheckNoEmptyTextBoxes()
+        {
+            // Initialize variables.
+            bool succes = false;
+            bool isNotFilled = false;
+            string content = string.Empty;
+
+            // Check that film title is filled in.
+            content = txtFilmTitle.Text;
+            isNotFilled = string.IsNullOrWhiteSpace(content);            
+            if (isNotFilled != true)
+            {
+                // Check that the plot is filled in.
+                content = txtPlot.Text;
+                isNotFilled = string.IsNullOrWhiteSpace(content);
+                if (isNotFilled != true)
+                {
+                    // Check that the release year is filled in.
+                    content = txtReleaseYear.Text;
+                    isNotFilled = string.IsNullOrWhiteSpace(content);
+                    if (isNotFilled != true)
+                    {
+                        // Check that the duration is filled in.
+                        content = txtDuration.Text;
+                        isNotFilled = string.IsNullOrWhiteSpace(content);
+                        if (isNotFilled != true)
+                        {
+                            // Check that the genre is filled in.
+                            content = txtGenre.Text;
+                            isNotFilled = string.IsNullOrWhiteSpace(content);
+                            if (isNotFilled != true)
+                            {
+                                succes = true;
+                            }
+                        }
+                    }
+                }                
+            }            
+            return succes;
+        }
 
         //////////////////////////////////
         // Loaded event.
