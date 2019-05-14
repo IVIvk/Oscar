@@ -33,8 +33,11 @@ namespace Oscar.UI.WPF
             ShowGenres();
         }
 
-
+        #region Functions
+        /////////////////////////////////
         // Functions.
+
+        // This function loads the genres from the database into the listview.
         private void ShowGenres()
         {
             GenresList = DatabaseManager.Instance.GenreRepository.GetGenres().ToList();
@@ -58,23 +61,24 @@ namespace Oscar.UI.WPF
         {
             try
             {
-        //        ListViewItem item = ((ListViewItem)LstFilms.SelectedItem);
-        //        Films film = (Films)item.Tag;
+                ListViewItem item = ((ListViewItem)lstGenres.SelectedItem);
+                Genres genre = (Genres)item.Tag;
 
-        //        SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId = Guid.Parse(txtFilmId.Text);
-        //        SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmTitle = txtFilmTitle.Text;
-        //        SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.ReleaseYear = Convert.ToInt32(txtFilmReleaseYear.Text);
-        //        SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmLengthInMinutes = Convert.ToInt32(txtFilmDuration.Text);
-        //        SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmPlot = txtFilmPlot.Text;
-
+                SingletonClasses.SingletonGenre.OnlyInstanceOfGenre.GenreId = genre.GenreId;
+                SingletonClasses.SingletonGenre.OnlyInstanceOfGenre.GenreName = genre.GenreName;
             }
             catch (Exception)
             {
 
             }
         }
+        #endregion
 
+        #region Buttons
+        /////////////////////////////////
         // Buttons.
+
+        // "Genre toevoegen" button.
         private void BtnAddGenre_Click(object sender, RoutedEventArgs e)
         {
             Genres newGenre = new Genres();
@@ -90,6 +94,7 @@ namespace Oscar.UI.WPF
             ShowGenres();
         }
 
+        // "Verwijder genre" button.
         private void BtnDeleteGenre_Click(object sender, RoutedEventArgs e)
         {
             List<GenresInFilms> genresInFilmsList = new List<GenresInFilms>();
@@ -133,20 +138,28 @@ namespace Oscar.UI.WPF
         // When clicking the edit button, the user navigates to the EditGenre page.
         private void BtnEditGenre_Click(object sender, RoutedEventArgs e)
         {
+            LoadGenreIntoSingleton();
             NavigationService.Navigate(new Pages.EditGenre());
         }
+        #endregion
 
-        // This event empties the "nieuw genre" text box when it gets focus.
+        #region Events
+        /////////////////////////////////
+        // Events.
+
+        // (GetsFocus) This event empties the "nieuw genre" text box when it gets focus.
         private void TxtNewGenreGetsFocus(object sender, RoutedEventArgs e)
         {
             if (txtNewGenreInput.Text != "Nieuw genre")
             {
-                
+
             }
             else
             {
                 txtNewGenreInput.Text = string.Empty;
             }
         }
+        #endregion
+
     }
 }

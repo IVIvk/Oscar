@@ -23,7 +23,14 @@ namespace Oscar.UI.WPF.Pages
         public EditGenre()
         {
             InitializeComponent();
-        }        
+        }
+
+        // Functions.
+        // This function fills in the text boxes with the properties inside the singleton object.
+        private void FillTextBoxes()
+        {
+            txtGenre.Text = SingletonClasses.SingletonGenre.OnlyInstanceOfGenre.GenreName;
+        }
 
         private void BtnEditGenre_Click(object sender, RoutedEventArgs e)
         {
@@ -38,7 +45,8 @@ namespace Oscar.UI.WPF.Pages
 
         private void LoadedEditGenre(object sender, RoutedEventArgs e)
         {
-
+            // Fill the text boxes with the properties inside the singleton object.
+            FillTextBoxes();            
         }
     }
 }
