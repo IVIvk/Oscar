@@ -104,5 +104,10 @@ namespace Oscar.UI.WPF
             }
             ShowGenres();
         }
+
+        private void BtnEditGenre_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.EditGenre());
+        }
     }
 }

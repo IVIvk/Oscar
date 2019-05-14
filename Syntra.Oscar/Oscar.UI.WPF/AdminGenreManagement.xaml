@@ -21,9 +21,17 @@
         <ListView Name="lstGenres" Grid.Row="1"></ListView>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <Button Name="btnAddGenre" Content="Voeg genre toe" Click="BtnAddGenre_Click"></Button>
-            <TextBox Name="txtNewGenreInput" Text="nieuwe genre"></TextBox>
-            <Button Name="btnDeleteGenre" Content="Verwijder genre" Click="BtnDeleteGenre_Click"></Button>
+            <Button x:Name="btnAddGenre" 
+                    Content="Voeg genre toe" 
+                    Click="BtnAddGenre_Click"></Button>
+            <TextBox x:Name="txtNewGenreInput" 
+                     Text="nieuwe genre"></TextBox>
+            <Button x:Name="btnDeleteGenre" 
+                    Content="Verwijder genre" 
+                    Click="BtnDeleteGenre_Click"></Button>
+            <Button x:Name="btnEditGenre"
+                    Content="Verander genre"
+                    Click="BtnEditGenre_Click"></Button>
         </StackPanel>
     </Grid>
 </Page>

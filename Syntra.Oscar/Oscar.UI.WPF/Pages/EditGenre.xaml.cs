@@ -24,5 +24,26 @@ namespace Oscar.UI.WPF.Pages
         {
             InitializeComponent();
         }
+
+        private void BtnAddGenre_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEditGenre_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AdminGenreManagement());
+
+        }
+
+        private void LoadedEditGenre(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
