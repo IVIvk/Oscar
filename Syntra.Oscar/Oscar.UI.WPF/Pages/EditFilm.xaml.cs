@@ -28,12 +28,13 @@ namespace Oscar.UI.WPF
         // Variable.
         bool allTextBoxesFilled = false;
 
+        #region Buttons
         //////////////////////////////////
         // Butons.
 
         // Button "Toevoegen".
         private void BtnAddFilm_Click(object sender, RoutedEventArgs e)
-        {                       
+        {
             // Make sure that the text boxes are filled in.
             allTextBoxesFilled = CheckNoEmptyTextBoxes();
 
@@ -56,7 +57,7 @@ namespace Oscar.UI.WPF
 
                 // Navigate back to the AdminFilmsManagement page.
                 NavigationService.Navigate(new Pages.AdminFilmsManagement());
-            }                       
+            }
         }
 
         // Button "Veranderen".
@@ -84,7 +85,7 @@ namespace Oscar.UI.WPF
 
                 // Navigate back to the AdminFilmsManagement page.
                 NavigationService.Navigate(new Pages.AdminFilmsManagement());
-            }                
+            }
         }
 
         // Button "Annuleren".
@@ -92,7 +93,9 @@ namespace Oscar.UI.WPF
         {
             NavigationService.Navigate(new Pages.AdminFilmsManagement());
         }
+        #endregion
 
+        #region Functions
         //////////////////////////////////
         // Functions.
 
@@ -114,8 +117,8 @@ namespace Oscar.UI.WPF
             txtDuration.Text = Convert.ToString(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmLengthInMinutes);
             txtPlot.Text = SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmPlot;
             txtGenre.Text = Convert.ToString(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmGenre);
-        } 
-        
+        }
+
         // This function checks that all text boxes are filled in.
         private bool CheckNoEmptyTextBoxes()
         {
@@ -126,7 +129,7 @@ namespace Oscar.UI.WPF
 
             // Check that film title is filled in.
             content = txtFilmTitle.Text;
-            isNotFilled = string.IsNullOrWhiteSpace(content);            
+            isNotFilled = string.IsNullOrWhiteSpace(content);
             if (isNotFilled != true)
             {
                 // Check that the plot is filled in.
@@ -153,11 +156,13 @@ namespace Oscar.UI.WPF
                             }
                         }
                     }
-                }                
-            }            
+                }
+            }
             return succes;
         }
+        #endregion
 
+        #region Loaded event
         //////////////////////////////////
         // Loaded event.
         //
@@ -175,7 +180,7 @@ namespace Oscar.UI.WPF
                 btnEditFilm.IsEnabled = true;
 
                 // Fill the text boxes with the properties inside the singleton object.
-                FillTextBoxes();                
+                FillTextBoxes();
             }
             else
             {
@@ -187,7 +192,9 @@ namespace Oscar.UI.WPF
                 ClearTextBoxes();
             }
         }
+        #endregion
 
-        
+
+
     }
 }
