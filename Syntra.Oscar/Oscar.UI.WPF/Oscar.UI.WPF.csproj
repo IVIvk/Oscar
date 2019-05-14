@@ -81,6 +81,9 @@
     <Compile Include="Pages\EditFilm.xaml.cs">
       <DependentUpon>EditFilm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\EditGenre.xaml.cs">
+      <DependentUpon>EditGenre.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\UlaInterface.xaml.cs">
       <DependentUpon>UlaInterface.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\EditFilm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EditGenre.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
