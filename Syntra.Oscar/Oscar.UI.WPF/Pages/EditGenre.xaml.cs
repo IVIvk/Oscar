@@ -23,12 +23,7 @@ namespace Oscar.UI.WPF.Pages
         public EditGenre()
         {
             InitializeComponent();
-        }
-
-        private void BtnAddGenre_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        }        
 
         private void BtnEditGenre_Click(object sender, RoutedEventArgs e)
         {
