@@ -103,9 +103,7 @@ namespace Oscar.UI.WPF.Pages
             catch (Exception)
             {
 
-            }
-
-            
+            }            
         }
         #endregion
         

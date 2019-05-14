@@ -88,6 +88,7 @@
       <DependentUpon>UlaInterface.xaml</DependentUpon>
     </Compile>
     <Compile Include="SingletonClasses\SingletonFilms.cs" />
+    <Compile Include="SingletonClasses\SingletonGenre.cs" />
     <Compile Include="UserPages\AllReviewsOfOneFilm.xaml.cs">
       <DependentUpon>AllReviewsOfOneFilm.xaml</DependentUpon>
     </Compile>

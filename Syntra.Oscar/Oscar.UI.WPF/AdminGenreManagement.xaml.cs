@@ -33,6 +33,8 @@ namespace Oscar.UI.WPF
             ShowGenres();
         }
 
+
+        // Functions.
         private void ShowGenres()
         {
             GenresList = DatabaseManager.Instance.GenreRepository.GetGenres().ToList();
@@ -50,6 +52,29 @@ namespace Oscar.UI.WPF
             }
         }
 
+
+        // This function loads the selected genre properties into the singleton class.
+        private void LoadGenreIntoSingleton()
+        {
+            try
+            {
+        //        ListViewItem item = ((ListViewItem)LstFilms.SelectedItem);
+        //        Films film = (Films)item.Tag;
+
+        //        SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId = Guid.Parse(txtFilmId.Text);
+        //        SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmTitle = txtFilmTitle.Text;
+        //        SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.ReleaseYear = Convert.ToInt32(txtFilmReleaseYear.Text);
+        //        SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmLengthInMinutes = Convert.ToInt32(txtFilmDuration.Text);
+        //        SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmPlot = txtFilmPlot.Text;
+
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        // Buttons.
         private void BtnAddGenre_Click(object sender, RoutedEventArgs e)
         {
             Genres newGenre = new Genres();
@@ -105,6 +130,7 @@ namespace Oscar.UI.WPF
             ShowGenres();
         }
 
+        // When clicking the edit button, the user navigates to the EditGenre page.
         private void BtnEditGenre_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Pages.EditGenre());
