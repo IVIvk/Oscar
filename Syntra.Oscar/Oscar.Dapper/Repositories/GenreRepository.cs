@@ -45,7 +45,7 @@ namespace Oscar.Dapper.Repositories
             }
         }
 
-        public void DeleteGenre (Genres genre)
+        public void DeleteGenre(Genres genre)
         {
             using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
             {
@@ -71,5 +71,21 @@ namespace Oscar.Dapper.Repositories
                     ");
             }
         }
+
+        public void UpdateGenre(Genres genre)
+        {
+            using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute(@"
+                    UPDATE Genres 
+                    SET GenreName = @GenreName 
+                    WHERE GenreId = @GenreId
+                    ", new
+                {
+                    GenreId = genre.GenreId,
+                    GenreName = genre.GenreName
+                });
+            }
+        }        
     }
 }

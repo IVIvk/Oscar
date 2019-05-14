@@ -27,12 +27,7 @@ namespace Oscar.UI.WPF
         {
             InitializeComponent();
         }
-
-        private void Genre_OnLoaded(object sender, RoutedEventArgs e)
-        {
-            ShowGenres();
-        }
-
+        
         #region Functions
         /////////////////////////////////
         // Functions.
@@ -54,7 +49,6 @@ namespace Oscar.UI.WPF
                 lstGenres.Items.Add(item);
             }
         }
-
 
         // This function loads the selected genre properties into the singleton class.
         private void LoadGenreIntoSingleton()
@@ -158,6 +152,12 @@ namespace Oscar.UI.WPF
             {
                 txtNewGenreInput.Text = string.Empty;
             }
+        }
+
+        // (Loaded) 
+        private void Genre_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            ShowGenres();
         }
         #endregion
 
