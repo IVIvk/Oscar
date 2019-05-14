@@ -25,7 +25,7 @@
                     Content="Voeg genre toe" 
                     Click="BtnAddGenre_Click"></Button>
             <TextBox x:Name="txtNewGenreInput" 
-                     Text="nieuwe genre"></TextBox>
+                     Text="Nieuw genre" GotFocus="TxtNewGenreGetsFocus"></TextBox>
             <Button x:Name="btnDeleteGenre" 
                     Content="Verwijder genre" 
                     Click="BtnDeleteGenre_Click"></Button>

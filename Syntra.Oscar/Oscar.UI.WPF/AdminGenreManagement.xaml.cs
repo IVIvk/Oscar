@@ -109,5 +109,18 @@ namespace Oscar.UI.WPF
         {
             NavigationService.Navigate(new Pages.EditGenre());
         }
+
+        // This event empties the "nieuw genre" text box when it gets focus.
+        private void TxtNewGenreGetsFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtNewGenreInput.Text != "Nieuw genre")
+            {
+                
+            }
+            else
+            {
+                txtNewGenreInput.Text = string.Empty;
+            }
+        }
     }
 }
