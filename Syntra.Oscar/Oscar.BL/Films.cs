@@ -13,7 +13,7 @@ namespace Oscar.BL
         private string filmTitle = string.Empty;
         private int releaseYear = 0;
         private int filmLengthInMinutes = 0;
-        private Genres filmGenre;
+        private List<Genres> filmGenre;
         private double filmRating = -1;
         private int amountOfRatings = 0;
         private string filmPlot = string.Empty;
@@ -50,7 +50,7 @@ namespace Oscar.BL
             set { filmLengthInMinutes = value; }
         }
 
-        public Genres FilmGenre
+        public List<Genres> FilmGenre
         {
             get { return filmGenre; }
             set { filmGenre = value; }
