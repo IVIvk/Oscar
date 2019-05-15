@@ -105,7 +105,6 @@ namespace Oscar.Dapper.Repositories
                     FilmId = film.FilmId
                 });
             }
-
         }        
 
         // Get the films of a genre. 
