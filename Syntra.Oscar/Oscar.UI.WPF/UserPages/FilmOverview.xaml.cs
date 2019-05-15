@@ -41,12 +41,15 @@ namespace Oscar.UI.WPF.UserPages
                 List<Review> listOfReviews = DatabaseManager.Instance.ReviewRepository.GetReviewsPerFilm(film).ToList();
                 ListViewItem item = new ListViewItem();
 
-                film.UpdateRating(listOfReviews);
+                if (txtSearchFilm.Text == "Search Film" || film.FilmTitle.ToLower().Contains(txtSearchFilm.Text.ToLower()))
+                {
+                    film.UpdateRating(listOfReviews);
 
-                item.Tag = film;
-                item.Content = film.FilmTitle + " (" + film.FilmRating + ")";
+                    item.Tag = film;
+                    item.Content = film.FilmTitle + " (" + film.FilmRating + ")";
 
-                lstFilmOverview.Items.Add(item);
+                    lstFilmOverview.Items.Add(item);
+                }   
             }
         }
 
@@ -101,6 +104,19 @@ namespace Oscar.UI.WPF.UserPages
             {
                 MessageBox.Show("Selecteer eerst een film");
             }
+        }
+
+        private void txtSearchFilmFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtSearchFilm.Text == "Search Film")
+            {
+                txtSearchFilm.Text = String.Empty;
+            }
+        }
+
+        private void TxtSearchFilm_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ShowFilms();
         }
     }
 }

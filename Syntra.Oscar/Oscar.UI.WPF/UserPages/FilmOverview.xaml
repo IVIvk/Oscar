@@ -21,10 +21,10 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBox Name="txtSearchFilm" Grid.Row="1" Text="Search Film"></TextBox>
-
         <ListView Name="lstFilmOverview" Grid.Row="3" MouseDoubleClick="DoubleClickOnItem"></ListView>
-
+        
+        <TextBox Name="txtSearchFilm" Grid.Row="1" Text="Search Film" GotFocus="txtSearchFilmFocus" TextChanged="TxtSearchFilm_TextChanged"></TextBox>
+        
         <StackPanel Grid.Column="1" Grid.Row="3">
             <Label Content="Titel" Height="25"></Label>
             <Label Content="Jaar van uitgave" Height="25"></Label>
