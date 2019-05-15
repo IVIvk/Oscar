@@ -118,15 +118,18 @@ namespace Oscar.BL
         // A function to update the general filmrating
         public void UpdateRating(List<Review> allReviewsOfThisFilm)
         {
-            int numberOfReviews = allReviewsOfThisFilm.Count;
+            amountOfRatings = allReviewsOfThisFilm.Count;
             int allRatingsCombined = 0;
 
-            foreach (var review in allReviewsOfThisFilm)
+            if (amountOfRatings > 0)
             {
-                allRatingsCombined = +review.ReviewScore;
-            }
+                foreach (var review in allReviewsOfThisFilm)
+                {
+                    allRatingsCombined = allRatingsCombined + review.ReviewScore;
+                }
 
-            filmRating = allRatingsCombined / numberOfReviews;
+                filmRating = allRatingsCombined / amountOfRatings;
+            }
         }
     }
 }

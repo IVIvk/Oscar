@@ -21,7 +21,8 @@ namespace Oscar.UI.WPF.UserPages
     /// </summary>
     public partial class WriteReview : Page
     {
-        List<Review> reviewList = new List<Review>();
+        List<Review> reviewListUser = new List<Review>();
+        List<Review> reviewListFilm = new List<Review>();
         Films selectedFilm = new Films();
         bool newReview = true;
         Review userReview = new Review();
@@ -32,14 +33,21 @@ namespace Oscar.UI.WPF.UserPages
             InitializeComponent();
             selectedFilm = film;
             currentUser = user;
-            reviewList = DatabaseManager.Instance.ReviewRepository.GetReviewsPerUser(user).ToList();
+            reviewListUser = DatabaseManager.Instance.ReviewRepository.GetReviewsPerUser(user).ToList();
+            reviewListFilm = DatabaseManager.Instance.ReviewRepository.GetReviewsPerFilm(film).ToList();
 
-            foreach (var review in reviewList)
+            foreach (var reviewUser in reviewListUser)
             {
-                if (review.UserId == user.userId)
+                if (reviewUser.UserId == user.userId)
                 {
-                    userReview = review;
-                    newReview = false;
+                    foreach (var reviewFilm in reviewListFilm)
+                    {
+                        if (reviewFilm.UserId == reviewUser.UserId)
+                        {
+                            userReview = reviewUser;
+                            newReview = false;
+                        }
+                    }
                 }
                 else
                 {
@@ -63,8 +71,9 @@ namespace Oscar.UI.WPF.UserPages
 
             if (newReview)
             {
-                userReview.ReviewId = Guid.NewGuid(); ;
+                userReview.ReviewId = Guid.NewGuid();
                 DatabaseManager.Instance.ReviewRepository.SaveReview(selectedFilm, currentUser, userReview);
+                newReview = false;
             }
             else
             {
