@@ -160,8 +160,12 @@ namespace Oscar.UI.WPF.Pages
         {
             ShowFilms();            
         }
+
         #endregion
 
+        private void BtnAdjustGenres_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }
