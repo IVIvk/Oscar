@@ -59,6 +59,7 @@ namespace Oscar.UI.WPF.UserPages
             txtFilmReleaseYear.Text = Convert.ToString(film.ReleaseYear);
             txtFilmDuration.Text = Convert.ToString(film.FilmLengthInMinutes);
             txtReview.Text = userReview.ReviewContent;
+            txtFilmPlot.Text = Convert.ToString(film.FilmPlot);
             cbbScore.Text = Convert.ToString(userReview.ReviewScore);
             
         }
