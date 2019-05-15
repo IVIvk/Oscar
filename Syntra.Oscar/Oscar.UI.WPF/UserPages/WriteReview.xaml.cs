@@ -79,6 +79,8 @@ namespace Oscar.UI.WPF.UserPages
             {
                 DatabaseManager.Instance.ReviewRepository.UpdateReview(userReview);
             }
+
+            NavigationService.Navigate(new FilmOverview(currentUser));
         }
     }
 }
