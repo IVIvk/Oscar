@@ -85,5 +85,25 @@ namespace Oscar.Dapper.Repositories
                 });
             }
         }
+
+        // Get the genre of a film. 
+        // The below query returns the genre that is linked to the film.
+        //SELECT Films.FilmTitle, Genres.GenreName
+        //FROM Films
+        //INNER JOIN GenresInFilms
+        //ON GenresInFilms.FilmId = Films.FilmId
+        //INNER JOIN Genres
+        //ON Genres.GenreId = GenresInFilms.GenreId
+        //WHERE Films.FilmId = INPUT
+
+        // Get the films of a genre. 
+        // The below query returns al the films of the input genre.
+        //SELECT Films.FilmTitle, Genres.GenreName
+        //FROM Films
+        //INNER JOIN GenresInFilms
+        //ON GenresInFilms.FilmId = Films.FilmId
+        //INNER JOIN Genres
+        //ON Genres.GenreId = GenresInFilms.GenreId
+        //WHERE Genres.GenreId = INPUT
     }
 }
