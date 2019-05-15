@@ -63,7 +63,6 @@
                      Height="26"></TextBox>            
             <!-- Genre text box -->
             <TextBox x:Name="txtFilmGenre" 
-                     IsEnabled="False"
                      Height="25"></TextBox>            
             <!-- Duration text box -->
             <TextBox x:Name="txtFilmDuration" 
@@ -99,10 +98,6 @@
             <Button x:Name="btnLoadFilms" 
                     Content="Ververs lijst" 
                     Click="BtnLoadFilms_Click"></Button>
-            <!-- Changes genres-->
-            <Button Name="btnAdjustGenres"
-                    Content="Wijzig genre" 
-                    Click="BtnAdjustGenres_Click"></Button>
         </StackPanel>
     </Grid>
 </Page>
