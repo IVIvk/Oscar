@@ -50,7 +50,7 @@ namespace Oscar.UI.WPF
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(new Pages.UlaInterface());
+            frmUserFrame.NavigationService.Navigate(new Pages.UlaInterface());
         }
     }
 }
