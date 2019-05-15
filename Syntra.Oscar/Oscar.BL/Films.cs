@@ -128,7 +128,7 @@ namespace Oscar.BL
                     allRatingsCombined = allRatingsCombined + review.ReviewScore;
                 }
 
-                filmRating = allRatingsCombined / amountOfRatings;
+                filmRating = Convert.ToDouble(allRatingsCombined) / Convert.ToDouble(amountOfRatings);
             }
         }
     }
