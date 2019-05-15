@@ -23,8 +23,6 @@ namespace Oscar.UI.WPF.Pages
     {
         // List to hold all the Films objects.
         List<Films> filmsList = new List<Films>();
-        List<Genres> genreList = new List<Genres>();
-        List<string> genreListOnlyName = new List<string>();
 
         public AdminFilmsManagement()
         {
@@ -41,7 +39,7 @@ namespace Oscar.UI.WPF.Pages
             txtFilmId.Text = string.Empty;
             txtFilmTitle.Text = string.Empty;
             txtFilmReleaseYear.Text = string.Empty;
-            //txtFilmGenre.Text = string.Empty;
+            txtFilmGenre.Text = string.Empty;
             txtFilmDuration.Text = string.Empty;
             txtFilmPlot.Text = string.Empty;
         }
@@ -77,7 +75,6 @@ namespace Oscar.UI.WPF.Pages
                 txtFilmReleaseYear.Text = Convert.ToString(film.ReleaseYear);
                 // Genres requires some more SQL queries before it can be shown.
                 //txtFilmGenre.Text = Convert.ToString(film.FilmGenre);
-                cbbFilmGenre.Text = film.FilmGenre.GenreName;
                 txtFilmDuration.Text = Convert.ToString(film.FilmLengthInMinutes);
                 txtFilmPlot.Text = Convert.ToString(film.FilmPlot);
 
@@ -161,18 +158,14 @@ namespace Oscar.UI.WPF.Pages
         #region LoadedEvent
         private void AdminFilmsManagementLoaded(object sender, RoutedEventArgs e)
         {
-            genreList = DatabaseManager.Instance.GenreRepository.GetGenres().ToList();
-
-            foreach (var genre in genreList)
-            {
-                genreListOnlyName.Add(genre.GenreName);
-            }
-
-            cbbFilmGenre.ItemsSource = genreListOnlyName;
-           
             ShowFilms();            
+        }
+
+        #endregion
+
+        private void BtnAdjustGenres_Click(object sender, RoutedEventArgs e)
+        {
 
         }
-        #endregion
     }
 }
