@@ -27,16 +27,19 @@ namespace Oscar.UI.WPF.UserPages
         public FilmOverview(User currentUser)
         {
             InitializeComponent();
+
+            filmsList = DatabaseManager.Instance.FilmRepository.GetFilms().ToList();
+
             user = currentUser;
         }
 
-        private void ShowFilms()
+        private void ShowFilms(List<Films> filmsListInFunction)
         {
-            filmsList = DatabaseManager.Instance.FilmRepository.GetFilms().ToList();
+            
 
             lstFilmOverview.Items.Clear();
 
-            foreach (Films film in filmsList)
+            foreach (Films film in filmsListInFunction)
             {
                 List<Review> listOfReviews = DatabaseManager.Instance.ReviewRepository.GetReviewsPerFilm(film).ToList();
                 ListViewItem item = new ListViewItem();
@@ -49,13 +52,13 @@ namespace Oscar.UI.WPF.UserPages
                     item.Content = film.FilmTitle + " (" + film.FilmRating + ")";
 
                     lstFilmOverview.Items.Add(item);
-                }   
+                }
             }
         }
 
         private void OverviewFilmsLoaded(object sender, RoutedEventArgs e)
         {
-            ShowFilms();
+            ShowFilms(filmsList);
         }
 
         private void DoubleClickOnItem(object sender, MouseButtonEventArgs e)
@@ -116,7 +119,47 @@ namespace Oscar.UI.WPF.UserPages
 
         private void TxtSearchFilm_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ShowFilms();
+            ShowFilms(filmsList);
+        }
+
+        private void BtnTopFive_Click(object sender, RoutedEventArgs e)
+        {
+            List<Films> filmTopFive = new List<Films>();
+            Films usedFilm = new Films();
+            Films cachedFilm = new Films();
+
+            filmTopFive.Add(filmsList[0]);
+
+            int lenghtOfList = 1;
+
+            foreach (Films film in filmsList)
+            {
+                usedFilm = film;
+
+                if (usedFilm.FilmId != filmTopFive[0].FilmId)
+                {
+                    int i = 0;
+                    do
+                    {
+                        if (usedFilm.FilmRating > filmTopFive[i].FilmRating)
+                        {
+                            cachedFilm = filmTopFive[i];
+                            filmTopFive[i] = usedFilm;
+                            usedFilm = cachedFilm;
+                        }
+
+                        i++;
+                    } while (i < lenghtOfList);
+
+                    if (lenghtOfList < 5)
+                    {
+                        filmTopFive.Add(usedFilm);
+                        lenghtOfList++;
+                    }
+                }
+            }
+
+            ShowFilms(filmTopFive);
         }
     }
 }
