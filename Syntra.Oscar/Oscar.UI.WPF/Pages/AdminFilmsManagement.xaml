@@ -62,7 +62,7 @@
             <TextBox x:Name="txtFilmReleaseYear" 
                      Height="26"></TextBox>            
             <!-- Genre combo box -->
-            <ComboBox x:Name="txtFilmGenre" 
+            <ComboBox x:Name="cbbFilmGenre" 
                      Height="25"></ComboBox>            
             <!-- Duration text box -->
             <TextBox x:Name="txtFilmDuration" 
