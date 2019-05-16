@@ -88,24 +88,25 @@ namespace Oscar.Dapper.Repositories
         }
 
         // This function will return an IEnumerable filled with the genres associated with a film.
-        public IEnumerable<Genres> GetGenresForFilm(Films film)
+        public IEnumerable<Genres> GetGenresForFilm(Guid film)
         {
             using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
             {
-                return connection.Query<Genres>(@"
-                        SELECT GenreName, GenreId
+                return connection.Query<Genres>
+                    (@"
+                        SELECT GenreName, Genres.GenreId
                         FROM Genres
                         INNER JOIN GenresInFilms
                             ON Genres.GenreId = GenresInFilms.GenreId
                         INNER JOIN Films
                             ON GenresInFilms.FilmId = Films.FilmId
-                        WHERE FilmId = @FilmId
+                        WHERE Films.FilmId = @FilmId
                         ", new
                 {
-                    FilmId = film.FilmId
+                    FilmId = film
                 });
             }
-        }        
+        }       
 
         // Get the films of a genre. 
         // The below query returns al the films of the input genre.

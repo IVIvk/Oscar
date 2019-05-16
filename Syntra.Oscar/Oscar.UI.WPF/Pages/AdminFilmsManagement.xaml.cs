@@ -39,10 +39,10 @@ namespace Oscar.UI.WPF.Pages
         {
             txtFilmId.Text = string.Empty;
             txtFilmTitle.Text = string.Empty;
-            txtFilmReleaseYear.Text = string.Empty;
-            txtFilmGenre.Text = string.Empty;
+            txtFilmReleaseYear.Text = string.Empty;            
             txtFilmDuration.Text = string.Empty;
             txtFilmPlot.Text = string.Empty;
+            lstGenres.Items.Clear();
         }
 
         // This function Adds all the films inside the database into the ListView.
@@ -68,6 +68,7 @@ namespace Oscar.UI.WPF.Pages
         {
             try
             {
+                
                 ListViewItem item = ((ListViewItem)LstFilms.SelectedItem);
                 Films film = (Films)item.Tag;
 
@@ -77,8 +78,9 @@ namespace Oscar.UI.WPF.Pages
                 txtFilmDuration.Text = Convert.ToString(film.FilmLengthInMinutes);
                 txtFilmPlot.Text = Convert.ToString(film.FilmPlot);
 
+                
                 lstGenres.Items.Clear();
-                genresList = DatabaseManager.Instance.FilmRepository.GetGenresForFilm(film).ToList();
+                genresList = DatabaseManager.Instance.FilmRepository.GetGenresForFilm(film.FilmId.Value).ToList();
                 
 
                 foreach (Genres genre in genresList)
