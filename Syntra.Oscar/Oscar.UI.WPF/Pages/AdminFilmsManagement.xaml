@@ -42,8 +42,8 @@
             <Label Content="Film Id" Height="25"></Label>
             <Label Content="Titel" Height="25"></Label>
             <Label Content="Jaar van uitgave" Height="26"></Label>
-            <Label Content="Genre" Height="25"></Label>
             <Label Content="Duur (in minuten)" Height="25"></Label>
+            <Label Content="Genres" Height="60"></Label>
             <Label Content="Plot" Height="25"></Label>
         </StackPanel>
 
@@ -62,15 +62,17 @@
             <TextBox x:Name="txtFilmReleaseYear" 
                      Height="26"></TextBox>            
             <!-- Genre text box -->
-            <TextBox x:Name="txtFilmGenre" 
-                     Height="25"></TextBox>            
             <!-- Duration text box -->
             <TextBox x:Name="txtFilmDuration" 
                      Height="25"></TextBox>
+            <!-- Genres ListView -->
+            <ListView x:Name="lstGenres"
+                      Height="60"
+                      FontSize="12"></ListView>
             <!-- Plot text box -->
             <TextBox x:Name="txtFilmPlot"
                      VerticalScrollBarVisibility="Visible"
-                     Height="300"
+                     Height="240"
                      TextWrapping="Wrap"
                      AcceptsReturn="True"
                      AcceptsTab="True"

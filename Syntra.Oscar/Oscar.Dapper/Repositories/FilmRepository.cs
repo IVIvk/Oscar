@@ -64,6 +64,7 @@ namespace Oscar.Dapper.Repositories
             }
         }
 
+        // This function updates the Film properties inside the database.
         public void UpdateFilm(Films film)
         {
             using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
@@ -85,5 +86,36 @@ namespace Oscar.Dapper.Repositories
                 });
             }
         }
+
+        // This function will return an IEnumerable filled with the genres associated with a film.
+        public IEnumerable<Genres> GetGenresForFilm(Guid film)
+        {
+            using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                return connection.Query<Genres>
+                    (@"
+                        SELECT GenreName, Genres.GenreId
+                        FROM Genres
+                        INNER JOIN GenresInFilms
+                            ON Genres.GenreId = GenresInFilms.GenreId
+                        INNER JOIN Films
+                            ON GenresInFilms.FilmId = Films.FilmId
+                        WHERE Films.FilmId = @FilmId
+                        ", new
+                {
+                    FilmId = film
+                });
+            }
+        }       
+
+        // Get the films of a genre. 
+        // The below query returns al the films of the input genre.
+        //SELECT Films.FilmTitle, Genres.GenreName
+        //FROM Films
+        //INNER JOIN GenresInFilms
+        //ON GenresInFilms.FilmId = Films.FilmId
+        //INNER JOIN Genres
+        //ON Genres.GenreId = GenresInFilms.GenreId
+        //WHERE Genres.GenreId = INPUT
     }
 }

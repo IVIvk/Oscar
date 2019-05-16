@@ -23,6 +23,7 @@ namespace Oscar.UI.WPF.Pages
     {
         // List to hold all the Films objects.
         List<Films> filmsList = new List<Films>();
+        List<Genres> genresList = new List<Genres>();
 
         public AdminFilmsManagement()
         {
@@ -38,10 +39,10 @@ namespace Oscar.UI.WPF.Pages
         {
             txtFilmId.Text = string.Empty;
             txtFilmTitle.Text = string.Empty;
-            txtFilmReleaseYear.Text = string.Empty;
-            txtFilmGenre.Text = string.Empty;
+            txtFilmReleaseYear.Text = string.Empty;            
             txtFilmDuration.Text = string.Empty;
             txtFilmPlot.Text = string.Empty;
+            lstGenres.Items.Clear();
         }
 
         // This function Adds all the films inside the database into the ListView.
@@ -67,17 +68,28 @@ namespace Oscar.UI.WPF.Pages
         {
             try
             {
+                
                 ListViewItem item = ((ListViewItem)LstFilms.SelectedItem);
                 Films film = (Films)item.Tag;
 
                 txtFilmId.Text = Convert.ToString(film.FilmId);
                 txtFilmTitle.Text = Convert.ToString(film.FilmTitle);
                 txtFilmReleaseYear.Text = Convert.ToString(film.ReleaseYear);
-                // Genres requires some more SQL queries before it can be shown.
-                //txtFilmGenre.Text = Convert.ToString(film.FilmGenre);
                 txtFilmDuration.Text = Convert.ToString(film.FilmLengthInMinutes);
                 txtFilmPlot.Text = Convert.ToString(film.FilmPlot);
 
+                
+                lstGenres.Items.Clear();
+                genresList = DatabaseManager.Instance.FilmRepository.GetGenresForFilm(film.FilmId.Value).ToList();
+                
+
+                foreach (Genres genre in genresList)
+                {
+                    ListViewItem itemGenre = new ListViewItem();
+                    itemGenre.Tag = genre;
+                    itemGenre.Content = genre.GenreName;
+                    lstGenres.Items.Add(itemGenre);
+                }  
             }
             catch (Exception)
             {
