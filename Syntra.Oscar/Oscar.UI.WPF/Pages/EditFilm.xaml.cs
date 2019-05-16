@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Oscar.Dapper;
 
 namespace Oscar.UI.WPF
 {
@@ -28,6 +29,7 @@ namespace Oscar.UI.WPF
         // Variable.
         bool allTextBoxesFilled = false;
         List<Genres> GenresList = new List<Genres>();
+        List<Genres> GenresListForLinking = new List<Genres>();
 
         #region Buttons
         //////////////////////////////////
@@ -41,20 +43,45 @@ namespace Oscar.UI.WPF
 
             if (allTextBoxesFilled != false)
             {
-                // Create new instance of Films.
+                // Create new instance of Films and Genres.
                 Films film = new Films();
-
-                // Load all the text into this instance.
+                Genres genre = new Genres();
+                ComboBoxItem selection = new ComboBoxItem();
+                
+                // Load all the data into these instances.
                 film.FilmId = Guid.NewGuid();
                 film.FilmTitle = txtFilmTitle.Text;
                 film.ReleaseYear = Convert.ToInt32(txtReleaseYear.Text);
                 film.FilmLengthInMinutes = Convert.ToInt32(txtDuration.Text);
                 film.FilmPlot = txtPlot.Text;
-                // Genre still needs some attention.
-                //film.FilmGenre = txtGenre.Text;
 
                 // Insert the new film into the database.
                 DatabaseManager.Instance.FilmRepository.InsertFilm(film);
+
+                //genre.GenreId = selection.Tag
+
+                // Get the genreId
+                //genre.GenreId = cmbGenre.SelectedItem;
+                //GenresListForLinking = DatabaseManager.Instance.GenreRepository.GetGenreId(selection.Tag).ToList();
+
+                //GenresList = DatabaseManager.Instance.GenreRepository.GetGenres().ToList();
+
+                //foreach (Genres genre in GenresList)
+                //{
+                //    ListViewItem item = new ListViewItem();
+
+                //    item.Tag = genre;
+                //    item.Content = genre.GenreName.ToString();
+
+                //    cmbGenre.Items.Add(item);
+                //}
+                // Insert link between genre and film.
+
+                //genre.GenreId = cmbGenre.SelectedItem.
+                //genre = selection.Tag;
+                //item.Content = genre.GenreName.ToString();
+
+                //cmbGenre.Items.Add(item);
 
                 // Navigate back to the AdminFilmsManagement page.
                 NavigationService.Navigate(new Pages.AdminFilmsManagement());
@@ -149,12 +176,10 @@ namespace Oscar.UI.WPF
                         if (isNotFilled != true)
                         {
                             // Check that the genre is filled in.
-                            //content = txtGenre.Text;
-                            //isNotFilled = string.IsNullOrWhiteSpace(content);
-                            //if (isNotFilled != true)
-                            //{
-                            succes = true;
-                            //}
+                            if (cmbGenre.SelectedIndex > -1)
+                            {
+                                succes = true;
+                            }                            
                         }
                     }
                 }

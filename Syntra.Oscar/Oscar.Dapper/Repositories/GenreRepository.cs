@@ -12,6 +12,19 @@ namespace Oscar.Dapper.Repositories
         /////////////////////////////////////////
         // Functions.
 
+        // This function returns the GenreId of a Genres object.
+        public IEnumerable<Genres> GetGenreId(Genres genre)
+        {
+            using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                return connection.Query<Genres>
+                    (@"
+                    SELECT GenreId
+                    FROM Genres
+                    ");
+            }
+        }
+
         // This function gets all the properties that belong to all the Genres objects form the database.
         // It places these properties in an Genres object.
         // It places these objects into an IEnumerable "list".
@@ -74,7 +87,7 @@ namespace Oscar.Dapper.Repositories
         }
 
         // This function inserts a link between a film and a genre inside the GenresInFIlms table.
-        public void InsertLinkGenreAndFilm (Genres genre, Films film)
+        public void InsertLinkGenreAndFilm(Genres genre, Films film)
         {
             using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
             {
@@ -91,7 +104,7 @@ namespace Oscar.Dapper.Repositories
         }
 
         // This function deletes the links between a film and its genres inside the GenresInFilms table.
-        public void DeleteLinkGenreAndFilm (Films film)
+        public void DeleteLinkGenreAndFilm(Films film)
         {
             using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
             {
@@ -105,9 +118,9 @@ namespace Oscar.Dapper.Repositories
                     });
             }
         }
-        
+
         // This function updates the Genre name.
-                public void UpdateGenre(Genres genre)
+        public void UpdateGenre(Genres genre)
         {
             using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
             {
@@ -121,6 +134,6 @@ namespace Oscar.Dapper.Repositories
                     GenreName = genre.GenreName
                 });
             }
-        }        
+        }
     }
 }
