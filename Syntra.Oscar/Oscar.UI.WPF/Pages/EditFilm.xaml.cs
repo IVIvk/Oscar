@@ -27,6 +27,7 @@ namespace Oscar.UI.WPF
         }
         // Variable.
         bool allTextBoxesFilled = false;
+        List<Genres> GenresList = new List<Genres>();
 
         #region Buttons
         //////////////////////////////////
@@ -106,7 +107,7 @@ namespace Oscar.UI.WPF
             txtReleaseYear.Text = string.Empty;
             txtDuration.Text = string.Empty;
             txtPlot.Text = string.Empty;
-            txtGenre.Text = string.Empty;
+            
         }
 
         // This function fills in the text boxes with the properties inside the singleton object.
@@ -116,7 +117,7 @@ namespace Oscar.UI.WPF
             txtReleaseYear.Text = Convert.ToString(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.ReleaseYear);
             txtDuration.Text = Convert.ToString(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmLengthInMinutes);
             txtPlot.Text = SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmPlot;
-            txtGenre.Text = Convert.ToString(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmGenre);
+            
         }
 
         // This function checks that all text boxes are filled in.
@@ -148,12 +149,12 @@ namespace Oscar.UI.WPF
                         if (isNotFilled != true)
                         {
                             // Check that the genre is filled in.
-                            content = txtGenre.Text;
-                            isNotFilled = string.IsNullOrWhiteSpace(content);
-                            if (isNotFilled != true)
-                            {
+                            //content = txtGenre.Text;
+                            //isNotFilled = string.IsNullOrWhiteSpace(content);
+                            //if (isNotFilled != true)
+                            //{
                                 succes = true;
-                            }
+                            //}
                         }
                     }
                 }
@@ -191,10 +192,31 @@ namespace Oscar.UI.WPF
                 // Clear the text boxes.
                 ClearTextBoxes();
             }
+            FillGenreComboBox();
         }
+
+
         #endregion
 
+        private void CmbGenre_GotFocus(object sender, RoutedEventArgs e)
+        {
+            
+        } 
+        
+        // This function Gets the genres from the database and puts them inside the genre ComboBox
+        private void FillGenreComboBox()
+        {
+            GenresList = DatabaseManager.Instance.GenreRepository.GetGenres().ToList();
 
+            foreach (Genres genre in GenresList)
+            {
+                ListViewItem item = new ListViewItem();
 
+                item.Tag = genre;
+                item.Content = genre.GenreName.ToString();
+
+                cmbGenre.Items.Add(item);
+            }
+        }
     }
 }

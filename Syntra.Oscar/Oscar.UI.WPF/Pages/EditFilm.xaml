@@ -107,14 +107,15 @@
                      Padding="0 1 0 1">
             </TextBox>
 
-            <!-- TextBox "Genre". -->
-            <TextBox x:Name="txtGenre"
+            <!-- ComboBox "Genre". -->
+            <ComboBox x:Name="cmbGenre"></ComboBox>/>
+            <!--<TextBox x:Name="txtGenre"
                      Height="24"
                      Margin="0 0 0 1"
                      FontSize="12"
                      VerticalAlignment="Center"
                      Padding="0 1 0 1">
-            </TextBox>
+            </TextBox>-->
 
             <!-- TextBox "Duur". -->
             <TextBox x:Name="txtDuration"
