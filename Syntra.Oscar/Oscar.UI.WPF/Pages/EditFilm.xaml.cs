@@ -107,7 +107,7 @@ namespace Oscar.UI.WPF
             txtReleaseYear.Text = string.Empty;
             txtDuration.Text = string.Empty;
             txtPlot.Text = string.Empty;
-            
+
         }
 
         // This function fills in the text boxes with the properties inside the singleton object.
@@ -117,7 +117,7 @@ namespace Oscar.UI.WPF
             txtReleaseYear.Text = Convert.ToString(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.ReleaseYear);
             txtDuration.Text = Convert.ToString(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmLengthInMinutes);
             txtPlot.Text = SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmPlot;
-            
+
         }
 
         // This function checks that all text boxes are filled in.
@@ -153,13 +153,30 @@ namespace Oscar.UI.WPF
                             //isNotFilled = string.IsNullOrWhiteSpace(content);
                             //if (isNotFilled != true)
                             //{
-                                succes = true;
+                            succes = true;
                             //}
                         }
                     }
                 }
             }
             return succes;
+        }
+
+        // This function Gets the genres from the database and puts them inside the genre ComboBox.
+        // The user can choose the genre from this ComboBox.
+        private void FillGenreComboBox()
+        {
+            GenresList = DatabaseManager.Instance.GenreRepository.GetGenres().ToList();
+
+            foreach (Genres genre in GenresList)
+            {
+                ListViewItem item = new ListViewItem();
+
+                item.Tag = genre;
+                item.Content = genre.GenreName.ToString();
+
+                cmbGenre.Items.Add(item);
+            }
         }
         #endregion
 
@@ -194,24 +211,6 @@ namespace Oscar.UI.WPF
             }
             FillGenreComboBox();
         }
-
-
         #endregion
-         
-        // This function Gets the genres from the database and puts them inside the genre ComboBox
-        private void FillGenreComboBox()
-        {
-            GenresList = DatabaseManager.Instance.GenreRepository.GetGenres().ToList();
-
-            foreach (Genres genre in GenresList)
-            {
-                ListViewItem item = new ListViewItem();
-
-                item.Tag = genre;
-                item.Content = genre.GenreName.ToString();
-
-                cmbGenre.Items.Add(item);
-            }
-        }
     }
 }
