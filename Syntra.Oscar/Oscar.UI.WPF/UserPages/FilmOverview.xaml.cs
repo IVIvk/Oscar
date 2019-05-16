@@ -33,11 +33,15 @@ namespace Oscar.UI.WPF.UserPages
         private void ShowFilms()
         {
             filmsList = DatabaseManager.Instance.FilmRepository.GetFilms().ToList();
+
             lstFilmOverview.Items.Clear();
 
             foreach (Films film in filmsList)
             {
+                List<Review> listOfReviews = DatabaseManager.Instance.ReviewRepository.GetReviewsPerFilm(film).ToList();
                 ListViewItem item = new ListViewItem();
+
+                film.UpdateRating(listOfReviews);
 
                 item.Tag = film;
                 item.Content = film.FilmTitle + " (" + film.FilmRating + ")";
@@ -61,6 +65,7 @@ namespace Oscar.UI.WPF.UserPages
                 txtFilmTitle.Text = Convert.ToString(film.FilmTitle);
                 txtFilmReleaseYear.Text = Convert.ToString(film.ReleaseYear);
                 txtFilmDuration.Text = Convert.ToString(film.FilmLengthInMinutes);
+                txtFilmPlot.Text = Convert.ToString(film.FilmPlot);
             }
             catch (Exception)
             {

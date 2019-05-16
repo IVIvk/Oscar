@@ -115,5 +115,21 @@ namespace Oscar.BL
         }
         /////////////////////////////////////////
 
+        // A function to update the general filmrating
+        public void UpdateRating(List<Review> allReviewsOfThisFilm)
+        {
+            amountOfRatings = allReviewsOfThisFilm.Count;
+            int allRatingsCombined = 0;
+
+            if (amountOfRatings > 0)
+            {
+                foreach (var review in allReviewsOfThisFilm)
+                {
+                    allRatingsCombined = allRatingsCombined + review.ReviewScore;
+                }
+
+                filmRating = allRatingsCombined / amountOfRatings;
+            }
+        }
     }
 }
