@@ -197,12 +197,7 @@ namespace Oscar.UI.WPF
 
 
         #endregion
-
-        private void CmbGenre_GotFocus(object sender, RoutedEventArgs e)
-        {
-            
-        } 
-        
+         
         // This function Gets the genres from the database and puts them inside the genre ComboBox
         private void FillGenreComboBox()
         {
