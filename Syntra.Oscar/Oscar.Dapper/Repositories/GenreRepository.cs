@@ -60,6 +60,7 @@ namespace Oscar.Dapper.Repositories
             }
         }
 
+        // This function returns a IEnumerable list with all links between films and genres.
         public IEnumerable<GenresInFilms> GetGenresInFilms()
         {
             using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
@@ -72,7 +73,41 @@ namespace Oscar.Dapper.Repositories
             }
         }
 
-        public void UpdateGenre(Genres genre)
+        // This function inserts a link between a film and a genre inside the GenresInFIlms table.
+        public void InsertLinkGenreAndFilm (Genres genre, Films film)
+        {
+            using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute
+                    (@"
+                        INSERT INTO GenresInFilms(GenreId, FilmId)
+                        VALUES (@GenreId, @FilmId)                      
+                        ", new
+                    {
+                        GenreId = genre.GenreId,
+                        FilmName = film.FilmId
+                    });
+            }
+        }
+
+        // This function deletes the links between a film and its genres inside the GenresInFilms table.
+        public void DeleteLinkGenreAndFilm (Films film)
+        {
+            using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute
+                    (@"
+                        DELETE FROM GenresInFilms
+                        WHERE FilmId = @FilmId
+                        ", new
+                    {
+                        FilmId = film.FilmId
+                    });
+            }
+        }
+        
+        // This function updates the Genre name.
+                public void UpdateGenre(Genres genre)
         {
             using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
             {
