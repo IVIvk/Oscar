@@ -19,17 +19,17 @@
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.15*"></RowDefinition>
-            <RowDefinition Height="0.15*"></RowDefinition>
-            <RowDefinition Height="0.15*"></RowDefinition>
             <RowDefinition Height="0.3*"></RowDefinition>
+            <RowDefinition Height="0.3*"></RowDefinition>
+            <RowDefinition Height="0.3*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Frame Name="OscarsFrame" Content=" "></Frame>
         <Grid Grid.Column="0" Grid.Row="0">
             <Image Name="Logo" HorizontalAlignment="Left" Height="36" VerticalAlignment="Top" Width="100"/>
         </Grid>
-        <Grid Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="5">
+        <Grid Grid.Row="0" Grid.ColumnSpan="6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="60*"/>
                 <ColumnDefinition Width="601*"/>
@@ -71,16 +71,28 @@
             <TextBox Name="Omschrijving" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap"
                      AcceptsReturn="True" Text="Film omschrijving" BorderBrush="Gray" BorderThickness="0.5" Padding="5"></TextBox>
         </Grid>
-        <Grid Grid.Column="5" Grid.Row="2">
+        <Grid Grid.Column="5" Grid.Row="2" Height="57" Margin="0.333,0,0,0" Grid.RowSpan="2" VerticalAlignment="Top">
             <MediaElement Name="Trailer" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="132"/>
         </Grid>
-        <Grid Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="5">
-            <TextBox Name="Review" Text="My review" BorderBrush="Gray" BorderThickness="0.5" Padding="5" GotFocus="Review_GotFocus"></TextBox>
-            
+        <Grid Grid.Column="0" Grid.Row="3">
+            <StackPanel>
+                <TextBox Name="Score"
+                     AcceptsReturn="True" Text="Score:" BorderBrush="Gray" BorderThickness="0.5" Padding="5" Height="94" Margin="0,0,0.333,0"></TextBox>
+            </StackPanel>
+            <StackPanel>
+                <RadioButton Name ="Score5" Content="5" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                <RadioButton Name ="Score4" Content="4" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                <RadioButton Name ="Score3" Content="3" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                <RadioButton Name ="Score2" Content="2" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                <RadioButton Name ="Score1" Content="1" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+            </StackPanel>
+            </Grid>
+        <Grid Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="4">
+            <TextBox Name="Review" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" Text="My review" BorderBrush="Gray" BorderThickness="0.5" Padding="5" GotFocus="Review_GotFocus"></TextBox>
         </Grid>
         <Grid Grid.Column="5" Grid.Row="3">
             <StackPanel>
-                <Button Name="Toevoegen" Content="Update" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Click="Toevoegen_Click"/>
+                <Button Name="Toevoegen" Content="Toon lijst" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Click="Toevoegen_Click"/>
                 <Button x:Name="Zoek" Content="Zoek" Width="75" Margin="5" Click="Zoek_Click"></Button>
                 <Button x:Name="ReviewToevoegen" Content="Voeg review toe" Click="ReviewToevoegen_Click"></Button>
             </StackPanel>
