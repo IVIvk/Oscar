@@ -106,7 +106,7 @@ namespace Oscar.UI.WPF
 
                 foreach (var genreInFilm in genresInFilmsList)
                 {
-                    if (genreInFilm.FilmId == genre.GenreId)
+                    if (genreInFilm.GenreId == genre.GenreId)
                     {
                         checkIfGenreIsInFilms = true;
                     }
