@@ -30,6 +30,7 @@ namespace Oscar.UI.WPF
         bool allTextBoxesFilled = false;
         List<Genres> GenresList = new List<Genres>();
         List<Genres> GenresListForLinking = new List<Genres>();
+        List<Actors> ActorsList = new List<Actors>();
         int index = -1;
 
         #region Buttons
@@ -203,6 +204,25 @@ namespace Oscar.UI.WPF
         }
         #endregion
 
+        // This function Gets the genres from the database and puts them inside the genre ComboBox.
+        // The user can choose the genre from this ComboBox.
+        private void FillActorsComboBox()
+        {
+            ActorsList = DatabaseManager.Instance.ActorRepository.GetActors().ToList();
+
+            foreach (Actors actor in ActorsList)
+            {
+                ListViewItem item = new ListViewItem();
+
+                // Genre object.
+                item.Tag = actor;
+                // Display Genre name.
+                item.Content = actor.LastName.ToString() + " " + actor.FirstName.ToString();
+                // Add the item to the list.
+                cmbActors.Items.Add(item);
+            }
+        }
+
         #region Loaded event
         //////////////////////////////////
         // Loaded event.
@@ -233,6 +253,7 @@ namespace Oscar.UI.WPF
                 ClearTextBoxes();
             }
             FillGenreComboBox();
+            FillActorsComboBox();
         }
         #endregion
     }
