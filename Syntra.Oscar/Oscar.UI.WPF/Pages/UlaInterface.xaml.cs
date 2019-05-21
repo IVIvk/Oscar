@@ -105,5 +105,7 @@ namespace Oscar.UI.WPF.Pages
             DatabaseManager.Instance.ReviewRepository.SaveReview(film, gebruiker, review);
             // Films film, User user, Review review
         }
+
+
     }
 }
