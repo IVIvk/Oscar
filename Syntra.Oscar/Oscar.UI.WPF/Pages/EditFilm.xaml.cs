@@ -83,6 +83,7 @@ namespace Oscar.UI.WPF
             {
                 // Create new instance of Films.
                 Films film = new Films();
+                Genres genre = new Genres();
 
                 // Load all the text into this instance.
                 film.FilmId = SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId;
@@ -93,6 +94,18 @@ namespace Oscar.UI.WPF
 
                 // Edit the film data in the database.
                 DatabaseManager.Instance.FilmRepository.UpdateFilm(film);
+
+                // Get the index of the selection inside the Gneres combo box.
+                index = cmbGenre.SelectedIndex;
+
+                // Use this index to get the genres object from the GenresList.
+                genre = GenresList[index];
+
+                // Delete existing links between films and genres.
+                DatabaseManager.Instance.GenreRepository.DeleteLinkGenreAndFilm(film);
+
+                // Insert the link between the film and the genre.
+                DatabaseManager.Instance.GenreRepository.InsertLinkGenreAndFilm(genre, film);
 
                 // Navigate back to the AdminFilmsManagement page.
                 NavigationService.Navigate(new Pages.AdminFilmsManagement());
