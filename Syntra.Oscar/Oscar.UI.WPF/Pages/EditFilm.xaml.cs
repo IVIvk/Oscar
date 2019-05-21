@@ -59,18 +59,14 @@ namespace Oscar.UI.WPF
                 // Insert the new film into the database.
                 DatabaseManager.Instance.FilmRepository.InsertFilm(film);
 
+                // Get the index of the selection inside the Gneres combo box.
                 index = cmbGenre.SelectedIndex;
+
+                // Use this index to get the genres object from the GenresList.
                 genre = GenresList[index];
 
-                DatabaseManager.Instance.GenreRepository.InsertLinkGenreAndFilm(genre, film);
-
-                //txtGenreId.Text = cmbGenre.SelectedItem.ToString();
-                //MessageBox.Show(txtGenreId.Text);
-                //genre = (Genres) cmbGenre.SelectedItem;
-                ////MessageBox.Show(genre.GenreId.ToString());
-                //genre.GenreId = selection.Tag
-
-                
+                // Insert the link between the film and the genre.
+                DatabaseManager.Instance.GenreRepository.InsertLinkGenreAndFilm(genre, film);                
 
                 // Navigate back to the AdminFilmsManagement page.
                 NavigationService.Navigate(new Pages.AdminFilmsManagement());
