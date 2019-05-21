@@ -44,6 +44,7 @@
             <Label Content="Jaar van uitgave" Height="26"></Label>
             <Label Content="Duur (in minuten)" Height="25"></Label>
             <Label Content="Genres" Height="60"></Label>
+            <Label Content="Acteurs" Height="60"></Label>
             <Label Content="Plot" Height="25"></Label>
         </StackPanel>
 
@@ -67,6 +68,10 @@
                      Height="25"></TextBox>
             <!-- Genres ListView -->
             <ListView x:Name="lstGenres"
+                      Height="60"
+                      FontSize="12"></ListView>
+            <!-- Acteurs ListView -->
+            <ListView x:Name="lstActors"
                       Height="60"
                       FontSize="12"></ListView>
             <!-- Plot text box -->
