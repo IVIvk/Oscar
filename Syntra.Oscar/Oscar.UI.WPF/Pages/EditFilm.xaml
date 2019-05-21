@@ -73,7 +73,7 @@
             <Button x:Name="btnAddActor"
                     Content="Voeg toe"
                     FontSize="12"
-                    Height="25"></Button>
+                    Height="25" Click="BtnAddActor_Click"></Button>
             
             <!-- Button "Acteurs verwijderen" -->
             <Button x:Name="btnDeleteActor"

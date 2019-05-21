@@ -118,6 +118,22 @@ namespace Oscar.UI.WPF
         {
             NavigationService.Navigate(new Pages.AdminFilmsManagement());
         }
+
+        private void BtnAddActor_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Actors actor = new Actors();
+                
+                actor = ActorsList[cmbActors.SelectedIndex];
+
+                DatabaseManager.Instance.ActorRepository.InsertLinkActorAndFilm(actor, SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Geen acteur geselecteerd");
+            }
+        }
         #endregion
 
         #region Functions
@@ -202,7 +218,7 @@ namespace Oscar.UI.WPF
                 cmbGenre.Items.Add(item);
             }
         }
-        #endregion
+        
 
         // This function Gets the genres from the database and puts them inside the genre ComboBox.
         // The user can choose the genre from this ComboBox.
@@ -222,7 +238,7 @@ namespace Oscar.UI.WPF
                 cmbActors.Items.Add(item);
             }
         }
-
+        #endregion
         #region Loaded event
         //////////////////////////////////
         // Loaded event.
@@ -256,5 +272,7 @@ namespace Oscar.UI.WPF
             FillActorsComboBox();
         }
         #endregion
+
+        
     }
 }
