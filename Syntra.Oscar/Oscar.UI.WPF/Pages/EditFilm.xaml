@@ -53,6 +53,34 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="left">
             </Label>
+
+            <!-- Label "Acteurs toevoegen". -->
+            <Label Content="Acteurs toevoegen"
+                   FontSize="12"
+                   Height="25"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="left">
+            </Label>
+            
+            <!-- Label "Acteurs". -->
+            <Label Content="Acteurs"
+                   FontSize="12"
+                   Height="25"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="left">
+            </Label>
+            <!-- Button "Acteurs toevoegen" -->
+            <Button x:Name="btnAddActor"
+                    Content="Voeg toe"
+                    FontSize="12"
+                    Height="25"></Button>
+            
+            <!-- Button "Acteurs verwijderen" -->
+            <Button x:Name="btnDeleteActor"
+                    Content="Verwijder"
+                    FontSize="12"
+                    Height="25"></Button>
+
             <!-- Label "Plot". -->
             <Label Content="Plot"
                    FontSize="12"
@@ -119,6 +147,13 @@
                      Padding="0 1 0 1">
             </TextBox>
 
+            <!-- ComboBox "acteurs". -->
+            <ComboBox x:Name="cmbActors"></ComboBox>
+            
+            <!-- Listview "Acteurs" -->
+            <ListView x:Name="lstActors"
+                      Height="90"></ListView>
+            
             <!-- TextBox "Plot". -->
             <TextBox x:Name="txtPlot" 
                      VerticalScrollBarVisibility="Visible"
