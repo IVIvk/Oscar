@@ -30,6 +30,7 @@ namespace Oscar.UI.WPF
         bool allTextBoxesFilled = false;
         List<Genres> GenresList = new List<Genres>();
         List<Genres> GenresListForLinking = new List<Genres>();
+        int index = -1;
 
         #region Buttons
         //////////////////////////////////
@@ -58,30 +59,18 @@ namespace Oscar.UI.WPF
                 // Insert the new film into the database.
                 DatabaseManager.Instance.FilmRepository.InsertFilm(film);
 
+                index = cmbGenre.SelectedIndex;
+                genre = GenresList[index];
+
+                DatabaseManager.Instance.GenreRepository.InsertLinkGenreAndFilm(genre, film);
+
+                //txtGenreId.Text = cmbGenre.SelectedItem.ToString();
+                //MessageBox.Show(txtGenreId.Text);
+                //genre = (Genres) cmbGenre.SelectedItem;
+                ////MessageBox.Show(genre.GenreId.ToString());
                 //genre.GenreId = selection.Tag
 
-                // Get the genreId
-                //genre.GenreId = cmbGenre.SelectedItem;
-                //GenresListForLinking = DatabaseManager.Instance.GenreRepository.GetGenreId(selection.Tag).ToList();
-
-                //GenresList = DatabaseManager.Instance.GenreRepository.GetGenres().ToList();
-
-                //foreach (Genres genre in GenresList)
-                //{
-                //    ListViewItem item = new ListViewItem();
-
-                //    item.Tag = genre;
-                //    item.Content = genre.GenreName.ToString();
-
-                //    cmbGenre.Items.Add(item);
-                //}
-                // Insert link between genre and film.
-
-                //genre.GenreId = cmbGenre.SelectedItem.
-                //genre = selection.Tag;
-                //item.Content = genre.GenreName.ToString();
-
-                //cmbGenre.Items.Add(item);
+                
 
                 // Navigate back to the AdminFilmsManagement page.
                 NavigationService.Navigate(new Pages.AdminFilmsManagement());
@@ -105,8 +94,6 @@ namespace Oscar.UI.WPF
                 film.ReleaseYear = Convert.ToInt32(txtReleaseYear.Text);
                 film.FilmLengthInMinutes = Convert.ToInt32(txtDuration.Text);
                 film.FilmPlot = txtPlot.Text;
-                // Genre still needs some attention.
-                //film.FilmGenre = txtGenre.Text;
 
                 // Edit the film data in the database.
                 DatabaseManager.Instance.FilmRepository.UpdateFilm(film);
@@ -197,9 +184,11 @@ namespace Oscar.UI.WPF
             {
                 ListViewItem item = new ListViewItem();
 
+                // Genre object.
                 item.Tag = genre;
+                // Display Genre name.
                 item.Content = genre.GenreName.ToString();
-
+                // Add the item to the list.
                 cmbGenre.Items.Add(item);
             }
         }

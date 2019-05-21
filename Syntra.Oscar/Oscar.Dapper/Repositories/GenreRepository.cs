@@ -98,7 +98,7 @@ namespace Oscar.Dapper.Repositories
                         ", new
                     {
                         GenreId = genre.GenreId,
-                        FilmName = film.FilmId
+                        FilmId = film.FilmId
                     });
             }
         }
