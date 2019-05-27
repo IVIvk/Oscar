@@ -127,7 +127,7 @@ namespace Oscar.UI.WPF
                 
                 actor = ActorsList[cmbActors.SelectedIndex];
 
-                DatabaseManager.Instance.ActorRepository.InsertLinkActorAndFilm(actor, SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId);
+                DatabaseManager.Instance.ActorRepository.InsertLinkActorAndFilm(actor, SingletonClasses.SingletonFilms.OnlyInstanceOfFilms);
             }
             catch (Exception)
             {
