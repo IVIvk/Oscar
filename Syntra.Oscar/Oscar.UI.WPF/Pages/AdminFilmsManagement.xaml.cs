@@ -83,8 +83,8 @@ namespace Oscar.UI.WPF.Pages
                 
                 lstGenres.Items.Clear();
                 // The genres that are linked to the selected film are put in a list.
-                genresList = DatabaseManager.Instance.FilmRepository.GetGenresForFilm(film.FilmId.Value).ToList();
-
+                genresList = DatabaseManager.Instance.FilmRepository.GetGenresForFilm(film.FilmId.Value).ToList();              
+                
                 // All genres from this list get added to the "Genre" ListView.
                 foreach (Genres genre in genresList)
                 {
@@ -116,10 +116,9 @@ namespace Oscar.UI.WPF.Pages
                 SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmLengthInMinutes = Convert.ToInt32(txtFilmDuration.Text);
                 SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmPlot = txtFilmPlot.Text;
 
-
-                SingletonClasses.SingletonGenre.OnlyInstanceOfGenre.GenreId = Guid.Parse()
-                    lstGenres.SelectedIndex
-                    genr
+                // Load the genre of the selected film into the SingletonGenre.
+                //SingletonClasses.SingletonGenre.OnlyInstanceOfGenre.GenresList = genresList;
+                SingletonClasses.SingletonGenre.OnlyInstanceOfGenre.GenreId = (genresList[0].GenreId);
 
             }
             catch (Exception)

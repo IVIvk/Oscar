@@ -33,6 +33,8 @@ namespace Oscar.UI.WPF
         List<Actors> ActorsList = new List<Actors>();
         List<Actors> actorsInFilmList = new List<Actors>();
         int index = -1;
+        int selectedIndex = -1;
+        Guid genreId;
 
         #region Buttons
         //////////////////////////////////
@@ -239,6 +241,21 @@ namespace Oscar.UI.WPF
                 cmbGenre.Items.Add(item);
             }
         }
+
+        private void FillGenreComboBoxWhenEditing ()
+        {
+            genreId = Guid.Parse(SingletonClasses.SingletonGenre.OnlyInstanceOfGenre.GenreId.ToString());
+                        
+            for (int i = 0; i < GenresList.Count; i++)
+            {
+                if (genreId == GenresList[i].GenreId)
+                {
+                    selectedIndex = i;                    
+                }
+            }
+            cmbGenre.SelectedIndex = selectedIndex;
+            
+        }
         
 
         // This function Gets the genres from the database and puts them inside the genre ComboBox.
@@ -287,6 +304,7 @@ namespace Oscar.UI.WPF
         //      The Edit button will be greyed out.
         private void LoadedEditFilm(object sender, RoutedEventArgs e)
         {
+            FillGenreComboBox();
             if (SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmTitle != string.Empty)
             {
                 // Disable the add button and enable the Edit button.
@@ -295,6 +313,7 @@ namespace Oscar.UI.WPF
 
                 // Fill the text boxes with the properties inside the singleton object.
                 FillTextBoxes();
+                FillGenreComboBoxWhenEditing();
             }
             else
             {
@@ -305,7 +324,7 @@ namespace Oscar.UI.WPF
                 // Clear the text boxes.
                 ClearTextBoxes();
             }
-            FillGenreComboBox();
+            
             FillActorsComboBox();
         }
 
