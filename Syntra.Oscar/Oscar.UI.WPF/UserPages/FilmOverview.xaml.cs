@@ -23,6 +23,7 @@ namespace Oscar.UI.WPF.UserPages
     {
         List<Films> filmsList = new List<Films>();
         List<Genres> genresList = new List<Genres>();
+        List<Actors> actorsInFilmList = new List<Actors>();
         User user = new User();
 
         public FilmOverview(User currentUser)
@@ -36,8 +37,6 @@ namespace Oscar.UI.WPF.UserPages
 
         private void ShowFilms(List<Films> filmsListInFunction)
         {
-            
-
             lstFilmOverview.Items.Clear();
 
             foreach (Films film in filmsListInFunction)
@@ -86,6 +85,8 @@ namespace Oscar.UI.WPF.UserPages
                     itemGenre.Content = genre.GenreName;
                     lstGenres.Items.Add(itemGenre);
                 }
+
+                ShowActorsOfSelectedFilm(film);
             }
             catch (Exception)
             {
@@ -174,6 +175,21 @@ namespace Oscar.UI.WPF.UserPages
             }
 
             ShowFilms(filmTopFive);
+        }
+
+        private void ShowActorsOfSelectedFilm(Films film)
+        {
+            actorsInFilmList = DatabaseManager.Instance.FilmRepository.GetActorsForFilm(film.FilmId.Value).ToList();
+
+            lstActors.Items.Clear();
+
+            foreach (Actors actor in actorsInFilmList)
+            {
+                ListViewItem itemActor = new ListViewItem();
+                itemActor.Tag = actor;
+                itemActor.Content = actor.FirstName + " " + actor.LastName;
+                lstActors.Items.Add(itemActor);
+            }
         }
     }
 }
