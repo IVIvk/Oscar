@@ -25,6 +25,7 @@ namespace Oscar.UI.WPF.Pages
         List<Films> filmsList = new List<Films>();
         List<Genres> genresList = new List<Genres>();
         List<Actors> actorsInFilmList = new List<Actors>();
+        int selectionIndex = -1;
 
         public AdminFilmsManagement()
         {
@@ -113,7 +114,12 @@ namespace Oscar.UI.WPF.Pages
                 SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmTitle = txtFilmTitle.Text;
                 SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.ReleaseYear = Convert.ToInt32(txtFilmReleaseYear.Text);
                 SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmLengthInMinutes = Convert.ToInt32(txtFilmDuration.Text);
-                SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmPlot = txtFilmPlot.Text;                
+                SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmPlot = txtFilmPlot.Text;
+
+
+                SingletonClasses.SingletonGenre.OnlyInstanceOfGenre.GenreId = Guid.Parse()
+                    lstGenres.SelectedIndex
+                    genr
 
             }
             catch (Exception)
