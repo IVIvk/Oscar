@@ -31,6 +31,7 @@ namespace Oscar.UI.WPF
         List<Genres> GenresList = new List<Genres>();
         List<Genres> GenresListForLinking = new List<Genres>();
         List<Actors> ActorsList = new List<Actors>();
+        List<Actors> actorsInFilmList = new List<Actors>();
         int index = -1;
 
         #region Buttons
@@ -128,9 +129,29 @@ namespace Oscar.UI.WPF
                 actor = ActorsList[cmbActors.SelectedIndex];
 
                 DatabaseManager.Instance.ActorRepository.InsertLinkActorAndFilm(actor, SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId);
+
+                FillTextBoxes();
             }
             catch (Exception)
             {
+                MessageBox.Show("Geen acteur geselecteerd");
+            }
+        }
+
+        private void BtnDeleteActor_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ListViewItem item = ((ListViewItem)lstActors.SelectedItem);
+                Actors actor = (Actors)item.Tag;
+
+                DatabaseManager.Instance.ActorRepository.DeleteLinkActorAndFilm(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId.Value, actor);
+
+                FillTextBoxes();
+            }
+            catch (Exception)
+            {
+
                 MessageBox.Show("Geen acteur geselecteerd");
             }
         }
@@ -157,7 +178,7 @@ namespace Oscar.UI.WPF
             txtReleaseYear.Text = Convert.ToString(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.ReleaseYear);
             txtDuration.Text = Convert.ToString(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmLengthInMinutes);
             txtPlot.Text = SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmPlot;
-
+            ShowActorsOfSelectedFilm();
         }
 
         // This function checks that all text boxes are filled in.
@@ -238,6 +259,22 @@ namespace Oscar.UI.WPF
                 cmbActors.Items.Add(item);
             }
         }
+
+        //This function shows the actors of the selected film.
+        private void ShowActorsOfSelectedFilm()
+        {
+            actorsInFilmList = DatabaseManager.Instance.FilmRepository.GetActorsForFilm(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId.Value).ToList();
+
+            lstActors.Items.Clear();
+
+            foreach (Actors actor in actorsInFilmList)
+            {
+                ListViewItem itemActor = new ListViewItem();
+                itemActor.Tag = actor;
+                itemActor.Content = actor.FirstName + " " + actor.LastName;
+                lstActors.Items.Add(itemActor);
+            }
+        }
         #endregion
         #region Loaded event
         //////////////////////////////////
@@ -271,6 +308,7 @@ namespace Oscar.UI.WPF
             FillGenreComboBox();
             FillActorsComboBox();
         }
+
         #endregion
 
         

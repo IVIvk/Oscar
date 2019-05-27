@@ -26,7 +26,8 @@ namespace Oscar.Dapper.Repositories
                     ");
             }
         }
-
+        
+        
         public IEnumerable<ActorsInFilms> GetActorsInFilms()
         {
             using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
@@ -38,7 +39,7 @@ namespace Oscar.Dapper.Repositories
                     ");
             }
         }
-
+        
         // This function inserts the properties of the parameter (Actors object) 
         // Into the database as a new entry in the Actors table.
         public void InsertActor(Actors actor)
@@ -101,6 +102,23 @@ namespace Oscar.Dapper.Repositories
                     {
                         ActorId = actor.ActorId,
                         FilmId = guidFilm
+                    });
+            }
+        }
+
+        // This function deletes the links between a film and its genres inside the GenresInFilms table.
+        public void DeleteLinkActorAndFilm(Nullable<Guid> FilmId, Actors actor)
+        {
+            using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute
+                    (@"
+                        DELETE FROM ActorsInFilms
+                        WHERE FilmId = @FilmId AND ActorId = @ActorId
+                        ", new
+                    {
+                        FilmId = FilmId,
+                        ActorId = actor.ActorId
                     });
             }
         }
