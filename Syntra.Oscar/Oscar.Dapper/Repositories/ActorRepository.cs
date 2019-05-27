@@ -105,5 +105,22 @@ namespace Oscar.Dapper.Repositories
                     });
             }
         }
+
+        // This function deletes the links between a film and its genres inside the GenresInFilms table.
+        public void DeleteLinkActorAndFilm(Nullable<Guid> FilmId, Actors actor)
+        {
+            using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute
+                    (@"
+                        DELETE FROM ActorsInFilms
+                        WHERE FilmId = @FilmId AND ActorId = @ActorId
+                        ", new
+                    {
+                        FilmId = FilmId,
+                        ActorId = actor.ActorId
+                    });
+            }
+        }
     }
 }

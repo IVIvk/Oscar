@@ -79,7 +79,7 @@
             <Button x:Name="btnDeleteActor"
                     Content="Verwijder"
                     FontSize="12"
-                    Height="25"></Button>
+                    Height="25" Click="BtnDeleteActor_Click"></Button>
 
             <!-- Label "Plot". -->
             <Label Content="Plot"

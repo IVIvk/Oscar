@@ -137,6 +137,24 @@ namespace Oscar.UI.WPF
                 MessageBox.Show("Geen acteur geselecteerd");
             }
         }
+
+        private void BtnDeleteActor_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ListViewItem item = ((ListViewItem)lstActors.SelectedItem);
+                Actors actor = (Actors)item.Tag;
+
+                DatabaseManager.Instance.ActorRepository.DeleteLinkActorAndFilm(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId.Value, actor);
+
+                FillTextBoxes();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Geen acteur geselecteerd");
+            }
+        }
         #endregion
 
         #region Functions
@@ -290,6 +308,7 @@ namespace Oscar.UI.WPF
             FillGenreComboBox();
             FillActorsComboBox();
         }
+
         #endregion
 
         
