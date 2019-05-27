@@ -31,6 +31,7 @@
             <Label Content="Titel" Height="25"></Label>
             <Label Content="Jaar van uitgave" Height="25"></Label>
             <Label Content="Genre" Height="25"></Label>
+            <Label Content="Acteurs" Height="90"></Label>
             <Label Content="Duur (in minuten)" Height="25"></Label>
             <Label Content="Plot" Height="25"></Label>
         </StackPanel>
@@ -44,6 +45,7 @@
             <TextBox Name="txtFilmTitle" Height="25"></TextBox>
             <TextBox Name="txtFilmReleaseYear" Height="25"></TextBox>
             <TextBox Name="txtFilmGenre" Height="25"></TextBox>
+            <ListView Name ="lstActors" Height="90"></ListView>
             <TextBox Name="txtFilmDuration" Height="25"></TextBox>
             <TextBox x:Name="txtFilmPlot"
                      VerticalScrollBarVisibility="Visible"
