@@ -89,7 +89,7 @@ namespace Oscar.Dapper.Repositories
         }
 
         // This function inserts a link between a film and an actor inside the ActorsInFilms table.
-        public void InsertLinkActorAndFilm(Actors actor, Films film)
+        public void InsertLinkActorAndFilm(Actors actor, Nullable<Guid> guidFilm)
         {
             using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
             {
@@ -100,7 +100,7 @@ namespace Oscar.Dapper.Repositories
                         ", new
                     {
                         ActorId = actor.ActorId,
-                        FilmId = film.FilmId
+                        FilmId = guidFilm
                     });
             }
         }
