@@ -24,6 +24,7 @@ namespace Oscar.UI.WPF.Pages
         // List to hold all the Films objects.
         List<Films> filmsList = new List<Films>();
         List<Genres> genresList = new List<Genres>();
+        List<Actors> actorsInFilmList = new List<Actors>();
 
         public AdminFilmsManagement()
         {
@@ -89,7 +90,9 @@ namespace Oscar.UI.WPF.Pages
                     itemGenre.Tag = genre;
                     itemGenre.Content = genre.GenreName;
                     lstGenres.Items.Add(itemGenre);
-                }  
+                }
+
+                ShowActorsOfSelectedFilm(film);
             }
             catch (Exception)
             {
@@ -116,6 +119,22 @@ namespace Oscar.UI.WPF.Pages
             {
 
             }            
+        }
+
+        //This function shows the actors of the selected film.
+        private void ShowActorsOfSelectedFilm(Films film)
+        {
+            actorsInFilmList = DatabaseManager.Instance.FilmRepository.GetActorsForFilm(film.FilmId.Value).ToList();
+
+            lstActors.Items.Clear();
+
+            foreach (Actors actor in actorsInFilmList)
+            {
+                ListViewItem itemActor = new ListViewItem();
+                itemActor.Tag = actor;
+                itemActor.Content = actor.FirstName + " " + actor.LastName;
+                lstActors.Items.Add(itemActor);
+            }
         }
         #endregion
         

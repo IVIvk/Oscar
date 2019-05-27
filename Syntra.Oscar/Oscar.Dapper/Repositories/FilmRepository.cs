@@ -106,7 +106,28 @@ namespace Oscar.Dapper.Repositories
                     FilmId = film
                 });
             }
-        }       
+        }
+
+        // This function will return an IEnumerable filled with the actors associated with a film.
+        public IEnumerable<Actors> GetActorsForFilm(Guid film)
+        {
+            using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                return connection.Query<Actors>
+                    (@"
+                        SELECT FirstName, LastName, Actors.ActorId
+                        FROM Actors
+                        INNER JOIN ActorsInFilms
+                            ON Actors.ActorId = ActorsInFilms.ActorId
+                        INNER JOIN Films
+                            ON ActorsInFilms.FilmId = Films.FilmId
+                        WHERE Films.FilmId = @FilmId
+                        ", new
+                    {
+                        FilmId = film
+                    });
+            }
+        }
 
         // Get the films of a genre. 
         // The below query returns al the films of the input genre.
