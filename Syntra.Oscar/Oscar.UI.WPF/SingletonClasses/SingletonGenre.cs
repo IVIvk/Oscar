@@ -17,7 +17,8 @@ namespace Oscar.UI.WPF.SingletonClasses
 
         private Nullable<Guid> genreId;
         private string genreName = string.Empty;
-        
+        private List<Genres> genresList = new List<Genres>();
+
         /////////////////////////////////
         // Properties.        
         public Nullable<Guid> GenreId
@@ -30,6 +31,12 @@ namespace Oscar.UI.WPF.SingletonClasses
         {
             get { return genreName; }
             set { genreName = value; }
+        }
+
+        public List<Genres> GenresList
+        {
+            get { return genresList; }
+            set { genresList = value; }
         }
 
         /////////////////////////////////
