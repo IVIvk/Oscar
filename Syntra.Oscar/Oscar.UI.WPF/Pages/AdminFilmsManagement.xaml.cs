@@ -81,9 +81,10 @@ namespace Oscar.UI.WPF.Pages
 
                 
                 lstGenres.Items.Clear();
+                // The genres that are linked to the selected film are put in a list.
                 genresList = DatabaseManager.Instance.FilmRepository.GetGenresForFilm(film.FilmId.Value).ToList();
-                
 
+                // All genres from this list get added to the "Genre" ListView.
                 foreach (Genres genre in genresList)
                 {
                     ListViewItem itemGenre = new ListViewItem();

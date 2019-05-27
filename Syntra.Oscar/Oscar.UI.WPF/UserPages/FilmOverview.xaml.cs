@@ -62,6 +62,7 @@ namespace Oscar.UI.WPF.UserPages
             ShowFilms(filmsList);
         }
 
+        // This function loads the properties of the selected film into the correct text boxes.
         private void DoubleClickOnItem(object sender, MouseButtonEventArgs e)
         {
             try
@@ -74,8 +75,10 @@ namespace Oscar.UI.WPF.UserPages
                 txtFilmDuration.Text = Convert.ToString(film.FilmLengthInMinutes);
                 txtFilmPlot.Text = Convert.ToString(film.FilmPlot);
 
+                // The genres that are linked to the selected film are put in a list.
                 genresList = DatabaseManager.Instance.FilmRepository.GetGenresForFilm(film.FilmId.Value).ToList();
 
+                // All genres from this list get added to the "Genre" ListView.
                 foreach (Genres genre in genresList)
                 {
                     ListViewItem itemGenre = new ListViewItem();
