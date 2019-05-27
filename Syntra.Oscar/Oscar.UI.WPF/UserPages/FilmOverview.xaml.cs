@@ -22,6 +22,7 @@ namespace Oscar.UI.WPF.UserPages
     public partial class FilmOverview : Page
     {
         List<Films> filmsList = new List<Films>();
+        List<Genres> genresList = new List<Genres>();
         User user = new User();
 
         public FilmOverview(User currentUser)
@@ -72,6 +73,16 @@ namespace Oscar.UI.WPF.UserPages
                 txtFilmReleaseYear.Text = Convert.ToString(film.ReleaseYear);
                 txtFilmDuration.Text = Convert.ToString(film.FilmLengthInMinutes);
                 txtFilmPlot.Text = Convert.ToString(film.FilmPlot);
+
+                genresList = DatabaseManager.Instance.FilmRepository.GetGenresForFilm(film.FilmId.Value).ToList();
+
+                foreach (Genres genre in genresList)
+                {
+                    ListViewItem itemGenre = new ListViewItem();
+                    itemGenre.Tag = genre;
+                    itemGenre.Content = genre.GenreName;
+                    lstGenres.Items.Add(itemGenre);
+                }
             }
             catch (Exception)
             {
