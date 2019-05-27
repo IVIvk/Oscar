@@ -163,9 +163,6 @@
                      AcceptsTab="True"
                      FontSize="12">
             </TextBox>
-            
-            <!-- TextBox "GenreId"-->
-            <TextBox x:Name="txtGenreId"></TextBox>
 
         </StackPanel>
     </Grid>
