@@ -125,12 +125,24 @@ namespace Oscar.UI.WPF
             try
             {
                 Actors actor = new Actors();
+                bool checkActorInList = false;
                 
                 actor = ActorsList[cmbActors.SelectedIndex];
 
-                DatabaseManager.Instance.ActorRepository.InsertLinkActorAndFilm(actor, SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId);
+                foreach (Actors actorInList in actorsInFilmList)
+                {
+                    if (actor.ActorId == actorInList.ActorId)
+                    {
+                        checkActorInList = true;
+                    }
+                }
 
-                FillTextBoxes();
+                if (!checkActorInList)
+                {
+                    DatabaseManager.Instance.ActorRepository.InsertLinkActorAndFilm(actor, SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId);
+
+                    FillTextBoxes();
+                }
             }
             catch (Exception)
             {
