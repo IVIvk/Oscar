@@ -75,8 +75,9 @@ namespace Oscar.UI.WPF
                 DatabaseManager.Instance.GenreRepository.InsertLinkGenreAndFilm(genre, film);
 
                 // Insert an initial rating if a score is selected.
-                // Index -1 = nothing selected
-                // Index 0 = "Geen score"
+                // Index -1 = nothing selected.
+                // Index 0 = "Geen score".
+                // Index 1 to 5 are valid scores.
                 if (cmbScore.SelectedIndex > 0)
                 {
                     // Fill up the userReview with the relevant data, so it can be inserted into the database.
@@ -385,8 +386,13 @@ namespace Oscar.UI.WPF
 
         #endregion
 
+        // This event will check if the score is between 0-5 before enabling the UI to write and inital review.
         private void CmbScore_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // Check for valid scores.
+            // Index -1 = nothing selected.
+            // Index 0 = "Geen score".
+            // Index 1 to 5 are valid scores.
             if (cmbScore.SelectedIndex > 0)
             {
                 txtReview.IsEnabled = true;
@@ -394,6 +400,10 @@ namespace Oscar.UI.WPF
                 {
                     txtReview.Text = string.Empty;
                 }                
+            }
+            else
+            {
+                txtReview.IsEnabled = false;
             }
         }
     }
