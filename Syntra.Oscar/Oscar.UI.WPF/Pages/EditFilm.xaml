@@ -175,7 +175,7 @@
                   Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="120"></ColumnDefinition>
-                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
                 <!-- Label "Initiele review score". -->
@@ -188,7 +188,7 @@
                 <ComboBox Name="cmbScore" 
                           Grid.Column="1" 
                           HorizontalAlignment="Left"
-                          Width="40" Height="26" 
+                          Width="100" Height="26" 
                           VerticalAlignment="Top"
                           Visibility="Visible">
                     <ComboBoxItem Content="Geen score"></ComboBoxItem>
