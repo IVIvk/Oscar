@@ -16,7 +16,7 @@
     <!-- The second column will contain the corresponding text boxes. -->
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="105"></ColumnDefinition>
+            <ColumnDefinition Width="120"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
@@ -25,7 +25,7 @@
             <!-- Label "Titel". -->
             <Label Content="Film titel"
                    FontSize="12"
-                   Height="25"
+                   Height="26"
                    VerticalAlignment="Center"
                    HorizontalAlignment="left">
             </Label>
@@ -41,7 +41,7 @@
             <!-- Label "Genre". -->
             <Label Content="Genre"
                    FontSize="12"
-                   Height="25"
+                   Height="26"
                    VerticalAlignment="Center"
                    HorizontalAlignment="left">
             </Label>
@@ -49,7 +49,7 @@
             <!-- Label "Duur". -->
             <Label Content="Duur (in minuten)"
                    FontSize="12"
-                   Height="25"
+                   Height="26"
                    VerticalAlignment="Center"
                    HorizontalAlignment="left">
             </Label>
@@ -57,7 +57,7 @@
             <!-- Label "Acteurs toevoegen". -->
             <Label Content="Acteurs toevoegen"
                    FontSize="12"
-                   Height="25"
+                   Height="26"
                    VerticalAlignment="Center"
                    HorizontalAlignment="left">
             </Label>
@@ -65,7 +65,7 @@
             <!-- Label "Acteurs". -->
             <Label Content="Acteurs"
                    FontSize="12"
-                   Height="25"
+                   Height="26"
                    VerticalAlignment="Center"
                    HorizontalAlignment="left">
             </Label>
@@ -73,18 +73,22 @@
             <Button x:Name="btnAddActor"
                     Content="Voeg toe"
                     FontSize="12"
-                    Height="25" Click="BtnAddActor_Click"></Button>
+                    Height="26" 
+                    Click="BtnAddActor_Click"
+                    Margin="0 0 5 10"></Button>
             
             <!-- Button "Acteurs verwijderen" -->
             <Button x:Name="btnDeleteActor"
                     Content="Verwijder"
                     FontSize="12"
-                    Height="25" Click="BtnDeleteActor_Click"></Button>
+                    Height="26" 
+                    Click="BtnDeleteActor_Click"
+                    Margin="0 0 5 10"></Button>
 
             <!-- Label "Plot". -->
             <Label Content="Plot"
                    FontSize="12"
-                   Height="25"
+                   Height="26"
                    VerticalAlignment="Center"
                    HorizontalAlignment="left">
             </Label>
@@ -93,7 +97,7 @@
             <Button x:Name="btnAddFilm" 
                     Content="Toevoegen"
                     FontSize="12"
-                    Height="25"
+                    Height="26"
                     Margin="0 50 5 0" Click="BtnAddFilm_Click">
             </Button>
             
@@ -101,7 +105,7 @@
             <Button x:Name="btnEditFilm"
                     Content="Aanpassen"
                     FontSize="12"
-                    Height="25"
+                    Height="26"
                     Margin="0 10 5 0" Click="BtnEditFilm_Click">                
             </Button>
             
@@ -109,7 +113,7 @@
             <Button x:Name="btnCancel" 
                     Content="Annuleren"
                     FontSize="12"
-                    Height="25"
+                    Height="26"
                     Margin="0 10 5 0" Click="BtnCancel_Click">
             </Button>
 
@@ -119,7 +123,7 @@
         <StackPanel Grid.Column="1">
             <!-- TextBox "Titel". -->
             <TextBox x:Name="txtFilmTitle"
-                     Height="24"
+                     Height="26"
                      Margin="0 0 0 1"
                      FontSize="12"
                      VerticalAlignment="Center"
@@ -128,7 +132,7 @@
 
             <!-- TextBox "Jaar van uitgave". -->
             <TextBox x:Name="txtReleaseYear"
-                     Height="25"
+                     Height="26"
                      Margin="0 0 0 1"
                      FontSize="12"
                      VerticalAlignment="Center"
@@ -136,11 +140,12 @@
             </TextBox>
 
             <!-- ComboBox "Genre". -->
-            <ComboBox x:Name="cmbGenre"></ComboBox>
+            <ComboBox x:Name="cmbGenre"
+                      Height="26"></ComboBox>
             
             <!-- TextBox "Duur". -->
             <TextBox x:Name="txtDuration"
-                     Height="24"
+                     Height="26"
                      Margin="0 0 0 1"
                      FontSize="12"
                      VerticalAlignment="Center"
@@ -148,7 +153,8 @@
             </TextBox>
 
             <!-- ComboBox "acteurs". -->
-            <ComboBox x:Name="cmbActors"></ComboBox>
+            <ComboBox x:Name="cmbActors"
+                      Height="26"></ComboBox>
             
             <!-- Listview "Acteurs" -->
             <ListView x:Name="lstActors"
@@ -157,12 +163,35 @@
             <!-- TextBox "Plot". -->
             <TextBox x:Name="txtPlot" 
                      VerticalScrollBarVisibility="Visible"
-                     Height="300"
+                     Height="150"
                      TextWrapping="Wrap"
                      AcceptsReturn="True"
                      AcceptsTab="True"
                      FontSize="12">
             </TextBox>
+            <Grid HorizontalAlignment="Center"
+                  Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"></ColumnDefinition>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                
+                <Label Content="Initiele review score"
+                       Height="26"
+                       Grid.Column="0">                    
+                </Label>
+                <ComboBox Name="cbbScore" 
+                          Grid.Column="1" 
+                          HorizontalAlignment="Left"
+                          Width="40">
+                    <ComboBoxItem Content="0"></ComboBoxItem>
+                    <ComboBoxItem Content="1"></ComboBoxItem>
+                    <ComboBoxItem Content="2"></ComboBoxItem>
+                    <ComboBoxItem Content="3"></ComboBoxItem>
+                    <ComboBoxItem Content="4"></ComboBoxItem>
+                    <ComboBoxItem Content="5"></ComboBoxItem>
+                </ComboBox>
+            </Grid>
 
         </StackPanel>
     </Grid>
