@@ -78,6 +78,7 @@ namespace Oscar.UI.WPF.UserPages
                 genresList = DatabaseManager.Instance.FilmRepository.GetGenresForFilm(film.FilmId.Value).ToList();
 
                 // All genres from this list get added to the "Genre" ListView.
+                lstGenres.Items.Clear();
                 foreach (Genres genre in genresList)
                 {
                     ListViewItem itemGenre = new ListViewItem();

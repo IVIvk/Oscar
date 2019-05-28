@@ -45,7 +45,6 @@
             <TextBox Name="txtFilmTitle" Height="25"></TextBox>
             <TextBox Name="txtFilmReleaseYear" Height="25"></TextBox>
             <ListView Name="lstGenres" Height="25"></ListView>
-            <TextBox Name="txtFilmGenre" Height="25"></TextBox>
             <ListView Name ="lstActors" Height="90"></ListView>
             <TextBox Name="txtFilmDuration" Height="25"></TextBox>
             <TextBox x:Name="txtFilmPlot"
