@@ -317,7 +317,7 @@ namespace Oscar.UI.WPF
         private void LoadedEditFilm(object sender, RoutedEventArgs e)
         {
             FillGenreComboBox();
-            // EDIT path.
+            // EDIT path. Some different controls will be usable.
             if (SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmTitle != string.Empty)
             {
                 // Disable the add button and enable the Edit button.
@@ -333,7 +333,7 @@ namespace Oscar.UI.WPF
                 FillTextBoxes();
                 FillGenreComboBoxWhenEditing();
             }
-            // ADD path.
+            // ADD path. Some different controls will be usable.
             else
             {
                 // Enable the add button and disable the Edit button.
@@ -341,6 +341,7 @@ namespace Oscar.UI.WPF
                 btnEditFilm.IsEnabled = false;
 
                 // Enable the initial review score UI when adding a film.
+                cmbScore.IsEnabled = true;
                 lblScore.Visibility = Visibility.Visible;
                 cmbScore.Visibility = Visibility.Visible;
 
