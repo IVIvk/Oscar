@@ -175,6 +175,16 @@
                      AcceptsTab="True"
                      FontSize="12">
             </TextBox>
+            
+            <!-- TextBox "Review" -->
+            <TextBox x:Name="txtReview"
+                     VerticalScrollBarVisibility="Visible"
+                     Height="75"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     AcceptsTab="True"
+                     FontSize="12">                
+            </TextBox>
 
             <!-- Grid to hold the Initial review UI elements. -->
             <Grid HorizontalAlignment="Center"

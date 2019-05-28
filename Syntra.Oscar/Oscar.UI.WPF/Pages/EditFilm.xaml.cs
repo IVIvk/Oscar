@@ -290,7 +290,7 @@ namespace Oscar.UI.WPF
             // Get and set the selected score, User, set review content and generate a new guid Id.
             userReview.ReviewScore = Convert.ToInt32(((ComboBoxItem)cmbScore.SelectedItem).Content);
             userReview.UserId = currentUser.userId;
-            userReview.ReviewContent = "Initiele score.";
+            userReview.ReviewContent = txtReview.Text;
             userReview.ReviewId = Guid.NewGuid();
         }        
 
