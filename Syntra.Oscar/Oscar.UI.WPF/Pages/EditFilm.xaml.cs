@@ -79,10 +79,12 @@ namespace Oscar.UI.WPF
                 // Index 0 = "Geen score"
                 if (cmbScore.SelectedIndex > 0)
                 {
-                    // Get the selected score.
-                    userReview.ReviewScore = Convert.ToInt32(((ComboBoxItem)cmbScore.SelectedItem).Content);
-                    // Get the user.
-                    userReview.UserId = currentUser.userId;
+                    // Get the selected score, User, set review content and generate a new guid Id.
+                    userReview.ReviewScore = Convert.ToInt32(((ComboBoxItem)cmbScore.SelectedItem).Content);                    
+                    userReview.UserId = currentUser.userId;                    
+                    userReview.ReviewContent = "Initiele score.";
+                    userReview.ReviewId = Guid.NewGuid();
+
                     // Insert the review into the database.
                     DatabaseManager.Instance.ReviewRepository.SaveReview(film, currentUser, userReview);
                 }
