@@ -54,7 +54,7 @@ namespace Oscar.UI.WPF
                 Films film = new Films();
                 Genres genre = new Genres();
                 ComboBoxItem selection = new ComboBoxItem();
-                
+
                 // Load all the data into these instances.
                 film.FilmId = Guid.NewGuid();
                 film.FilmTitle = txtFilmTitle.Text;
@@ -141,10 +141,10 @@ namespace Oscar.UI.WPF
             {
                 Actors actor = new Actors();
                 bool checkActorInList = false;
-                
+
                 actor = ActorsList[cmbActors.SelectedIndex];
 
-                
+
                 foreach (Actors actorInList in actorsInFilmList)
                 {
                     if (actor.ActorId == actorInList.ActorId)
@@ -242,7 +242,7 @@ namespace Oscar.UI.WPF
                             if (cmbGenre.SelectedIndex > -1)
                             {
                                 succes = true;
-                            }                            
+                            }
                         }
                     }
                 }
@@ -270,18 +270,18 @@ namespace Oscar.UI.WPF
         }
 
         // This function selects the correct genre when editing a film.
-        private void FillGenreComboBoxWhenEditing ()
+        private void FillGenreComboBoxWhenEditing()
         {
             genreId = Guid.Parse(SingletonClasses.SingletonGenre.OnlyInstanceOfGenre.GenreId.ToString());
-                        
+
             for (int i = 0; i < GenresList.Count; i++)
             {
                 if (genreId == GenresList[i].GenreId)
                 {
-                    selectedIndex = i;                    
+                    selectedIndex = i;
                 }
             }
-            cmbGenre.SelectedIndex = selectedIndex;                        
+            cmbGenre.SelectedIndex = selectedIndex;
         }
 
         // This function Inserts an initial review score.
@@ -292,7 +292,7 @@ namespace Oscar.UI.WPF
             userReview.UserId = currentUser.userId;
             userReview.ReviewContent = txtReview.Text;
             userReview.ReviewId = Guid.NewGuid();
-        }        
+        }
 
         // This function Gets the genres from the database and puts them inside the genre ComboBox.
         // The user can choose the genre from this ComboBox.
@@ -348,10 +348,13 @@ namespace Oscar.UI.WPF
                 btnAddFilm.IsEnabled = false;
                 btnEditFilm.IsEnabled = true;
 
-                // Disable the initial review score UI when editing a film.
+                // Disable the initial review UI when editing a film.
                 cmbScore.IsEnabled = false;
                 lblScore.Visibility = Visibility.Hidden;
                 cmbScore.Visibility = Visibility.Hidden;
+                txtReview.IsEnabled = false;
+                txtReview.Visibility = Visibility.Hidden;
+                lblReview.Visibility = Visibility.Hidden;
 
                 // Fill the text boxes with the properties inside the singleton object.
                 FillTextBoxes();
@@ -368,16 +371,30 @@ namespace Oscar.UI.WPF
                 cmbScore.IsEnabled = true;
                 lblScore.Visibility = Visibility.Visible;
                 cmbScore.Visibility = Visibility.Visible;
+                txtReview.IsEnabled = false;
+                txtReview.Visibility = Visibility.Visible;
+                lblReview.Visibility = Visibility.Visible;
 
                 // Clear the text boxes.
                 ClearTextBoxes();
             }
-            
+
             FillActorsComboBox();
         }
 
+
         #endregion
 
-        
+        private void CmbScore_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbScore.SelectedIndex > 0)
+            {
+                txtReview.IsEnabled = true;
+                if (txtReview.Text == "Selecteer een score voor je een review tekst kan toevoegen.")
+                {
+                    txtReview.Text = string.Empty;
+                }                
+            }
+        }
     }
 }

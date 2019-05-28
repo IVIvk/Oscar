@@ -94,7 +94,8 @@
             </Label>   
             
             <!-- Label "Review" -->
-            <Label Content="Review"
+            <Label x:Name="lblReview" 
+                   Content="Review"
                    Height="26"
                    Margin="0 60 0 0">                
             </Label>
@@ -178,6 +179,7 @@
             
             <!-- TextBox "Review" -->
             <TextBox x:Name="txtReview"
+                     Text="Selecteer een score voor je een review tekst kan toevoegen."
                      VerticalScrollBarVisibility="Visible"
                      Height="75"
                      TextWrapping="Wrap"
@@ -206,7 +208,7 @@
                           HorizontalAlignment="Left"
                           Width="100" Height="26" 
                           VerticalAlignment="Top"
-                          Visibility="Visible">
+                          Visibility="Visible" SelectionChanged="CmbScore_SelectionChanged">
                     <ComboBoxItem Content="Geen score"></ComboBoxItem>
                     <ComboBoxItem Content="0"></ComboBoxItem>
                     <ComboBoxItem Content="1"></ComboBoxItem>
