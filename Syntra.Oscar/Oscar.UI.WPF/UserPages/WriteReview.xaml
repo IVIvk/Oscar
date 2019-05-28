@@ -28,12 +28,7 @@
                 <ComboBoxItem Content="2"></ComboBoxItem>
                 <ComboBoxItem Content="3"></ComboBoxItem>
                 <ComboBoxItem Content="4"></ComboBoxItem>
-                <ComboBoxItem Content="5"></ComboBoxItem>
-                <ComboBoxItem Content="6"></ComboBoxItem>
-                <ComboBoxItem Content="7"></ComboBoxItem>
-                <ComboBoxItem Content="8"></ComboBoxItem>
-                <ComboBoxItem Content="9"></ComboBoxItem>
-                <ComboBoxItem Content="10"></ComboBoxItem>
+                <ComboBoxItem Content="5"></ComboBoxItem>                
             </ComboBox>
         </StackPanel>
 
