@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:Oscar.UI.WPF"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AdminUserManagement">
+      Title="AdminUserManagement"
+      Loaded="Page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -17,11 +18,11 @@
             <ColumnDefinition Width="3*"></ColumnDefinition>
             <ColumnDefinition Width="2*"></ColumnDefinition>
             <ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="120"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="3" Grid.Row="1" Width="100">
-            <Button Name="btnLoadUsers"  Content="Laad gebruikers" Height="25" Click="btnLoadUsers_Click"></Button>
+        <StackPanel Grid.Column="3" Grid.Row="1" Width="120">
+            <Button Name="btnLoadUsers"  Content="Ververs gebruikers" Height="25" Click="btnLoadUsers_Click"></Button>
             <Button Name="btnSaveUsers" Content="Sla gebruikers op" Height="25" Click="btnSaveUsers_Click"></Button>
         </StackPanel>
 

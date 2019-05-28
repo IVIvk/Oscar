@@ -29,18 +29,7 @@ namespace Oscar.UI.WPF
 
         private void btnLoadUsers_Click(object sender, RoutedEventArgs e)
         {
-            userlist = DatabaseManager.Instance.UserRepository.GetUsers().ToList();
-            LstUsers.Items.Clear();
-
-            foreach (User user in userlist)
-            {
-                ListViewItem item = new ListViewItem();
-
-                item.Tag = user;
-                item.Content = user.userId;
-
-                LstUsers.Items.Add(item);
-            }
+            LoadAllUsers();
         }
 
         private void btnSaveUsers_Click(object sender, RoutedEventArgs e)
@@ -62,6 +51,22 @@ namespace Oscar.UI.WPF
             DatabaseManager.Instance.UserRepository.UpdateUser(user);
         }
 
+        // This function loads all the users from the database into the ListView.
+        private void LoadAllUsers()
+        {
+            userlist = DatabaseManager.Instance.UserRepository.GetUsers().ToList();
+            LstUsers.Items.Clear();
+
+            foreach (User user in userlist)
+            {
+                ListViewItem item = new ListViewItem();
+
+                item.Tag = user;
+                item.Content = user.userId;
+
+                LstUsers.Items.Add(item);
+            }
+        }
        
 
         private void LoadUsers(object sender, SelectionChangedEventArgs e)
@@ -87,6 +92,11 @@ namespace Oscar.UI.WPF
             {
                 MessageBox.Show("Geen gebruiker geselecteerd");
             }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadAllUsers();
         }
     }
 }

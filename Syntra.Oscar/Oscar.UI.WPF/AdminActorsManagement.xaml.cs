@@ -133,5 +133,10 @@ namespace Oscar.UI.WPF
                 MessageBox.Show("Geen acteur geselecteerd");
             }
         }
+
+        private void LoadedAdminActorsManagement(object sender, RoutedEventArgs e)
+        {
+            ShowActors();
+        }
     }
 }
