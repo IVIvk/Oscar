@@ -61,7 +61,7 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="left">
             </Label>
-            
+
             <!-- Label "Acteurs". -->
             <Label Content="Acteurs"
                    FontSize="12"
@@ -76,7 +76,7 @@
                     Height="26" 
                     Click="BtnAddActor_Click"
                     Margin="0 0 5 10"></Button>
-            
+
             <!-- Button "Acteurs verwijderen" -->
             <Button x:Name="btnDeleteActor"
                     Content="Verwijder"
@@ -100,15 +100,15 @@
                     Height="26"
                     Margin="0 50 5 0" Click="BtnAddFilm_Click">
             </Button>
-            
+
             <!-- Button "Aanpassen" -->
             <Button x:Name="btnEditFilm"
                     Content="Aanpassen"
                     FontSize="12"
                     Height="26"
-                    Margin="0 10 5 0" Click="BtnEditFilm_Click">                
+                    Margin="0 10 5 0" Click="BtnEditFilm_Click">
             </Button>
-            
+
             <!-- Button "Annuleren" -->
             <Button x:Name="btnCancel" 
                     Content="Annuleren"
@@ -142,7 +142,7 @@
             <!-- ComboBox "Genre". -->
             <ComboBox x:Name="cmbGenre"
                       Height="26"></ComboBox>
-            
+
             <!-- TextBox "Duur". -->
             <TextBox x:Name="txtDuration"
                      Height="26"
@@ -155,11 +155,11 @@
             <!-- ComboBox "acteurs". -->
             <ComboBox x:Name="cmbActors"
                       Height="26"></ComboBox>
-            
+
             <!-- Listview "Acteurs" -->
             <ListView x:Name="lstActors"
                       Height="90"></ListView>
-            
+
             <!-- TextBox "Plot". -->
             <TextBox x:Name="txtPlot" 
                      VerticalScrollBarVisibility="Visible"
@@ -169,21 +169,28 @@
                      AcceptsTab="True"
                      FontSize="12">
             </TextBox>
+
+            <!-- Grid to hold the Initial review UI elements. -->
             <Grid HorizontalAlignment="Center"
                   Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="120"></ColumnDefinition>
                     <ColumnDefinition Width="50"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                
-                <Label Content="Initiele review score"
+
+                <!-- Label "Initiele review score". -->
+                <Label x:Name="lblScore"
+                       Content="Initiele review score"
                        Height="26"
-                       Grid.Column="0">                    
+                       Grid.Column="0">
                 </Label>
-                <ComboBox Name="cbbScore" 
+                <!-- ComboBox to select the "Initiele review score"-->
+                <ComboBox Name="cmbScore" 
                           Grid.Column="1" 
                           HorizontalAlignment="Left"
-                          Width="40">
+                          Width="40" Height="26" 
+                          VerticalAlignment="Top"
+                          Visibility="Visible">
                     <ComboBoxItem Content="0"></ComboBoxItem>
                     <ComboBoxItem Content="1"></ComboBoxItem>
                     <ComboBoxItem Content="2"></ComboBoxItem>
@@ -192,7 +199,6 @@
                     <ComboBoxItem Content="5"></ComboBoxItem>
                 </ComboBox>
             </Grid>
-
         </StackPanel>
     </Grid>
 </Page>

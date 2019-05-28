@@ -317,21 +317,32 @@ namespace Oscar.UI.WPF
         private void LoadedEditFilm(object sender, RoutedEventArgs e)
         {
             FillGenreComboBox();
+            // EDIT path.
             if (SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmTitle != string.Empty)
             {
                 // Disable the add button and enable the Edit button.
                 btnAddFilm.IsEnabled = false;
                 btnEditFilm.IsEnabled = true;
 
+                // Disable the initial review score UI when editing a film.
+                cmbScore.IsEnabled = false;
+                lblScore.Visibility = Visibility.Hidden;
+                cmbScore.Visibility = Visibility.Hidden;
+
                 // Fill the text boxes with the properties inside the singleton object.
                 FillTextBoxes();
                 FillGenreComboBoxWhenEditing();
             }
+            // ADD path.
             else
             {
                 // Enable the add button and disable the Edit button.
                 btnAddFilm.IsEnabled = true;
                 btnEditFilm.IsEnabled = false;
+
+                // Enable the initial review score UI when adding a film.
+                lblScore.Visibility = Visibility.Visible;
+                cmbScore.Visibility = Visibility.Visible;
 
                 // Clear the text boxes.
                 ClearTextBoxes();
