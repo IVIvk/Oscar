@@ -191,6 +191,7 @@
                           Width="40" Height="26" 
                           VerticalAlignment="Top"
                           Visibility="Visible">
+                    <ComboBoxItem Content="Geen score"></ComboBoxItem>
                     <ComboBoxItem Content="0"></ComboBoxItem>
                     <ComboBoxItem Content="1"></ComboBoxItem>
                     <ComboBoxItem Content="2"></ComboBoxItem>

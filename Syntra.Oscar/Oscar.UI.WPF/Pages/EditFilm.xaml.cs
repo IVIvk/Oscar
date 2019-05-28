@@ -35,6 +35,8 @@ namespace Oscar.UI.WPF
         int index = -1;
         int selectedIndex = -1;
         Guid genreId;
+        Review userReview = new Review();
+        User currentUser = new User();
 
         #region Buttons
         //////////////////////////////////
@@ -70,8 +72,20 @@ namespace Oscar.UI.WPF
                 genre = GenresList[index];
 
                 // Insert the link between the film and the genre.
-                DatabaseManager.Instance.GenreRepository.InsertLinkGenreAndFilm(genre, film);                
+                DatabaseManager.Instance.GenreRepository.InsertLinkGenreAndFilm(genre, film);
 
+                // Insert an initial rating if a score is selected.
+                // Index -1 = nothing selected
+                // Index 0 = "Geen score"
+                if (cmbScore.SelectedIndex > 0)
+                {
+                    // Get the selected score.
+                    userReview.ReviewScore = Convert.ToInt32(((ComboBoxItem)cmbScore.SelectedItem).Content);
+                    // Get the user.
+                    userReview.UserId = currentUser.userId;
+                    // Insert the review into the database.
+                    DatabaseManager.Instance.ReviewRepository.SaveReview(film, currentUser, userReview);
+                }
                 // Navigate back to the AdminFilmsManagement page.
                 NavigationService.Navigate(new Pages.AdminFilmsManagement());
             }
@@ -131,11 +145,13 @@ namespace Oscar.UI.WPF
                 
                 actor = ActorsList[cmbActors.SelectedIndex];
 
+                
                 foreach (Actors actorInList in actorsInFilmList)
                 {
                     if (actor.ActorId == actorInList.ActorId)
                     {
                         checkActorInList = true;
+                        break;
                     }
                 }
 
