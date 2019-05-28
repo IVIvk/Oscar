@@ -79,11 +79,8 @@ namespace Oscar.UI.WPF
                 // Index 0 = "Geen score"
                 if (cmbScore.SelectedIndex > 0)
                 {
-                    // Get the selected score, User, set review content and generate a new guid Id.
-                    userReview.ReviewScore = Convert.ToInt32(((ComboBoxItem)cmbScore.SelectedItem).Content);                    
-                    userReview.UserId = currentUser.userId;                    
-                    userReview.ReviewContent = "Initiele score.";
-                    userReview.ReviewId = Guid.NewGuid();
+                    // Fill up the userReview with the relevant data, so it can be inserted into the database.
+                    CreateInitialScore();
 
                     // Insert the review into the database.
                     DatabaseManager.Instance.ReviewRepository.SaveReview(film, currentUser, userReview);
@@ -272,6 +269,7 @@ namespace Oscar.UI.WPF
             }
         }
 
+        // This function selects the correct genre when editing a film.
         private void FillGenreComboBoxWhenEditing ()
         {
             genreId = Guid.Parse(SingletonClasses.SingletonGenre.OnlyInstanceOfGenre.GenreId.ToString());
@@ -283,10 +281,18 @@ namespace Oscar.UI.WPF
                     selectedIndex = i;                    
                 }
             }
-            cmbGenre.SelectedIndex = selectedIndex;
-            
+            cmbGenre.SelectedIndex = selectedIndex;                        
         }
-        
+
+        // This function Inserts an initial review score.
+        private void CreateInitialScore()
+        {
+            // Get and set the selected score, User, set review content and generate a new guid Id.
+            userReview.ReviewScore = Convert.ToInt32(((ComboBoxItem)cmbScore.SelectedItem).Content);
+            userReview.UserId = currentUser.userId;
+            userReview.ReviewContent = "Initiele score.";
+            userReview.ReviewId = Guid.NewGuid();
+        }        
 
         // This function Gets the genres from the database and puts them inside the genre ComboBox.
         // The user can choose the genre from this ComboBox.
