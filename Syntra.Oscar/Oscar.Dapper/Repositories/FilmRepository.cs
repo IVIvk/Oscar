@@ -64,6 +64,18 @@ namespace Oscar.Dapper.Repositories
             }
         }
 
+        // This function deletes the link between a film and genre.
+        public void DeleteLinkFilmGenre(Films film, Genres genre)
+        {
+
+        }
+
+        //This function deletes a link between a film and actor.
+        public void DeleteLinkFilmActor(Films film, Actors actor)
+        {
+
+        }
+
         // This function updates the Film properties inside the database.
         public void UpdateFilm(Films film)
         {
