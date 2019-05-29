@@ -179,6 +179,16 @@ namespace Oscar.UI.WPF.Pages
             // Place this item into the object.
             film = (Films)item.Tag;
 
+            // Get the genres that are linked to the film so the links can be deleted.
+            IEnumerable<Genres> linkedGenres = new List<Genres>();
+            linkedGenres = DatabaseManager.Instance.FilmRepository.GetGenresForFilm(film.FilmId.Value);
+
+            // Initiate delete in database of the linked genres.
+            foreach (Genres genreThatIsLinked in linkedGenres)
+            {
+                DatabaseManager.Instance.FilmRepository.DeleteLinkFilmGenre(film, genreThatIsLinked);
+            }
+
             // Initiate delete in database of the selected item.
             DatabaseManager.Instance.FilmRepository.DeleteFilm(film);
 
