@@ -27,7 +27,7 @@
         </Grid.RowDefinitions>
         <Frame Name="OscarsFrame" Content=" "></Frame>
         <Grid Grid.Column="0" Grid.Row="0">
-            <Image Name="Logo" HorizontalAlignment="Left" Height="36" VerticalAlignment="Top" Width="100"/>
+            <Image Source="Oscars.jpg" Name="Logo"  HorizontalAlignment="Left" Height="36" VerticalAlignment="Top" Width="100"/>
         </Grid>
         <Grid Grid.Row="0" Grid.ColumnSpan="6">
             <Grid.ColumnDefinitions>
