@@ -67,13 +67,43 @@ namespace Oscar.Dapper.Repositories
         // This function deletes the link between a film and genre.
         public void DeleteLinkFilmGenre(Films film, Genres genre)
         {
-
+            // Get the Film and Genre Id.
+            Guid filmGuid = film.FilmId.Value;
+            Guid genreGuid = genre.GenreId.Value;
+            
+            // SQL query part.
+            using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute(@"
+                    DELETE FROM GenresInFilms
+                    WHERE FilmId = @FilmId AND GenreId = @GenreId
+                ", new
+                {
+                    FilmId = filmGuid,
+                    GenreId = genreGuid
+                });
+            }
         }
 
         //This function deletes a link between a film and actor.
         public void DeleteLinkFilmActor(Films film, Actors actor)
         {
+            // Get the Film and actor Id.
+            Guid filmGuid = film.FilmId.Value;
+            Guid actorGuid = actor.ActorId.Value;
 
+            // SQL query part.
+            using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute(@"
+                    DELETE FROM ActorsInFilms
+                    WHERE FilmId = @FilmId AND ActorId = @ActorId
+                ", new
+                {
+                    FilmId = filmGuid,
+                    ActorId = actorGuid
+                });
+            }
         }
 
         // This function updates the Film properties inside the database.
