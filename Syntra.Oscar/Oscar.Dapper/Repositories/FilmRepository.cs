@@ -86,22 +86,17 @@ namespace Oscar.Dapper.Repositories
         }
 
         //This function deletes a link between a film and actor.
-        public void DeleteLinkFilmActor(Films film, Actors actor)
+        public void DeleteLinkFilmAllActor(Guid filmGuid)
         {
-            // Get the Film and actor Id.
-            Guid filmGuid = film.FilmId.Value;
-            Guid actorGuid = actor.ActorId.Value;
-
             // SQL query part.
             using (SqlConnection connection = new SqlConnection(Connection.Instance.ConnectionString))
             {
                 connection.Execute(@"
                     DELETE FROM ActorsInFilms
-                    WHERE FilmId = @FilmId AND ActorId = @ActorId
+                    WHERE FilmId = @FilmId
                 ", new
                 {
-                    FilmId = filmGuid,
-                    ActorId = actorGuid
+                    FilmId = filmGuid
                 });
             }
         }

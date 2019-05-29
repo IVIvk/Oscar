@@ -157,6 +157,7 @@ namespace Oscar.UI.WPF.Pages
         // "Nieuwe film" button.
         private void BtnNewFilm_Click(object sender, RoutedEventArgs e)
         {
+            SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmTitle = string.Empty;
             NavigationService.Navigate(new EditFilm());
         }
 
@@ -196,7 +197,7 @@ namespace Oscar.UI.WPF.Pages
             // Initiate delete in database of the linked actors.
             foreach (Actors actorThatIsLinked in linkedActors)
             {
-                DatabaseManager.Instance.FilmRepository.DeleteLinkFilmActor(film, actorThatIsLinked);
+                DatabaseManager.Instance.FilmRepository.DeleteLinkFilmAllActor(film.FilmId.Value);
             }
 
             // Initiate delete in database of the selected item.

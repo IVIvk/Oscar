@@ -74,6 +74,14 @@ namespace Oscar.UI.WPF
                 // Insert the link between the film and the genre.
                 DatabaseManager.Instance.GenreRepository.InsertLinkGenreAndFilm(genre, film);
 
+                // Insert link actors and film in database.
+                foreach (Actors actor in actorsInFilmList)
+                {
+
+                    DatabaseManager.Instance.ActorRepository.InsertLinkActorAndFilm(actor, film.FilmId.Value);
+
+                }
+
                 // Insert an initial rating if a score is selected.
                 // Index -1 = nothing selected.
                 // Index 0 = "Geen score".
@@ -125,6 +133,17 @@ namespace Oscar.UI.WPF
                 // Insert the link between the film and the genre.
                 DatabaseManager.Instance.GenreRepository.InsertLinkGenreAndFilm(genre, film);
 
+                // Delete existing links between films and actors
+                DatabaseManager.Instance.FilmRepository.DeleteLinkFilmAllActor(film.FilmId.Value);
+
+                // Insert link actors and film in database.
+                foreach (Actors actor in actorsInFilmList)
+                {
+
+                    DatabaseManager.Instance.ActorRepository.InsertLinkActorAndFilm(actor, SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId);
+
+                }
+
                 // Navigate back to the AdminFilmsManagement page.
                 NavigationService.Navigate(new Pages.AdminFilmsManagement());
             }
@@ -157,9 +176,9 @@ namespace Oscar.UI.WPF
 
                 if (!checkActorInList)
                 {
-                    DatabaseManager.Instance.ActorRepository.InsertLinkActorAndFilm(actor, SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId);
+                    actorsInFilmList.Add(actor);
 
-                    FillTextBoxes();
+                    ShowActorsOfSelectedFilm(); ;
                 }
             }
             catch (Exception)
@@ -175,9 +194,15 @@ namespace Oscar.UI.WPF
                 ListViewItem item = ((ListViewItem)lstActors.SelectedItem);
                 Actors actor = (Actors)item.Tag;
 
-                DatabaseManager.Instance.ActorRepository.DeleteLinkActorAndFilm(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId.Value, actor);
-
-                FillTextBoxes();
+                foreach (Actors allActors in actorsInFilmList)
+                {
+                    if (allActors == actor)
+                    {
+                        actorsInFilmList.Remove(actor);
+                        break;
+                    }
+                }
+                ShowActorsOfSelectedFilm();
             }
             catch (Exception)
             {
@@ -317,8 +342,6 @@ namespace Oscar.UI.WPF
         //This function shows the actors of the selected film.
         private void ShowActorsOfSelectedFilm()
         {
-            actorsInFilmList = DatabaseManager.Instance.FilmRepository.GetActorsForFilm(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId.Value).ToList();
-
             lstActors.Items.Clear();
 
             foreach (Actors actor in actorsInFilmList)
@@ -345,6 +368,10 @@ namespace Oscar.UI.WPF
             // EDIT path. Some different controls will be usable.
             if (SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmTitle != string.Empty)
             {
+                // Load actors of selected film
+                actorsInFilmList = DatabaseManager.Instance.FilmRepository.GetActorsForFilm(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId.Value).ToList();
+
+
                 // Disable the add button and enable the Edit button.
                 btnAddFilm.IsEnabled = false;
                 btnEditFilm.IsEnabled = true;
