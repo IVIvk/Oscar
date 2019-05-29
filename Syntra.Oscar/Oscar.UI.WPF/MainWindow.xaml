@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Oscar.UI.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="600" Loaded="MainWindow_Onloaded">
-    <!--WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="350" Width="600" Loaded="MainWindow_Onloaded"
+        WindowStartupLocation="CenterScreen"
        ResizeMode="NoResize"
        WindowState="Maximized"
-       WindowStyle="None"-->
+       WindowStyle="ToolWindow">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
@@ -17,7 +18,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        
+
         <Frame x:Name="FrmFrame" Grid.Row="0" Grid.Column="0" NavigationUIVisibility="Hidden" Content="Frame" HorizontalAlignment="Left"  Margin="10,10,0,0" VerticalAlignment="Top"/>
 
     </Grid>
