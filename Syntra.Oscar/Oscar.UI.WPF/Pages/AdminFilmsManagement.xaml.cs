@@ -189,6 +189,16 @@ namespace Oscar.UI.WPF.Pages
                 DatabaseManager.Instance.FilmRepository.DeleteLinkFilmGenre(film, genreThatIsLinked);
             }
 
+            // Get the actors that are linked to the film so the links can be deleted.
+            IEnumerable<Actors> linkedActors = new List<Actors>();
+            linkedActors = DatabaseManager.Instance.FilmRepository.GetActorsForFilm(film.FilmId.Value);
+
+            // Initiate delete in database of the linked actors.
+            foreach (Actors actorThatIsLinked in linkedActors)
+            {
+                DatabaseManager.Instance.FilmRepository.DeleteLinkFilmActor(film, actorThatIsLinked);
+            }
+
             // Initiate delete in database of the selected item.
             DatabaseManager.Instance.FilmRepository.DeleteFilm(film);
 
