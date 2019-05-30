@@ -10,23 +10,60 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"></ColumnDefinition>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="140"></ColumnDefinition>
             <ColumnDefinition Width="2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"></RowDefinition>
             <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
+        <!-- Grid to hold the Genre/Actor filter Labels and ComboBoxes. -->
+        <!-- The Grid consists of 2 colums and 2 rows. -->
+        <!-- The Labels for the corresponding ComboBoxes will be above them. -->
+        <!-- The Actor filter ComboBox will be in column 0 and row 1. -->
+        <!-- The Genre filter ComboBox will be in column 1 and row 1. -->
+        <Grid Grid.Column="0"
+              Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"></RowDefinition>
+                <RowDefinition Height="25"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!-- Genre filter. -->
+            <Label Content="Genre filter" 
+                   Grid.Column="0"
+                   Grid.Row="0">                
+            </Label>
+            <ComboBox x:Name="cmbGenre" 
+                      Grid.Column="0"
+                      Grid.Row="1">                
+            </ComboBox>
+            
+            <!-- Actor filter. -->
+            <Label Content="Acteur filter"
+                   Grid.Column="1"
+                   Grid.Row="0">
+            </Label>
+            <ComboBox x:Name="cmbActor"
+                      Grid.Column="1"
+                      Grid.Row="1">
+            </ComboBox>
+        </Grid>
+
         <ListView Name="lstFilmOverview" Grid.Row="3" MouseDoubleClick="DoubleClickOnItem"></ListView>
-        
+
         <TextBox Name="txtSearchFilm" Grid.Row="1" Text="Search Film" GotFocus="txtSearchFilmFocus" TextChanged="TxtSearchFilm_TextChanged"></TextBox>
 
         <Button Name="btnTopFive" Content="Geef de top 5 films weer" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Click="BtnTopFive_Click"></Button>
-        
+
         <StackPanel Grid.Column="1" Grid.Row="3">
             <Label Content="Titel" Height="25"></Label>
             <Label Content="Jaar van uitgave" Height="25"></Label>
