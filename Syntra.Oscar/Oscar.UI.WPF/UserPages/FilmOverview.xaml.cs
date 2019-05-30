@@ -25,6 +25,7 @@ namespace Oscar.UI.WPF.UserPages
         List<Genres> genresList = new List<Genres>();
         List<Genres> genresFilterList = new List<Genres>();
         List<Actors> actorsInFilmList = new List<Actors>();
+        List<Actors> actorsFilterList = new List<Actors>();
         User user = new User();
 
         public FilmOverview(User currentUser)
@@ -67,7 +68,7 @@ namespace Oscar.UI.WPF.UserPages
 
             foreach (Genres genre in genresFilterList)
             {
-                ListViewItem item = new ListViewItem();
+                ComboBoxItem item = new ComboBoxItem();
 
                 // Genre object.
                 item.Tag = genre;
@@ -78,11 +79,32 @@ namespace Oscar.UI.WPF.UserPages
             }
         }
 
+        // This function Gets the actors from the database and puts them inside the actor ComboBox.
+        // The user can choose the actor from this ComboBox.
+
+        private void FillActorComboBox()
+        {
+            actorsFilterList = DatabaseManager.Instance.ActorRepository.GetActors().ToList();
+
+            foreach (Actors actor in actorsFilterList)
+            {
+                ComboBoxItem item = new ComboBoxItem();
+
+                //Actor object.
+                item.Tag = actor;
+                // Display Actor name.
+                item.Content = actor.FirstName.ToString() + " " + actor.LastName.ToString();
+                // Add the item to the list.
+                cmbActor.Items.Add(item);
+            }
+        }
+
         // Loaded Event.
         private void OverviewFilmsLoaded(object sender, RoutedEventArgs e)
         {
             ShowFilms(filmsList);
             FillGenreComboBox();
+            FillActorComboBox();
         }
 
         // This function loads the properties of the selected film into the correct text boxes.
