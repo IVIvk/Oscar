@@ -249,5 +249,12 @@ namespace Oscar.UI.WPF.UserPages
                 lstActors.Items.Add(itemActor);
             }
         }
+
+        // Button "Verwijder filters.
+        // This will reset the Genre/Actor filters to NO filter.
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

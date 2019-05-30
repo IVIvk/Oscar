@@ -58,6 +58,13 @@
             </ComboBox>
         </Grid>
 
+        <Button Grid.Column="1"
+                Grid.Row="2"
+                Height="25"
+                Width="130"
+                HorizontalAlignment="Right"
+                Content="Verwijder filters" Click="Button_Click"></Button>
+
         <ListView Name="lstFilmOverview" Grid.Row="3" MouseDoubleClick="DoubleClickOnItem"></ListView>
 
         <TextBox Name="txtSearchFilm" Grid.Row="1" Text="Search Film" GotFocus="txtSearchFilmFocus" TextChanged="TxtSearchFilm_TextChanged"></TextBox>
