@@ -252,9 +252,11 @@ namespace Oscar.UI.WPF.UserPages
 
         // Button "Verwijder filters.
         // This will reset the Genre/Actor filters to NO filter.
+        // The SelectedIndex of both Combo Boxes will be set to -1. (=nothing selected)
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            cmbActor.SelectedIndex = -1;
+            cmbGenre.SelectedIndex = -1;
         }
     }
 }
