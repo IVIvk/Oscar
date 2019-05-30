@@ -23,6 +23,7 @@ namespace Oscar.UI.WPF.UserPages
     {
         List<Films> filmsList = new List<Films>();
         List<Genres> genresList = new List<Genres>();
+        List<Genres> genresFilterList = new List<Genres>();
         List<Actors> actorsInFilmList = new List<Actors>();
         User user = new User();
 
@@ -35,6 +36,8 @@ namespace Oscar.UI.WPF.UserPages
             user = currentUser;
         }
 
+        // This function loads the films from the database into the ListView.
+        // Also used for the search fill functionality.
         private void ShowFilms(List<Films> filmsListInFunction)
         {
             lstFilmOverview.Items.Clear();
@@ -56,9 +59,30 @@ namespace Oscar.UI.WPF.UserPages
             }
         }
 
+        // This function Gets the genres from the database and puts them inside the genre ComboBox.
+        // The user can choose the genre from this ComboBox.
+        private void FillGenreComboBox()
+        {
+            genresFilterList = DatabaseManager.Instance.GenreRepository.GetGenres().ToList();
+
+            foreach (Genres genre in genresFilterList)
+            {
+                ListViewItem item = new ListViewItem();
+
+                // Genre object.
+                item.Tag = genre;
+                // Display Genre name.
+                item.Content = genre.GenreName.ToString();
+                // Add the item to the list.
+                cmbGenre.Items.Add(item);
+            }
+        }
+
+        // Loaded Event.
         private void OverviewFilmsLoaded(object sender, RoutedEventArgs e)
         {
             ShowFilms(filmsList);
+            FillGenreComboBox();
         }
 
         // This function loads the properties of the selected film into the correct text boxes.
@@ -95,6 +119,8 @@ namespace Oscar.UI.WPF.UserPages
             }
         }
 
+        // Button "Schrijf review".
+        // The user wil navigate to the WriteReview page.
         private void BtnWriteReview_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -110,6 +136,8 @@ namespace Oscar.UI.WPF.UserPages
             }
         }
 
+        // Button "Toon alle reviews".
+        // The user wil navigate to the AllReviewsOfOneFilm page.
         private void BtnShowAllReviews_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -125,6 +153,8 @@ namespace Oscar.UI.WPF.UserPages
             }
         }
 
+        // Get Focus event --txtSearchFilm--
+        // The text box will be emptied.
         private void txtSearchFilmFocus(object sender, RoutedEventArgs e)
         {
             if (txtSearchFilm.Text == "Search Film")
@@ -133,11 +163,15 @@ namespace Oscar.UI.WPF.UserPages
             }
         }
 
+        // TextChanged event --txtSearchFilm--
+        // The list of films will be updated to films only containing the entered text.
         private void TxtSearchFilm_TextChanged(object sender, TextChangedEventArgs e)
         {
             ShowFilms(filmsList);
         }
 
+        // Button "Top vijf".
+        // The top 5 rated movies will be shown in the ListView.
         private void BtnTopFive_Click(object sender, RoutedEventArgs e)
         {
             List<Films> filmTopFive = new List<Films>();
@@ -178,6 +212,7 @@ namespace Oscar.UI.WPF.UserPages
             ShowFilms(filmTopFive);
         }
 
+        // This function shows the actors that star in a selected film.
         private void ShowActorsOfSelectedFilm(Films film)
         {
             actorsInFilmList = DatabaseManager.Instance.FilmRepository.GetActorsForFilm(film.FilmId.Value).ToList();
