@@ -25,7 +25,7 @@ namespace Oscar.UI.WPF.Pages
         List<Films> filmsList = new List<Films>();
         List<Genres> genresList = new List<Genres>();
         List<Actors> actorsInFilmList = new List<Actors>();
-        int selectionIndex = -1;
+        //int selectionIndex = -1;
 
         public AdminFilmsManagement()
         {
@@ -69,8 +69,7 @@ namespace Oscar.UI.WPF.Pages
         private void LoadFilms(object sender, SelectionChangedEventArgs e)
         {
             try
-            {
-                
+            {                
                 ListViewItem item = ((ListViewItem)LstFilms.SelectedItem);
                 Films film = (Films)item.Tag;
 
@@ -79,7 +78,6 @@ namespace Oscar.UI.WPF.Pages
                 txtFilmReleaseYear.Text = Convert.ToString(film.ReleaseYear);
                 txtFilmDuration.Text = Convert.ToString(film.FilmLengthInMinutes);
                 txtFilmPlot.Text = Convert.ToString(film.FilmPlot);
-
                 
                 lstGenres.Items.Clear();
                 // The genres that are linked to the selected film are put in a list.
@@ -117,7 +115,6 @@ namespace Oscar.UI.WPF.Pages
                 SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmPlot = txtFilmPlot.Text;
 
                 // Load the genre of the selected film into the SingletonGenre.
-                //SingletonClasses.SingletonGenre.OnlyInstanceOfGenre.GenresList = genresList;
                 SingletonClasses.SingletonGenre.OnlyInstanceOfGenre.GenreId = (genresList[0].GenreId);
 
             }
@@ -212,7 +209,7 @@ namespace Oscar.UI.WPF.Pages
         #endregion
 
         /////////////////////////////////////////
-        // Loaded event
+        // Loaded event.
         #region LoadedEvent
         private void AdminFilmsManagementLoaded(object sender, RoutedEventArgs e)
         {
