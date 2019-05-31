@@ -179,7 +179,6 @@
             
             <!-- TextBox "Review" -->
             <TextBox x:Name="txtReview"
-                     Text="Selecteer een score voor je een review tekst kan toevoegen."
                      VerticalScrollBarVisibility="Visible"
                      Height="150"
                      TextWrapping="Wrap"

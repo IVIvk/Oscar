@@ -37,6 +37,9 @@ namespace Oscar.UI.WPF
         Guid genreId;
         Review userReview = new Review();
         User currentUser = new User();
+        string messageSelecteerScore = "Selecteer een score voor je een review tekst kan toevoegen.";
+        string messageGeenActeur = "Geen acteur geselecteerd";
+        string messageVulTekstvakken = "Vul alle nodige tekstvakken.";
 
         #region Buttons
         //////////////////////////////////
@@ -77,9 +80,7 @@ namespace Oscar.UI.WPF
                 // Insert link actors and film in database.
                 foreach (Actors actor in actorsInFilmList)
                 {
-
                     DatabaseManager.Instance.ActorRepository.InsertLinkActorAndFilm(actor, film.FilmId.Value);
-
                 }
 
                 // Insert an initial rating if a score is selected.
@@ -139,9 +140,7 @@ namespace Oscar.UI.WPF
                 // Insert link actors and film in database.
                 foreach (Actors actor in actorsInFilmList)
                 {
-
                     DatabaseManager.Instance.ActorRepository.InsertLinkActorAndFilm(actor, SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId);
-
                 }
 
                 // Navigate back to the AdminFilmsManagement page.
@@ -155,6 +154,7 @@ namespace Oscar.UI.WPF
             NavigationService.Navigate(new Pages.AdminFilmsManagement());
         }
 
+        // Button "Acteur toegoegen".
         private void BtnAddActor_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -183,10 +183,11 @@ namespace Oscar.UI.WPF
             }
             catch (Exception)
             {
-                MessageBox.Show("Geen acteur geselecteerd");
+                MessageBox.Show(messageGeenActeur);
             }
         }
 
+        // Button "Verwijder acteur".
         private void BtnDeleteActor_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -207,7 +208,7 @@ namespace Oscar.UI.WPF
             catch (Exception)
             {
 
-                MessageBox.Show("Geen acteur geselecteerd");
+                MessageBox.Show(messageGeenActeur);
             }
         }
         #endregion
@@ -272,6 +273,10 @@ namespace Oscar.UI.WPF
                         }
                     }
                 }
+            }
+            if (succes == false)
+            {                
+                MessageBox.Show(messageVulTekstvakken);
             }
             return succes;
         }
@@ -353,7 +358,7 @@ namespace Oscar.UI.WPF
             }
         }
         #endregion
-        #region Loaded event
+        #region Events
         //////////////////////////////////
         // Loaded event.
         //
@@ -364,13 +369,13 @@ namespace Oscar.UI.WPF
         //      The Edit button will be greyed out.
         private void LoadedEditFilm(object sender, RoutedEventArgs e)
         {
+            txtReview.Text = messageSelecteerScore;
             FillGenreComboBox();
             // EDIT path. Some different controls will be usable.
             if (SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmTitle != string.Empty)
             {
                 // Load actors of selected film
                 actorsInFilmList = DatabaseManager.Instance.FilmRepository.GetActorsForFilm(SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmId.Value).ToList();
-
 
                 // Disable the add button and enable the Edit button.
                 btnAddFilm.IsEnabled = false;
@@ -410,9 +415,8 @@ namespace Oscar.UI.WPF
             FillActorsComboBox();
         }
 
-
-        #endregion
-
+        // SelectionChanged Event.
+        //
         // This event will check if the score is between 0-5 before enabling the UI to write and inital review.
         private void CmbScore_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -423,15 +427,20 @@ namespace Oscar.UI.WPF
             if (cmbScore.SelectedIndex > 0)
             {
                 txtReview.IsEnabled = true;
-                if (txtReview.Text == "Selecteer een score voor je een review tekst kan toevoegen.")
+                if (txtReview.Text == messageSelecteerScore)
                 {
                     txtReview.Text = string.Empty;
-                }                
+                }
             }
             else
             {
+                txtReview.Text = messageSelecteerScore;
                 txtReview.IsEnabled = false;
             }
         }
+
+        #endregion
+
+
     }
 }
