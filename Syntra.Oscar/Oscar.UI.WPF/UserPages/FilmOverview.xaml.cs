@@ -22,6 +22,7 @@ namespace Oscar.UI.WPF.UserPages
     public partial class FilmOverview : Page
     {
         List<Films> filmsList = new List<Films>();
+        List<Films> filmsListFilteredOnGenre = new List<Films>();
         List<Genres> genresList = new List<Genres>();
         List<Genres> genresFilterList = new List<Genres>();
         List<Actors> actorsInFilmList = new List<Actors>();
@@ -257,6 +258,31 @@ namespace Oscar.UI.WPF.UserPages
         {
             cmbActor.SelectedIndex = -1;
             cmbGenre.SelectedIndex = -1;
+        }
+
+        // When the Genre selection changes, the list of films is updated to only show the films of the selected Genre.
+        private void CmbGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //genresFilterList
+
+            // If something is selected the actions take place.
+            // Index -1 = nothing selected.
+            if (cmbGenre.SelectedIndex > -1 )
+            {
+                int selectedIndex = cmbGenre.SelectedIndex;
+                Guid genreId = genresFilterList[selectedIndex].GenreId.Value;
+
+                filmsListFilteredOnGenre = DatabaseManager.Instance.FilmRepository.GetFilmsOfGenre(genreId).ToList();
+
+                lstFilmOverview.Items.Clear();
+                foreach (Films film in filmsListFilteredOnGenre)
+                {
+                    ListViewItem itemFilm = new ListViewItem();
+                    itemFilm.Tag = film;
+                    itemFilm.Content = film.FilmTitle;
+                    lstFilmOverview.Items.Add(itemFilm);
+                }
+            }
         }
     }
 }

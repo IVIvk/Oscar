@@ -44,7 +44,7 @@
             </Label>
             <ComboBox x:Name="cmbGenre" 
                       Grid.Column="0"
-                      Grid.Row="1">                
+                      Grid.Row="1" SelectionChanged="CmbGenre_SelectionChanged">                
             </ComboBox>
             
             <!-- Actor filter. -->
