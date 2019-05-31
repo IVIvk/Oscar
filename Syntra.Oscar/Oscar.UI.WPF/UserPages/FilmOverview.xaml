@@ -67,7 +67,7 @@
 
         <ListView Name="lstFilmOverview" Grid.Row="3" MouseDoubleClick="DoubleClickOnItem"></ListView>
 
-        <TextBox Name="txtSearchFilm" Grid.Row="1" Text="Search Film" GotFocus="txtSearchFilmFocus" TextChanged="TxtSearchFilm_TextChanged"></TextBox>
+        <TextBox Name="txtSearchFilm" Grid.Row="1" GotFocus="txtSearchFilmFocus" TextChanged="TxtSearchFilm_TextChanged"></TextBox>
 
         <Button Name="btnTopFive" Content="Geef de top 5 films weer" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Click="BtnTopFive_Click"></Button>
 

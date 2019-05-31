@@ -29,6 +29,8 @@ namespace Oscar.UI.WPF.UserPages
         List<Actors> actorsInFilmList = new List<Actors>();
         List<Actors> actorsFilterList = new List<Actors>();
         User user = new User();
+        string zoekFilmString = "Zoek film";
+        string selecteerEerstFilmString = "Selecteer eerst een film";
 
         public FilmOverview(User currentUser)
         {
@@ -50,7 +52,7 @@ namespace Oscar.UI.WPF.UserPages
                 List<Review> listOfReviews = DatabaseManager.Instance.ReviewRepository.GetReviewsPerFilm(film).ToList();
                 ListViewItem item = new ListViewItem();
 
-                if (txtSearchFilm.Text == "Search Film" || film.FilmTitle.ToLower().Contains(txtSearchFilm.Text.ToLower()))
+                if (txtSearchFilm.Text == zoekFilmString || film.FilmTitle.ToLower().Contains(txtSearchFilm.Text.ToLower()))
                 {
                     film.UpdateRating(listOfReviews);
 
@@ -104,6 +106,7 @@ namespace Oscar.UI.WPF.UserPages
         // Loaded Event.
         private void OverviewFilmsLoaded(object sender, RoutedEventArgs e)
         {
+            txtSearchFilm.Text = zoekFilmString;
             ShowFilms(filmsList);
             FillGenreComboBox();
             FillActorComboBox();
@@ -156,7 +159,8 @@ namespace Oscar.UI.WPF.UserPages
             }
             catch (Exception)
             {
-                MessageBox.Show("Selecteer eerst een film");
+                MessageBox.Show(selecteerEerstFilmString);
+
             }
         }
 
@@ -173,7 +177,7 @@ namespace Oscar.UI.WPF.UserPages
             }
             catch (Exception)
             {
-                MessageBox.Show("Selecteer eerst een film");
+                MessageBox.Show(selecteerEerstFilmString);
             }
         }
 
@@ -181,7 +185,7 @@ namespace Oscar.UI.WPF.UserPages
         // The text box will be emptied.
         private void txtSearchFilmFocus(object sender, RoutedEventArgs e)
         {
-            if (txtSearchFilm.Text == "Search Film")
+            if (txtSearchFilm.Text == zoekFilmString)
             {
                 txtSearchFilm.Text = String.Empty;
             }
