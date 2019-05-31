@@ -54,7 +54,7 @@
             </Label>
             <ComboBox x:Name="cmbActor"
                       Grid.Column="1"
-                      Grid.Row="1">
+                      Grid.Row="1" SelectionChanged="CmbActor_SelectionChanged">
             </ComboBox>
         </Grid>
 

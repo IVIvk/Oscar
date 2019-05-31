@@ -23,6 +23,7 @@ namespace Oscar.UI.WPF.UserPages
     {
         List<Films> filmsList = new List<Films>();
         List<Films> filmsListFilteredOnGenre = new List<Films>();
+        List<Films> filmsListFilteredOnActor = new List<Films>();
         List<Genres> genresList = new List<Genres>();
         List<Genres> genresFilterList = new List<Genres>();
         List<Actors> actorsInFilmList = new List<Actors>();
@@ -283,6 +284,35 @@ namespace Oscar.UI.WPF.UserPages
                     itemFilm.Content = film.FilmTitle;
                     lstFilmOverview.Items.Add(itemFilm);
                 }
+                filmsListFilteredOnGenre.Clear();
+            }            
+        }
+
+        // When the Actor selection changes, the list of films is updated to only show the films that star the selected Actor.
+        private void CmbActor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //actorsFilterList
+            // filmsListFilteredOnActor
+
+            // If something is selected the actions take place.
+            // Index -1 = nothing selected.
+            if (cmbActor.SelectedIndex > -1)
+            {
+                cmbGenre.SelectedIndex = -1;
+                int selectedIndex = cmbActor.SelectedIndex;
+                Guid actorId = actorsFilterList[selectedIndex].ActorId.Value;
+
+                filmsListFilteredOnActor = DatabaseManager.Instance.FilmRepository.GetFilmsOfActor(actorId).ToList();
+
+                lstFilmOverview.Items.Clear();
+                foreach (Films film in filmsListFilteredOnActor)
+                {
+                    ListViewItem itemFilm = new ListViewItem();
+                    itemFilm.Tag = film;
+                    itemFilm.Content = film.FilmTitle;
+                    lstFilmOverview.Items.Add(itemFilm);
+                }
+                filmsListFilteredOnActor.Clear();
             }
         }
     }
