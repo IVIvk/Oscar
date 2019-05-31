@@ -379,6 +379,7 @@ namespace Oscar.UI.WPF
 
                 // Disable the add button and enable the Edit button.
                 btnAddFilm.IsEnabled = false;
+                btnAddFilm.Visibility = Visibility.Hidden;
                 btnEditFilm.IsEnabled = true;
 
                 // Disable the initial review UI when editing a film.
@@ -399,6 +400,7 @@ namespace Oscar.UI.WPF
                 // Enable the add button and disable the Edit button.
                 btnAddFilm.IsEnabled = true;
                 btnEditFilm.IsEnabled = false;
+                btnEditFilm.Visibility = Visibility.Hidden;
 
                 // Enable the initial review score UI when adding a film.
                 cmbScore.IsEnabled = true;
