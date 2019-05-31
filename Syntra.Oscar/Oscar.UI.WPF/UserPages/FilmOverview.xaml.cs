@@ -269,6 +269,7 @@ namespace Oscar.UI.WPF.UserPages
             // Index -1 = nothing selected.
             if (cmbGenre.SelectedIndex > -1 )
             {
+                cmbActor.SelectedIndex = -1;
                 int selectedIndex = cmbGenre.SelectedIndex;
                 Guid genreId = genresFilterList[selectedIndex].GenreId.Value;
 
