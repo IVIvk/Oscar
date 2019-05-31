@@ -255,27 +255,30 @@ namespace Oscar.UI.WPF.UserPages
         // Button "Verwijder filters.
         // This will reset the Genre/Actor filters to NO filter.
         // The SelectedIndex of both Combo Boxes will be set to -1. (=nothing selected)
+        // Also the whole list of films will be loaded into the ListView.
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             cmbActor.SelectedIndex = -1;
             cmbGenre.SelectedIndex = -1;
+            ShowFilms(filmsList);
         }
 
         // When the Genre selection changes, the list of films is updated to only show the films of the selected Genre.
         private void CmbGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //genresFilterList
-
             // If something is selected the actions take place.
             // Index -1 = nothing selected.
-            if (cmbGenre.SelectedIndex > -1 )
+            if (cmbGenre.SelectedIndex > -1)
             {
+                // Get the selected Genre and unselect the Actor.
                 cmbActor.SelectedIndex = -1;
                 int selectedIndex = cmbGenre.SelectedIndex;
                 Guid genreId = genresFilterList[selectedIndex].GenreId.Value;
 
+                // A list of filtered films will be filled up.
                 filmsListFilteredOnGenre = DatabaseManager.Instance.FilmRepository.GetFilmsOfGenre(genreId).ToList();
 
+                // The films from this filtered list get loaded into the ListView.
                 lstFilmOverview.Items.Clear();
                 foreach (Films film in filmsListFilteredOnGenre)
                 {
@@ -284,26 +287,27 @@ namespace Oscar.UI.WPF.UserPages
                     itemFilm.Content = film.FilmTitle;
                     lstFilmOverview.Items.Add(itemFilm);
                 }
+                // Clear the filtered list.
                 filmsListFilteredOnGenre.Clear();
-            }            
+            }
         }
 
         // When the Actor selection changes, the list of films is updated to only show the films that star the selected Actor.
         private void CmbActor_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //actorsFilterList
-            // filmsListFilteredOnActor
-
             // If something is selected the actions take place.
             // Index -1 = nothing selected.
             if (cmbActor.SelectedIndex > -1)
             {
+                // Get the selected Actor and unselect the Genre.
                 cmbGenre.SelectedIndex = -1;
                 int selectedIndex = cmbActor.SelectedIndex;
                 Guid actorId = actorsFilterList[selectedIndex].ActorId.Value;
 
+                // A list of filtered films will be filled up.
                 filmsListFilteredOnActor = DatabaseManager.Instance.FilmRepository.GetFilmsOfActor(actorId).ToList();
 
+                // The films from this filtered list get loaded into the ListView.
                 lstFilmOverview.Items.Clear();
                 foreach (Films film in filmsListFilteredOnActor)
                 {
@@ -312,6 +316,7 @@ namespace Oscar.UI.WPF.UserPages
                     itemFilm.Content = film.FilmTitle;
                     lstFilmOverview.Items.Add(itemFilm);
                 }
+                // Clear the filtered list.
                 filmsListFilteredOnActor.Clear();
             }
         }
