@@ -303,16 +303,19 @@ namespace Oscar.UI.WPF
         // This function selects the correct genre when editing a film.
         private void FillGenreComboBoxWhenEditing()
         {
-            genreId = Guid.Parse(SingletonClasses.SingletonGenre.OnlyInstanceOfGenre.GenreId.ToString());
-
-            for (int i = 0; i < GenresList.Count; i++)
+            if (SingletonClasses.SingletonGenre.OnlyInstanceOfGenre.GenreId.ToString() != string.Empty)
             {
-                if (genreId == GenresList[i].GenreId)
+                genreId = Guid.Parse(SingletonClasses.SingletonGenre.OnlyInstanceOfGenre.GenreId.ToString());
+
+                for (int i = 0; i < GenresList.Count; i++)
                 {
-                    selectedIndex = i;
+                    if (genreId == GenresList[i].GenreId)
+                    {
+                        selectedIndex = i;
+                    }
                 }
+                cmbGenre.SelectedIndex = selectedIndex;
             }
-            cmbGenre.SelectedIndex = selectedIndex;
         }
 
         // This function Inserts an initial review score.
