@@ -38,7 +38,7 @@
                 <Label Content="Wachtwoord"></Label>
                 
             </StackPanel>
-            <CheckBox Name="cheUserAdmin" Grid.Column="1" Grid.Row="1" Content="Admin Rights"></CheckBox>
+            <CheckBox Name="cheUserAdmin" IsEnabled="False" Grid.Column="1" Grid.Row="1" Content="Admin Rights"></CheckBox>
         </StackPanel>
 
         <StackPanel Grid.Column="2" Grid.Row="1">
