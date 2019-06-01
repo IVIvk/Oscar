@@ -34,8 +34,8 @@ namespace Oscar.UI.WPF
         {
             User newUser = new User();
             string newUsername = txtUsername.Text;
-            string newPassword = txtPassword.Text;
-            string newPasswordConfirm = txtPasswordConfirm.Text;
+            string newPassword = txtPassword.Password;
+            string newPasswordConfirm = txtPasswordConfirm.Password;
             bool validUser = true;
             
             foreach (User user in _userList)
@@ -45,13 +45,24 @@ namespace Oscar.UI.WPF
                     MessageBox.Show("Deze gebruikersnaam bestaat reeds. Gebruik een andere.");
                     validUser = false;
                 }
-
-                if (!(newPassword == newPasswordConfirm))
-                {
-                    MessageBox.Show("Het wachtwoord komt niet overeen.");
-                    validUser = false;
-                }
             }
+
+            if (newUsername.Length < 5)
+            {
+                MessageBox.Show("De gebruikersnaam moet minstens 5 karakters lang zijn.");
+                validUser = false;
+            }
+            else if (!(newPassword == newPasswordConfirm))
+            {
+                MessageBox.Show("Het wachtwoord komt niet overeen.");
+                validUser = false;
+            }
+            else if (newPassword.Length < 5)
+            {
+                MessageBox.Show("Het wachtwoord moet minstens 5 karakters lang zijn.");
+                validUser = false;
+            }
+
 
             if (validUser)
             {
