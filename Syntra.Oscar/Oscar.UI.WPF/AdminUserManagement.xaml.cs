@@ -27,28 +27,44 @@ namespace Oscar.UI.WPF
             InitializeComponent();
         }
 
+        // Button "Ververs gebruikers"
         private void btnLoadUsers_Click(object sender, RoutedEventArgs e)
         {
             LoadAllUsers();
+            LstUsers.SelectedIndex = -1;
+            txtPasswordUser.Text = string.Empty;
+            txtUserId.Text = string.Empty;
+            cheUserAdmin.IsChecked = false;
         }
 
+        // Button "Sla gebruikers op"
         private void btnSaveUsers_Click(object sender, RoutedEventArgs e)
         {
             User user = new User();
-
-            //user.userId = txtUserId.Text;
-            user.UserPassword = txtPasswordUser.Text;
-
-            if (cheUserAdmin.IsChecked == true)
+            try
             {
-                user.UserAdminInput = "true";
-            }
-            else
-            {
-                user.UserAdminInput = "false";
-            }
+                // Set the selected UserId and Password.
+                user.userId = userlist[LstUsers.SelectedIndex].userId;
+                user.UserPassword = txtPasswordUser.Text;
 
-            DatabaseManager.Instance.UserRepository.UpdateUser(user);
+                // Set the Admin rights.
+                if (cheUserAdmin.IsChecked == true)
+                {
+                    user.UserAdminInput = "true";
+                }
+                else
+                {
+                    user.UserAdminInput = "false";
+                }
+
+                DatabaseManager.Instance.UserRepository.UpdateUser(user);
+                LoadAllUsers();
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Geen gebruiker geselecteerd");
+            }
         }
 
         // This function loads all the users from the database into the ListView.
@@ -67,8 +83,8 @@ namespace Oscar.UI.WPF
                 LstUsers.Items.Add(item);
             }
         }
-       
 
+        // SelectionChanged event.
         private void LoadUsers(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -90,10 +106,11 @@ namespace Oscar.UI.WPF
             }
             catch (Exception)
             {
-                MessageBox.Show("Geen gebruiker geselecteerd");
+                //MessageBox.Show("Geen gebruiker geselecteerd");
             }
         }
 
+        // Loaded event.
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             LoadAllUsers();
