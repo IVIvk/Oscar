@@ -341,7 +341,7 @@ namespace Oscar.UI.WPF
                 // Genre object.
                 item.Tag = actor;
                 // Display Genre name.
-                item.Content = actor.LastName.ToString() + " " + actor.FirstName.ToString();
+                item.Content = actor.FirstName.ToString() + " " + actor.LastName.ToString();
                 // Add the item to the list.
                 cmbActors.Items.Add(item);
             }
