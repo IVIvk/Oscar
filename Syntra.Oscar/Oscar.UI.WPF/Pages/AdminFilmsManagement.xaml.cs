@@ -45,6 +45,7 @@ namespace Oscar.UI.WPF.Pages
             txtFilmDuration.Text = string.Empty;
             txtFilmPlot.Text = string.Empty;
             lstGenres.Items.Clear();
+            lstActors.Items.Clear();
         }
 
         // This function Adds all the films inside the database into the ListView.
