@@ -22,6 +22,8 @@ namespace Oscar.UI.WPF
     public partial class AdminGenreManagement : Page
     {
         List<Genres> GenresList = new List<Genres>();
+        string messageNiewGenreToegevoegd = "Er is een nieuw genre toegevoegd";
+        string stringNieuwGenre = "Vul het nieuwe genre in";
 
         public AdminGenreManagement()
         {
@@ -80,10 +82,10 @@ namespace Oscar.UI.WPF
             newGenre.GenreId = Guid.NewGuid();
             newGenre.GenreName = txtNewGenreInput.Text;
 
-            txtNewGenreInput.Text = "Nieuwe genre";
+            txtNewGenreInput.Text = stringNieuwGenre;
 
             DatabaseManager.Instance.GenreRepository.InsertGenre(newGenre);
-            MessageBox.Show("Nieuwe genre toegevoegd");
+            MessageBox.Show(messageNiewGenreToegevoegd);
 
             ShowGenres();
         }
@@ -144,7 +146,7 @@ namespace Oscar.UI.WPF
         // (GetsFocus) This event empties the "nieuw genre" text box when it gets focus.
         private void TxtNewGenreGetsFocus(object sender, RoutedEventArgs e)
         {
-            if (txtNewGenreInput.Text != "Nieuw genre")
+            if (txtNewGenreInput.Text != stringNieuwGenre)
             {
 
             }
@@ -158,6 +160,7 @@ namespace Oscar.UI.WPF
         private void Genre_OnLoaded(object sender, RoutedEventArgs e)
         {
             ShowGenres();
+            txtNewGenreInput.Text = stringNieuwGenre;
         }
         #endregion
 
