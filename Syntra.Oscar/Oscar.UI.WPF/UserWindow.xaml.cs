@@ -52,5 +52,10 @@ namespace Oscar.UI.WPF
         {
             frmUserFrame.NavigationService.Navigate(new Pages.UlaInterface());
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            frmUserFrame.NavigationService.Navigate(new UserPages.UserReview(mainUser));
+        }
     }
 }
