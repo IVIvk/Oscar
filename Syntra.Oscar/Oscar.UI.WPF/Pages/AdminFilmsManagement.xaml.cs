@@ -42,7 +42,7 @@ namespace Oscar.UI.WPF.Pages
         {
             txtFilmId.Text = string.Empty;
             txtFilmTitle.Text = string.Empty;
-            txtFilmReleaseYear.Text = string.Empty;            
+            txtFilmReleaseYear.Text = string.Empty;
             txtFilmDuration.Text = string.Empty;
             txtFilmPlot.Text = string.Empty;
             lstGenres.Items.Clear();
@@ -71,7 +71,7 @@ namespace Oscar.UI.WPF.Pages
         private void LoadFilms(object sender, SelectionChangedEventArgs e)
         {
             try
-            {                
+            {
                 ListViewItem item = ((ListViewItem)LstFilms.SelectedItem);
                 Films film = (Films)item.Tag;
 
@@ -80,11 +80,11 @@ namespace Oscar.UI.WPF.Pages
                 txtFilmReleaseYear.Text = Convert.ToString(film.ReleaseYear);
                 txtFilmDuration.Text = Convert.ToString(film.FilmLengthInMinutes);
                 txtFilmPlot.Text = Convert.ToString(film.FilmPlot);
-                
+
                 lstGenres.Items.Clear();
                 // The genres that are linked to the selected film are put in a list.
-                genresList = DatabaseManager.Instance.FilmRepository.GetGenresForFilm(film.FilmId.Value).ToList();              
-                
+                genresList = DatabaseManager.Instance.FilmRepository.GetGenresForFilm(film.FilmId.Value).ToList();
+
                 // All genres from this list get added to the "Genre" ListView.
                 foreach (Genres genre in genresList)
                 {
@@ -123,7 +123,7 @@ namespace Oscar.UI.WPF.Pages
             catch (Exception)
             {
 
-            }            
+            }
         }
 
         //This function shows the actors of the selected film.
@@ -142,7 +142,7 @@ namespace Oscar.UI.WPF.Pages
             }
         }
         #endregion
-        
+
         #region Buttons
         /////////////////////////////////////////
         // Buttons (Click functions)
@@ -169,52 +169,60 @@ namespace Oscar.UI.WPF.Pages
                 NavigationService.Navigate(new EditFilm());
             }
             else
-            {                
+            {
                 MessageBox.Show(messageSelecteerFilm);
-            }            
+            }
         }
 
         // "Verwijder film" button.
         private void BtnDeleteFilm_Click(object sender, RoutedEventArgs e)
         {
-            // Create new Films object.
-            Films film = new Films();
-
-            // Get the selected item in the list.
-            ListViewItem item = ((ListViewItem)LstFilms.SelectedItem);
-
-            // Place this item into the object.
-            film = (Films)item.Tag;
-
-            // Get the genres that are linked to the film so the links can be deleted.
-            IEnumerable<Genres> linkedGenres = new List<Genres>();
-            linkedGenres = DatabaseManager.Instance.FilmRepository.GetGenresForFilm(film.FilmId.Value);
-
-            // Initiate delete in database of the linked genres.
-            foreach (Genres genreThatIsLinked in linkedGenres)
+            try
             {
-                DatabaseManager.Instance.FilmRepository.DeleteLinkFilmGenre(film, genreThatIsLinked);
+                // Create new Films object.
+                Films film = new Films();
+
+                // Get the selected item in the list.
+                ListViewItem item = ((ListViewItem)LstFilms.SelectedItem);
+
+                // Place this item into the object.
+                film = (Films)item.Tag;
+
+                // Get the genres that are linked to the film so the links can be deleted.
+                IEnumerable<Genres> linkedGenres = new List<Genres>();
+                linkedGenres = DatabaseManager.Instance.FilmRepository.GetGenresForFilm(film.FilmId.Value);
+
+                // Initiate delete in database of the linked genres.
+                foreach (Genres genreThatIsLinked in linkedGenres)
+                {
+                    DatabaseManager.Instance.FilmRepository.DeleteLinkFilmGenre(film, genreThatIsLinked);
+                }
+
+                // Get the actors that are linked to the film so the links can be deleted.
+                IEnumerable<Actors> linkedActors = new List<Actors>();
+                linkedActors = DatabaseManager.Instance.FilmRepository.GetActorsForFilm(film.FilmId.Value);
+
+                // Initiate delete in database of the linked actors.
+                foreach (Actors actorThatIsLinked in linkedActors)
+                {
+                    DatabaseManager.Instance.FilmRepository.DeleteLinkFilmAllActor(film.FilmId.Value);
+                }
+
+                // Initiate delete in database of the selected item.
+                DatabaseManager.Instance.FilmRepository.DeleteFilm(film);
+
+                // Clear out the text boxes.
+                ClearTextBoxes();
+
+                // Refresh the list of films.
+                ShowFilms();
             }
 
-            // Get the actors that are linked to the film so the links can be deleted.
-            IEnumerable<Actors> linkedActors = new List<Actors>();
-            linkedActors = DatabaseManager.Instance.FilmRepository.GetActorsForFilm(film.FilmId.Value);
-
-            // Initiate delete in database of the linked actors.
-            foreach (Actors actorThatIsLinked in linkedActors)
+            catch (Exception)
             {
-                DatabaseManager.Instance.FilmRepository.DeleteLinkFilmAllActor(film.FilmId.Value);
+                MessageBox.Show(messageSelecteerFilm);
             }
-
-            // Initiate delete in database of the selected item.
-            DatabaseManager.Instance.FilmRepository.DeleteFilm(film);
-
-            // Clear out the text boxes.
-            ClearTextBoxes();
-            
-            // Refresh the list of films.
-            ShowFilms();
-        }        
+        }
         #endregion
 
         /////////////////////////////////////////
@@ -222,7 +230,7 @@ namespace Oscar.UI.WPF.Pages
         #region LoadedEvent
         private void AdminFilmsManagementLoaded(object sender, RoutedEventArgs e)
         {
-            ShowFilms();            
+            ShowFilms();
         }
         #endregion
 
