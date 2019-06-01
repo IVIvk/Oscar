@@ -25,6 +25,7 @@ namespace Oscar.UI.WPF.Pages
         List<Films> filmsList = new List<Films>();
         List<Genres> genresList = new List<Genres>();
         List<Actors> actorsInFilmList = new List<Actors>();
+        string messageSelecteerFilm = "Selecteer eerst een film.";
         //int selectionIndex = -1;
 
         public AdminFilmsManagement()
@@ -45,6 +46,7 @@ namespace Oscar.UI.WPF.Pages
             txtFilmDuration.Text = string.Empty;
             txtFilmPlot.Text = string.Empty;
             lstGenres.Items.Clear();
+            lstActors.Items.Clear();
         }
 
         // This function Adds all the films inside the database into the ListView.
@@ -161,8 +163,15 @@ namespace Oscar.UI.WPF.Pages
         // "Verander film" button.
         private void BtnEditFilm_Click(object sender, RoutedEventArgs e)
         {
-            LoadFilmIntoSingleton();
-            NavigationService.Navigate(new EditFilm());
+            if (txtFilmTitle.Text != string.Empty)
+            {
+                LoadFilmIntoSingleton();
+                NavigationService.Navigate(new EditFilm());
+            }
+            else
+            {                
+                MessageBox.Show(messageSelecteerFilm);
+            }            
         }
 
         // "Verwijder film" button.

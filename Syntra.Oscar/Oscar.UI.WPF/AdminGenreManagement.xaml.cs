@@ -24,6 +24,7 @@ namespace Oscar.UI.WPF
         List<Genres> GenresList = new List<Genres>();
         string messageNiewGenreToegevoegd = "Er is een nieuw genre toegevoegd";
         string stringNieuwGenre = "Vul het nieuwe genre in";
+        string messageSelecteerEerstGenre = "Selecteer eerst een genre om aan te passen.";
 
         public AdminGenreManagement()
         {
@@ -123,6 +124,7 @@ namespace Oscar.UI.WPF
                     DatabaseManager.Instance.GenreRepository.DeleteGenre(genre);
                     MessageBox.Show("Het genre \"" + genre.GenreName + "\" werd gewist");
                 }
+                lstGenres.SelectedIndex = -1;
             }
             catch (Exception)
             {
@@ -134,8 +136,19 @@ namespace Oscar.UI.WPF
         // When clicking the edit button, the user navigates to the EditGenre page.
         private void BtnEditGenre_Click(object sender, RoutedEventArgs e)
         {
-            LoadGenreIntoSingleton();
-            NavigationService.Navigate(new Pages.EditGenre());
+            // If no selection is made then the navigation does not take place.
+            // Index -1 = nothing selected.
+            if (lstGenres.SelectedIndex != -1)
+            {
+                // The info of the selected Genre is loaded into a Singleton, so it can be used in the EditGenre page.
+                LoadGenreIntoSingleton();
+                NavigationService.Navigate(new Pages.EditGenre());
+            }
+            else
+            {                
+                MessageBox.Show(messageSelecteerEerstGenre);
+            }
+            
         }
         #endregion
 

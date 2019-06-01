@@ -27,14 +27,20 @@ namespace Oscar.UI.WPF
             InitializeComponent();
         }
 
-        // Button "Ververs gebruikers"
-        private void btnLoadUsers_Click(object sender, RoutedEventArgs e)
+        // This function clears the text boxes and the CheckBox.
+        private void EmptyTextBoxAndCheckBox()
         {
-            LoadAllUsers();
             LstUsers.SelectedIndex = -1;
             txtPasswordUser.Text = string.Empty;
             txtUserId.Text = string.Empty;
             cheUserAdmin.IsChecked = false;
+        }
+
+        // Button "Ververs gebruikers"
+        private void btnLoadUsers_Click(object sender, RoutedEventArgs e)
+        {
+            LoadAllUsers();
+            EmptyTextBoxAndCheckBox();
         }
 
         // Button "Sla gebruikers op"
@@ -59,6 +65,7 @@ namespace Oscar.UI.WPF
 
                 DatabaseManager.Instance.UserRepository.UpdateUser(user);
                 LoadAllUsers();
+                EmptyTextBoxAndCheckBox();
 
             }
             catch (Exception)
