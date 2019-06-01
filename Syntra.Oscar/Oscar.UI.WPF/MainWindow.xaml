@@ -5,27 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Oscar.UI.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1000" Width="1000" Loaded="MainWindow_Onloaded"
+        Title="MainWindow" Loaded="MainWindow_Onloaded"
         WindowStartupLocation="CenterScreen"
        ResizeMode="NoResize"
        WindowState="Maximized"
        WindowStyle="ToolWindow">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-
-        <Frame x:Name="FrmFrame" 
-               Grid.Row="0" Grid.Column="0" 
+    <Grid VerticalAlignment="Top">
+        <StackPanel HorizontalAlignment="Center">
+            <Frame x:Name="FrmFrame" 
                NavigationUIVisibility="Hidden" 
                Content="Frame" 
                HorizontalAlignment="Left"  
                Margin="10,10,0,0" 
                VerticalAlignment="Top"/>
-
+        </StackPanel>
     </Grid>
 </Window>
