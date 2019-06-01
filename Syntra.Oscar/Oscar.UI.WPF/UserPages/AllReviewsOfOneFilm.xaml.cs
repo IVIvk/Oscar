@@ -54,5 +54,14 @@ namespace Oscar.UI.WPF.UserPages
                 lstReviews.Items.Add(item);
             }
         }
+
+        private void LstReviews_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ListViewItem item = (ListViewItem)lstReviews.SelectedItem;
+            Review review = (Review)item.Tag;
+
+            txtSelectedReview.Text = "";
+            txtSelectedReview.Text = review.ReviewContent;
+        }
     }
 }
