@@ -12,9 +12,8 @@
         <Label Content="Gebruikersnaam" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Wachtwoord" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="23" Margin="111,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168"/>
-        <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Height="23" Margin="111,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168"/>
+        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Height="23" Margin="111,45,0,0" VerticalAlignment="Top" Width="168"/>
         <Button x:Name="btnLogin" Content="Ga verder" HorizontalAlignment="Left" Margin="111,73,0,0" VerticalAlignment="Top" Width="106" Click="btnLogin_Click"/>
         <Button x:Name="btnNewUser" Content="Nieuwe gebruiker" HorizontalAlignment="Left" Margin="111,97,0,0" VerticalAlignment="Top" Width="106" Click="btnNewUser_Click"/>
-
     </Grid>
 </Page>
