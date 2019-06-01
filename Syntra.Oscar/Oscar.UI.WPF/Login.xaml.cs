@@ -34,7 +34,7 @@ namespace Oscar.UI.WPF
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             string username = txtUsername.Text;
-            string password = txtPassword.Text;
+            string password = txtPassword.Password;
             bool check = true;
 
             foreach (User user in userList)
