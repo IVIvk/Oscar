@@ -57,7 +57,7 @@ namespace Oscar.UI.WPF.UserPages
                     film.UpdateRating(listOfReviews);
 
                     item.Tag = film;
-                    item.Content = film.FilmTitle + " (" + film.FilmRating + ")";
+                    item.Content = film.FilmTitle + " (" + Math.Round(film.FilmRating,1) + ")";
 
                     lstFilmOverview.Items.Add(item);
                 }
