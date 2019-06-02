@@ -60,31 +60,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddActor.xaml.cs">
+    <Compile Include="AdminPages\AddActor.xaml.cs">
       <DependentUpon>AddActor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminActorsManagement.xaml.cs">
+    <Compile Include="AdminPages\AdminActorsManagement.xaml.cs">
       <DependentUpon>AdminActorsManagement.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminGenreManagement.xaml.cs">
+    <Compile Include="AdminPages\AdminGenreManagement.xaml.cs">
       <DependentUpon>AdminGenreManagement.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminOverview.xaml.cs">
+    <Compile Include="AdminPages\AdminOverview.xaml.cs">
       <DependentUpon>AdminOverview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminUserManagement.xaml.cs">
+    <Compile Include="AdminPages\AdminUserManagement.xaml.cs">
       <DependentUpon>AdminUserManagement.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AdminFilmsManagement.xaml.cs">
+    <Compile Include="AdminPages\AdminFilmsManagement.xaml.cs">
       <DependentUpon>AdminFilmsManagement.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\EditFilm.xaml.cs">
+    <Compile Include="AdminPages\EditFilm.xaml.cs">
       <DependentUpon>EditFilm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\EditGenre.xaml.cs">
+    <Compile Include="AdminPages\EditGenre.xaml.cs">
       <DependentUpon>EditGenre.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\UlaInterface.xaml.cs">
+    <Compile Include="AdminPages\UlaInterface.xaml.cs">
       <DependentUpon>UlaInterface.xaml</DependentUpon>
     </Compile>
     <Compile Include="SingletonClasses\SingletonFilms.cs" />
@@ -101,30 +101,30 @@
     <Compile Include="UserPages\WriteReview.xaml.cs">
       <DependentUpon>WriteReview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserWindow.xaml.cs">
+    <Compile Include="UserPages\UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddActor.xaml">
+    <Page Include="AdminPages\AddActor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdminActorsManagement.xaml">
+    <Page Include="AdminPages\AdminActorsManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdminGenreManagement.xaml">
+    <Page Include="AdminPages\AdminGenreManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdminOverview.xaml">
+    <Page Include="AdminPages\AdminOverview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdminUserManagement.xaml">
+    <Page Include="AdminPages\AdminUserManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Login.xaml">
+    <Page Include="UserPages\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,30 +137,30 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DatabaseManager.cs" />
-    <Compile Include="Login.xaml.cs">
+    <Compile Include="UserPages\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="PageNewUser.xaml">
+    <Page Include="UserPages\PageNewUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\AdminFilmsManagement.xaml">
+    <Page Include="AdminPages\AdminFilmsManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\EditFilm.xaml">
+    <Page Include="AdminPages\EditFilm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\EditGenre.xaml">
+    <Page Include="AdminPages\EditGenre.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\UlaInterface.xaml">
+    <Page Include="AdminPages\UlaInterface.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,13 +180,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserWindow.xaml">
+    <Page Include="UserPages\UserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PageNewUser.xaml.cs">
+    <Compile Include="UserPages\PageNewUser.xaml.cs">
       <DependentUpon>PageNewUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
