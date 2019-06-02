@@ -40,24 +40,31 @@ namespace Oscar.UI.WPF.UserPages
             reviewListFilm = DatabaseManager.Instance.ReviewRepository.GetReviewsPerFilm(film).ToList();
             genresOfFilm = DatabaseManager.Instance.FilmRepository.GetGenresForFilm(film.FilmId.Value).ToList();
 
-            foreach (var reviewUser in reviewListUser)
+            foreach (var reviewFilm in reviewListFilm)
             {
-                if (reviewUser.UserId == user.userId)
+                if (reviewFilm.UserId == currentUser.userId)
                 {
-                    foreach (var reviewFilm in reviewListFilm)
-                    {
-                        if (reviewFilm.UserId == reviewUser.UserId)
-                        {
-                            userReview = reviewUser;
-                            newReview = false;
-                        }
-                    }
-                }
-                else
-                {
-                    userReview.ReviewContent = "Je hebt nog geen review hiervoor geschreven";
+                    userReview = reviewFilm;
+                    newReview = false;
                 }
             }
+            /*
+            if (reviewUser.UserId == user.userId)
+            {
+                foreach (var reviewFilm in reviewListFilm)
+                {
+                    if (reviewFilm.UserId == reviewUser.UserId)
+                    {
+                        userReview = reviewUser;
+                        newReview = false;
+                    }
+                }
+            }
+            else
+            {
+                userReview.ReviewContent = "Je hebt nog geen review hiervoor geschreven";
+            }
+            */
 
             txtFilmTitle.Text = film.FilmTitle;
             txtFilmReleaseYear.Text = Convert.ToString(film.ReleaseYear);
