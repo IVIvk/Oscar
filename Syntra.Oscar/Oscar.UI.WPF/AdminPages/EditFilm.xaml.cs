@@ -180,6 +180,7 @@ namespace Oscar.UI.WPF
 
                     ShowActorsOfSelectedFilm(); ;
                 }
+                cmbActors.SelectedIndex = -1;
             }
             catch (Exception)
             {
