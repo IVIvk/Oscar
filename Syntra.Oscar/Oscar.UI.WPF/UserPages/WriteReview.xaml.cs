@@ -48,23 +48,6 @@ namespace Oscar.UI.WPF.UserPages
                     newReview = false;
                 }
             }
-            /*
-            if (reviewUser.UserId == user.userId)
-            {
-                foreach (var reviewFilm in reviewListFilm)
-                {
-                    if (reviewFilm.UserId == reviewUser.UserId)
-                    {
-                        userReview = reviewUser;
-                        newReview = false;
-                    }
-                }
-            }
-            else
-            {
-                userReview.ReviewContent = "Je hebt nog geen review hiervoor geschreven";
-            }
-            */
 
             txtFilmTitle.Text = film.FilmTitle;
             txtFilmReleaseYear.Text = Convert.ToString(film.ReleaseYear);
