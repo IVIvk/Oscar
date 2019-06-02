@@ -23,6 +23,8 @@ namespace Oscar.UI.WPF.UserPages
     {
         List<Review> reviewListUser = new List<Review>();
         List<Review> reviewListFilm = new List<Review>();
+        List<Genres> genresOfFilm = new List<Genres>();
+
         Films selectedFilm = new Films();
         bool newReview = true;
         Review userReview = new Review();
@@ -33,8 +35,10 @@ namespace Oscar.UI.WPF.UserPages
             InitializeComponent();
             selectedFilm = film;
             currentUser = user;
+
             reviewListUser = DatabaseManager.Instance.ReviewRepository.GetReviewsPerUser(user).ToList();
             reviewListFilm = DatabaseManager.Instance.ReviewRepository.GetReviewsPerFilm(film).ToList();
+            genresOfFilm = DatabaseManager.Instance.FilmRepository.GetGenresForFilm(film.FilmId.Value).ToList();
 
             foreach (var reviewUser in reviewListUser)
             {
@@ -61,7 +65,12 @@ namespace Oscar.UI.WPF.UserPages
             txtReview.Text = userReview.ReviewContent;
             txtFilmPlot.Text = Convert.ToString(film.FilmPlot);
             cbbScore.Text = Convert.ToString(userReview.ReviewScore);
-            
+            txtFilmGenre.Text = "";
+
+            foreach (var genre in genresOfFilm)
+            {
+                txtFilmGenre.Text = txtFilmGenre.Text + " " + genre.GenreName;
+            }
         }
 
         private void BtnSaveReview_Click(object sender, RoutedEventArgs e)
