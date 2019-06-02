@@ -22,9 +22,11 @@ namespace Oscar.UI.WPF
     /// </summary>
     public partial class EditFilm : Page
     {
-        public EditFilm()
+        User user = new User();
+        public EditFilm(User currentUser)
         {
             InitializeComponent();
+            user = currentUser;
         }
         // Variable.
         bool allTextBoxesFilled = false;
@@ -324,9 +326,10 @@ namespace Oscar.UI.WPF
         {
             // Get and set the selected score, User, set review content and generate a new guid Id.
             userReview.ReviewScore = Convert.ToInt32(((ComboBoxItem)cmbScore.SelectedItem).Content);
-            userReview.UserId = currentUser.userId;
+            //userReview.UserId = currentUser.userId;
             userReview.ReviewContent = txtReview.Text;
             userReview.ReviewId = Guid.NewGuid();
+            userReview.UserId = user.userId;
         }
 
         // This function Gets the genres from the database and puts them inside the genre ComboBox.
