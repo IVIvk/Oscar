@@ -33,9 +33,9 @@
         </StackPanel>
 
         <TextBox Name="txtReview" Grid.Column="0" Grid.Row="2" TextWrapping="Wrap" AcceptsReturn="True"></TextBox>
-
-        <StackPanel Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
-            <Label Content="Titel" Height="25"></Label>
+        <Label Content="Titel" Height="25" Grid.Row="1" Grid.Column="1"></Label>
+        
+        <StackPanel Grid.Column="1" Grid.Row="2">
             <Label Content="Jaar van uitgave" Height="25"></Label>
             <Label Content="Genre" Height="25"></Label>
             <Label Content="Duur (in minuten)" Height="25"></Label>
@@ -43,9 +43,10 @@
         </StackPanel>
 
         <Button Name="btnSaveReview" Content="Sla review op" Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="BtnSaveReview_Click"></Button>
-
-        <StackPanel Grid.Column="2" Grid.Row="1" Grid.RowSpan="2">
-            <TextBox Name="txtFilmTitle" Height="25"></TextBox>
+        <TextBox Name="txtFilmTitle" Height="25" Grid.Row="1" Grid.Column="2"></TextBox>
+        
+        <StackPanel Grid.Column="2" Grid.Row="2">
+            
             <TextBox Name="txtFilmReleaseYear" Height="25"></TextBox>
             <TextBox Name="txtFilmGenre" Height="25"></TextBox>
             <TextBox Name="txtFilmDuration" Height="25"></TextBox>
