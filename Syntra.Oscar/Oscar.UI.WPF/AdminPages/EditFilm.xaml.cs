@@ -22,11 +22,11 @@ namespace Oscar.UI.WPF
     /// </summary>
     public partial class EditFilm : Page
     {
-        User user = new User();
-        public EditFilm(User currentUser)
+        User mainUser = new User();
+        public EditFilm(User user)
         {
             InitializeComponent();
-            user = currentUser;
+            mainUser = user;
         }
         // Variable.
         bool allTextBoxesFilled = false;
@@ -95,10 +95,10 @@ namespace Oscar.UI.WPF
                     CreateInitialScore();
 
                     // Insert the review into the database.
-                    DatabaseManager.Instance.ReviewRepository.SaveReview(film, currentUser, userReview);
+                    DatabaseManager.Instance.ReviewRepository.SaveReview(film, mainUser, userReview);
                 }
                 // Navigate back to the AdminFilmsManagement page.
-                NavigationService.Navigate(new Pages.AdminFilmsManagement());
+                NavigationService.Navigate(new Pages.AdminFilmsManagement(mainUser));
             }
         }
 
@@ -146,14 +146,14 @@ namespace Oscar.UI.WPF
                 }
 
                 // Navigate back to the AdminFilmsManagement page.
-                NavigationService.Navigate(new Pages.AdminFilmsManagement());
+                NavigationService.Navigate(new Pages.AdminFilmsManagement(mainUser));
             }
         }
 
         // Button "Annuleren".
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Pages.AdminFilmsManagement());
+            NavigationService.Navigate(new Pages.AdminFilmsManagement(mainUser));
         }
 
         // Button "Acteur toegoegen".
@@ -326,10 +326,9 @@ namespace Oscar.UI.WPF
         {
             // Get and set the selected score, User, set review content and generate a new guid Id.
             userReview.ReviewScore = Convert.ToInt32(((ComboBoxItem)cmbScore.SelectedItem).Content);
-            //userReview.UserId = currentUser.userId;
             userReview.ReviewContent = txtReview.Text;
             userReview.ReviewId = Guid.NewGuid();
-            userReview.UserId = user.userId;
+            userReview.UserId = mainUser.userId;
         }
 
         // This function Gets the genres from the database and puts them inside the genre ComboBox.

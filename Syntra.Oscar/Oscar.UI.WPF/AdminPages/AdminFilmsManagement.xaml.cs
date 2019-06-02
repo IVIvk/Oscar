@@ -27,10 +27,12 @@ namespace Oscar.UI.WPF.Pages
         List<Actors> actorsInFilmList = new List<Actors>();
         string messageSelecteerFilm = "Selecteer eerst een film.";
         //int selectionIndex = -1;
+        User mainUser = new User();
 
-        public AdminFilmsManagement()
+        public AdminFilmsManagement(User user)
         {
             InitializeComponent();
+            mainUser = user;
         }
 
         #region Functions
@@ -157,7 +159,7 @@ namespace Oscar.UI.WPF.Pages
         private void BtnNewFilm_Click(object sender, RoutedEventArgs e)
         {
             SingletonClasses.SingletonFilms.OnlyInstanceOfFilms.FilmTitle = string.Empty;
-            NavigationService.Navigate(new EditFilm());
+            NavigationService.Navigate(new EditFilm(mainUser));
         }
 
         // "Verander film" button.
@@ -166,7 +168,7 @@ namespace Oscar.UI.WPF.Pages
             if (txtFilmTitle.Text != string.Empty)
             {
                 LoadFilmIntoSingleton();
-                NavigationService.Navigate(new EditFilm());
+                NavigationService.Navigate(new EditFilm(mainUser));
             }
             else
             {

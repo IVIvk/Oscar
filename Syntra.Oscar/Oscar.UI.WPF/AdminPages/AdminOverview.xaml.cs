@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Oscar.UI.WPF.Pages;
+using Oscar.BL;
 
 namespace Oscar.UI.WPF
 {
@@ -21,9 +22,11 @@ namespace Oscar.UI.WPF
     /// </summary>
     public partial class AdminOverview : Page
     {
-        public AdminOverview()
+        User mainUser = new User();
+        public AdminOverview(User user)
         {
             InitializeComponent();
+            mainUser = user;
         }
 
         private void BtnUsersOverview_Click(object sender, RoutedEventArgs e)
@@ -33,7 +36,7 @@ namespace Oscar.UI.WPF
 
         private void BtnFilmsOverview_Click(object sender, RoutedEventArgs e)
         {
-            frmOverviewFrame.NavigationService.Navigate(new AdminFilmsManagement());
+            frmOverviewFrame.NavigationService.Navigate(new AdminFilmsManagement(mainUser));
         }
 
         private void BtnActorsOverview_Click(object sender, RoutedEventArgs e)
